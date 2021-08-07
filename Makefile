@@ -1,0 +1,34 @@
+NAME = $(LEM_IN)
+
+LEM_IN = lem_in
+LEM_IN_SRC = lem_in.c
+LEM_IN_HEADERS = -I lem_in.h
+LEM_IN_OBJ = $(LEM_IN_SRC:.c=.o)
+
+LIBRARY = libft/ft_printf/libftprintf.a
+
+FLAGS = -Wall -Wextra -Werror
+
+.PHONY: all clean fclean re 
+
+all: $(NAME)
+
+$(LIBRARY):
+	@make -C libft/ft_printf/
+
+$(LEM_IN): $(LIBRARY)
+	@gcc $(FLAGS) -c $(LEM_IN_SRC)
+	@gcc $(FLAGS) -o $(LEM_IN) $(LEM_IN_OBJ) $(LEM_IN_HEADERS) $(LIBRARY)
+	@echo "Made lem_in"
+
+clean:
+	@make -C libft/ft_printf/ clean
+	@rm -f $(LEM_IN_OBJ)
+	@echo "Cleaned root .o files"
+
+fclean: clean
+	@make -C libft/ft_printf/ fclean
+	@rm -f $(LEM_IN)
+	@echo "Cleaned root libraries and binary files"
+
+re: fclean all
