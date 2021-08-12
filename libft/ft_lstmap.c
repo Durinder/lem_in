@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 12:17:54 by jhallama          #+#    #+#             */
-/*   Updated: 2019/11/06 13:12:22 by jhallama         ###   ########.fr       */
+/*   Created: 2019/11/06 12:17:54 by vhallama          #+#    #+#             */
+/*   Updated: 2019/11/06 13:12:22 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

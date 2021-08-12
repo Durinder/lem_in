@@ -1,7 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/08/12 15:23:07 by vhallama          #+#    #+#              #
+#    Updated: 2021/08/12 15:23:08 by vhallama         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = $(LEM_IN)
 
 LEM_IN = lem_in
-LEM_IN_SRC = lem_in.c
+LEM_IN_SRC = lem_in.c reader.c hash.c
 LEM_IN_HEADERS = -I lem_in.h
 LEM_IN_OBJ = $(LEM_IN_SRC:.c=.o)
 

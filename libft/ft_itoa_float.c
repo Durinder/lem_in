@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_float.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 15:08:04 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 13:15:12 by jhallama         ###   ########.fr       */
+/*   Created: 2020/01/13 15:08:04 by vhallama          #+#    #+#             */
+/*   Updated: 2021/06/29 13:15:12 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

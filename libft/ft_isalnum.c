@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 15:03:15 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/31 15:05:16 by jhallama         ###   ########.fr       */
+/*   Created: 2019/10/31 15:03:15 by vhallama          #+#    #+#             */
+/*   Updated: 2019/10/31 15:05:16 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

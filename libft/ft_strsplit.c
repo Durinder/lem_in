@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/30 12:54:25 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 16:18:55 by jhallama         ###   ########.fr       */
+/*   Created: 2019/10/30 12:54:25 by vhallama          #+#    #+#             */
+/*   Updated: 2021/06/29 16:18:55 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

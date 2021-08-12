@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_ull.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/09 15:42:00 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 13:29:17 by jhallama         ###   ########.fr       */
+/*   Created: 2020/01/09 15:42:00 by vhallama          #+#    #+#             */
+/*   Updated: 2021/06/29 13:29:17 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

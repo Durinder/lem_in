@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 14:13:37 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/18 14:16:59 by jhallama         ###   ########.fr       */
+/*   Created: 2019/10/18 14:13:37 by vhallama          #+#    #+#             */
+/*   Updated: 2019/10/18 14:16:59 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

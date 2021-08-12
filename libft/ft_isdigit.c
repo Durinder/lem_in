@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 15:01:04 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/31 15:02:59 by jhallama         ###   ########.fr       */
+/*   Created: 2019/10/31 15:01:04 by vhallama          #+#    #+#             */
+/*   Updated: 2019/10/31 15:02:59 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 16:16:03 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/24 16:24:20 by jhallama         ###   ########.fr       */
+/*   Created: 2019/10/24 16:16:03 by vhallama          #+#    #+#             */
+/*   Updated: 2019/10/24 16:24:20 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

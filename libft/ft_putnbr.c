@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 14:18:42 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/30 19:07:32 by jhallama         ###   ########.fr       */
+/*   Created: 2019/10/18 14:18:42 by vhallama          #+#    #+#             */
+/*   Updated: 2019/10/30 19:07:32 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

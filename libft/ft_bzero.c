@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/16 13:50:20 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/18 15:54:00 by jhallama         ###   ########.fr       */
+/*   Created: 2019/10/16 13:50:20 by vhallama          #+#    #+#             */
+/*   Updated: 2019/10/18 15:54:00 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

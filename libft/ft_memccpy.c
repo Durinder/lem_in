@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/16 15:39:14 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/24 12:35:28 by jhallama         ###   ########.fr       */
+/*   Created: 2019/10/16 15:39:14 by vhallama          #+#    #+#             */
+/*   Updated: 2019/10/24 12:35:28 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

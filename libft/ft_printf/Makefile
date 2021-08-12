@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+         #
+#    By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/01/29 12:52:05 by jhallama          #+#    #+#              #
-#    Updated: 2021/06/29 12:36:26 by jhallama         ###   ########.fr        #
+#    Created: 2020/01/29 12:52:05 by vhallama          #+#    #+#              #
+#    Updated: 2021/06/29 12:36:26 by vhallama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 15:44:48 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/24 15:53:22 by jhallama         ###   ########.fr       */
+/*   Created: 2019/10/24 15:44:48 by vhallama          #+#    #+#             */
+/*   Updated: 2019/10/24 15:53:22 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

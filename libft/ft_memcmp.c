@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/17 14:55:13 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/24 15:17:07 by jhallama         ###   ########.fr       */
+/*   Created: 2019/10/17 14:55:13 by vhallama          #+#    #+#             */
+/*   Updated: 2019/10/24 15:17:07 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 14:56:23 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/31 14:58:36 by jhallama         ###   ########.fr       */
+/*   Created: 2019/10/31 14:56:23 by vhallama          #+#    #+#             */
+/*   Updated: 2019/10/31 14:58:36 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

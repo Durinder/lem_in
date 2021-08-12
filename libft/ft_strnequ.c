@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/28 14:55:03 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/28 16:18:37 by jhallama         ###   ########.fr       */
+/*   Created: 2019/10/28 14:55:03 by vhallama          #+#    #+#             */
+/*   Updated: 2019/10/28 16:18:37 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

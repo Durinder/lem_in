@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/14 09:43:47 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 15:34:12 by jhallama         ###   ########.fr       */
+/*   Created: 2019/11/14 09:43:47 by vhallama          #+#    #+#             */
+/*   Updated: 2021/06/29 15:34:12 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

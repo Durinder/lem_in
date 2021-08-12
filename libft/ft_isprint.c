@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 15:06:11 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/31 15:07:27 by jhallama         ###   ########.fr       */
+/*   Created: 2019/10/31 15:06:11 by vhallama          #+#    #+#             */
+/*   Updated: 2019/10/31 15:07:27 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

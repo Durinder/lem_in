@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   choose_type_di.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/03 14:44:52 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 15:43:12 by jhallama         ###   ########.fr       */
+/*   Created: 2020/01/03 14:44:52 by vhallama          #+#    #+#             */
+/*   Updated: 2021/06/29 15:43:12 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

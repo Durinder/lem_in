@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_l.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/26 15:38:53 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/28 15:11:48 by jhallama         ###   ########.fr       */
+/*   Created: 2020/02/26 15:38:53 by vhallama          #+#    #+#             */
+/*   Updated: 2021/06/28 15:11:48 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

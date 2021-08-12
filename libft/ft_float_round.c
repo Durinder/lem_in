@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_float_round.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 16:24:29 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/28 15:45:45 by jhallama         ###   ########.fr       */
+/*   Created: 2020/01/13 16:24:29 by vhallama          #+#    #+#             */
+/*   Updated: 2021/06/28 15:45:45 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

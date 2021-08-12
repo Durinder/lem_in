@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_percentage.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/19 13:14:08 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 16:05:24 by jhallama         ###   ########.fr       */
+/*   Created: 2019/12/19 13:14:08 by vhallama          #+#    #+#             */
+/*   Updated: 2021/06/29 16:05:24 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

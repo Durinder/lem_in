@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 11:20:54 by jhallama          #+#    #+#             */
-/*   Updated: 2019/11/06 11:36:48 by jhallama         ###   ########.fr       */
+/*   Created: 2019/11/06 11:20:54 by vhallama          #+#    #+#             */
+/*   Updated: 2019/11/06 11:36:48 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

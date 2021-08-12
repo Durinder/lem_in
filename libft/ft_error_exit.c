@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error_exit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/26 15:10:44 by jhallama          #+#    #+#             */
-/*   Updated: 2020/02/26 15:15:15 by jhallama         ###   ########.fr       */
+/*   Created: 2020/02/26 15:10:44 by vhallama          #+#    #+#             */
+/*   Updated: 2020/02/26 15:15:15 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

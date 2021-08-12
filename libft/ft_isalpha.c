@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 14:06:00 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/31 15:00:30 by jhallama         ###   ########.fr       */
+/*   Created: 2019/10/31 14:06:00 by vhallama          #+#    #+#             */
+/*   Updated: 2019/10/31 15:00:30 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

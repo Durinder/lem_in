@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 14:14:40 by jhallama          #+#    #+#             */
-/*   Updated: 2019/10/31 14:16:14 by jhallama         ###   ########.fr       */
+/*   Created: 2019/10/31 14:14:40 by vhallama          #+#    #+#             */
+/*   Updated: 2019/10/31 14:16:14 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

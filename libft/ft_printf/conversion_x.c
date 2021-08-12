@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conversion_x.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/08 12:11:36 by jhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 16:09:04 by jhallama         ###   ########.fr       */
+/*   Created: 2020/01/08 12:11:36 by vhallama          #+#    #+#             */
+/*   Updated: 2021/06/29 16:09:04 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

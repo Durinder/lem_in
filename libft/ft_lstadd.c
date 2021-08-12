@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhallama <jhallama@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 12:10:51 by jhallama          #+#    #+#             */
-/*   Updated: 2019/11/06 12:14:07 by jhallama         ###   ########.fr       */
+/*   Created: 2019/11/06 12:10:51 by vhallama          #+#    #+#             */
+/*   Updated: 2019/11/06 12:14:07 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
