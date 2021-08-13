@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:47 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/12 15:22:48 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/13 15:44:08 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,16 @@ static int	hash_function(const char *s)
 	return (ret % 2069);
 }
 
-void	insert(t_adjlist adjlist, const char *s)
+void	insert(t_room **adjlists, t_room *new, const char *name)
 {
 	int	index;
 
-	index = hash_function(s);
-	while (adjlist->array[index] !=)
+	index = hash_function(name);
+	while (adjlists[index] != NULL)
+		index = (index + 1) % HASH_SIZE;
+	adjlists[index] = new;
 }
+
 /* #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

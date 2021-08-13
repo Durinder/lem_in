@@ -6,30 +6,11 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/12 15:23:03 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/13 15:52:59 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-
-static t_room	*create_room(const char *line, char type)
-{
-	t_room	*room;
-	int		i;
-
-	room = ft_memalloc(sizeof(t_room *));
-	if (room == NULL)
-		ft_error_exit("Error: malloc");
-	i = 0;
-	while (line[i] != ' ' || line[i] != '\0')
-		i++;
-	room->name = ft_strsub(line, 0, i);
-	room->type = type;
-	room->occupied = 0;
-	room->children = 0;
-	room->go_to = ???;
-	return (room);
-}
 
 static char	next_room_type(const char *line)
 {
