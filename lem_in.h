@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/13 15:42:07 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/16 17:28:11 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_graph {
 	struct s_room	**adjlists;
 }	t_graph;
 
-void	reader(t_room *maze);
-void	insert(t_room **adjlists, t_room *new, const char *s);
+void	reader(t_graph *maze);
+t_room	*create_node(char *name);
+int		connect_to(t_room **adjlists, t_room *new, const char *dest);
+void	insert(t_room **adjlists, t_room *new, const char *name);
 #endif

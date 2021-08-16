@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 14:06:00 by vhallama          #+#    #+#             */
-/*   Updated: 2019/10/31 15:00:30 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/16 15:54:05 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,5 @@ int	ft_isalpha(int c)
 		return (1);
 	else if (c >= 'a' && c <= 'z')
 		return (1);
-	else
-		return (0);
+	return (0);
 }

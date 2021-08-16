@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:47 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/13 15:44:08 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/16 15:37:12 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,32 @@ static int	hash_function(const char *s)
 		ret += s[i] * i;
 	}
 	return (ret % 2069);
+}
+
+int	connect_to(t_room **adjlists, t_room *new, const char *dest)
+{
+	int	index;
+
+	index = hash_function(dest);
+	while (1)
+	{
+		if (adjlists[index] != NULL)
+		{
+			if (ft_strcmp(adjlists[index]->name, dest) == 0)
+			{
+				new->next = adjlists[index];
+				break ;
+			}
+			else
+				index = (index + 1) % HASH_SIZE;
+		}
+		else
+		{
+			new->next = adjlists[index];
+			break ;
+		}
+	}
+	return (index);
 }
 
 void	insert(t_room **adjlists, t_room *new, const char *name)

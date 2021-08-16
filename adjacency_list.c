@@ -6,13 +6,13 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/13 15:50:51 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/16 16:06:58 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static t_room	*create_node(char *name)
+t_room	*create_node(char *name)
 {
 	t_room	*new;
 
@@ -20,6 +20,8 @@ static t_room	*create_node(char *name)
 	if (new == NULL)
 		ft_error_exit("Error: malloc.");
 	new->name = ft_strdup(name);
+	if (new->name == NULL)
+		ft_error_exit("Error: malloc.");
 	new->occupants = 0;
 	new->weight = 0;
 	new->type = 0;
@@ -50,11 +52,9 @@ void	add_edge(t_graph *graph, char *room1, char *room2)
 	int		index;
 
 	new = create_node(room2);
-	index = hash_function(room1);
-	new->next = graph->adjlists[index];
+	index = connect_to(graph->adjlists, new, room1);
 	graph->adjlists[index] = new;
 	new = create_node(room1);
-	index = hash_function(room2);
-	new->next = graph->adjlists[index];
+	index = connect_to(graph->adjlists, new, room2);
 	graph->adjlists[index] = new;
 }

@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 15:03:15 by vhallama          #+#    #+#             */
-/*   Updated: 2019/10/31 15:05:16 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/16 15:53:20 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,5 @@ int	ft_isalnum(int c)
 {
 	if (ft_isalpha(c) == 1 || ft_isdigit(c) == 1)
 		return (1);
-	else
-		return (0);
+	return (0);
 }
