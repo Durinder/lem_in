@@ -6,13 +6,13 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/17 10:19:08 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/17 15:05:41 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static void	line_type_switch(t_graph *graph, t_reader *reader)
+static void	line_type_switch(t_graph *graph, t_reader *reader, char **room_list)
 {
 	if (reader->line_type == 0)
 		ft_error_exit("Error");
@@ -24,11 +24,14 @@ static void	line_type_switch(t_graph *graph, t_reader *reader)
 			reader->room_type = 2;
 	}
 	else if (reader->line_type == 2)
+	{
+		room_list[graph->total_rooms] = ft_strsub(reader->line, 0,
+				reader->line - ft_strchr(reader->line, ' '));
 		graph->total_rooms++;
-		insert(graph->adjlists)
+	}
 	else
 	{
-
+		add_edge(graph, ft_strsplit(reader->line, '-'));
 	}
 }
 
@@ -53,7 +56,8 @@ static int	validate_coordinates(const char *line, int i)
 
 //validate_line == 0 is invalid line, 1 is comment,
 //2 is room and coordinates, 3 is link
-static int	validate_line(const char *line, int i, int *room_type)
+static int	validate_line(const char *line, int i, int *room_type,
+char **room_list)
 {
 	if (line[0] == '#')
 		return (1);
@@ -65,7 +69,7 @@ static int	validate_line(const char *line, int i, int *room_type)
 			return (2);
 		return (0);
 	}
-	else if (line[i] == '-') // CHECK IF ROOM EXISTS!
+	else if (line[i] == '-')
 	{
 		i++;
 		while (ft_isalnum(line[i]))
@@ -80,10 +84,13 @@ static int	validate_line(const char *line, int i, int *room_type)
 void	reader(t_graph *graph)
 {
 	t_reader	reader;
+	char		**room_list;
 
 	reader.line = NULL;
 	reader.room_type = 0;
-	reader.total_rooms = 0;
+	room_list = (char **)malloc(sizeof(char *) * HASH_SIZE);
+	if (room_list == NULL)
+		ft_error_exit("Error: malloc.");
 	while (1)
 	{
 		reader.ret = get_next_line(0, &reader.line);
@@ -91,8 +98,9 @@ void	reader(t_graph *graph)
 			ft_error_exit("Error");
 		else if (reader.ret == 0)
 			break ;
-		reader.line_type = validate_line(reader.line, 0, &reader.room_type);
-		line_type_switch(graph, &reader);//line_type, &start_end, &total_rooms);
+		reader.line_type = validate_line(reader.line, 0, &reader.room_type,
+				room_list);
+		line_type_switch(graph, &reader, room_list);
 		free(reader.line);
 	}
 }

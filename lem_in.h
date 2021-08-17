@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/17 10:17:43 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/17 15:02:31 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_reader {
 }	t_reader;
 
 void	reader(t_graph *maze);
-t_room	*create_node(char *name);
+void	add_edge(t_graph *graph, char **rooms);
 int		connect_to(t_room **adjlists, t_room *new, const char *dest);
-void	insert(t_room **adjlists, t_room *new, const char *name);
+//void	insert(t_room **adjlists, t_room *new, const char *name);
 #endif

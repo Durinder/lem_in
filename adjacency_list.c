@@ -6,22 +6,20 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/16 16:06:58 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/17 15:03:27 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_room	*create_node(char *name)
+static t_room	*create_node(char *name)
 {
 	t_room	*new;
 
 	new = (t_room *)malloc(sizeof(t_room));
 	if (new == NULL)
 		ft_error_exit("Error: malloc.");
-	new->name = ft_strdup(name);
-	if (new->name == NULL)
-		ft_error_exit("Error: malloc.");
+	new->name = name;
 	new->occupants = 0;
 	new->weight = 0;
 	new->type = 0;
@@ -46,15 +44,19 @@ t_graph	*create_graph(int vertices)
 	return (graph);
 }
 
-void	add_edge(t_graph *graph, char *room1, char *room2)
+void	add_edge(t_graph *graph, char **rooms)
 {
 	t_room	*new;
 	int		index;
 
-	new = create_node(room2);
-	index = connect_to(graph->adjlists, new, room1);
+	if (rooms[0] == NULL || rooms[1] == NULL)
+		ft_error_exit("Error: malloc.");
+	new = create_node(rooms[1]);
+	index = connect_to(graph->adjlists, new, rooms[0]);
 	graph->adjlists[index] = new;
-	new = create_node(room1);
-	index = connect_to(graph->adjlists, new, room2);
+	new = create_node(rooms[0]);
+	index = connect_to(graph->adjlists, new, rooms[1]);
 	graph->adjlists[index] = new;
+	free(rooms[2]);
+	free(rooms);
 }
