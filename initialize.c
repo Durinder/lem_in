@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/18 17:49:52 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/18 17:55:11 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	assign_links(t_graph *graph, t_init *init, int i, int j)
 	if (init->line[0] != '#')
 	{
 		j = 0;
-		while (ft_isprint(init->line[j]))
+		while (ft_isalnum(init->line[j])) //ONLY DIGITS AND NUMBERS
 			j++;
 		if (init->line[j] != '-')
 			ft_error_exit("Error: invalid input.");
@@ -40,8 +40,8 @@ static void	assign_links(t_graph *graph, t_init *init, int i, int j)
 
 static void	validate_coordinates(const char *line, int i)
 {
-	if (ft_isprint(line[0]) == 0)
-		ft_error_exit("Error: empty or non-printable line.");
+	if (ft_isalnum(line[0]) == 0) //ONLY DIGITS AND NUMBERS
+		ft_error_exit("Error: empty line.");
 	if (line[i] != ' ')
 		ft_error_exit("Error: invalid room coordinates.");
 	i++;
@@ -74,7 +74,7 @@ static void	assign_rooms(t_graph *graph, t_init *init, int i)
 		else
 		{
 			i = 0;
-			while (ft_isprint(init->line[i]))
+			while (ft_isalnum(init->line[i])) //ONLY DIGITS AND NUMBERS
 				i++;
 			if (init->line[i] == '-')
 				break ;
