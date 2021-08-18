@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/18 17:23:32 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/18 18:51:23 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,18 @@ t_room	*create_node(char *name)
 	return (new);
 }
 
-t_graph	*create_graph(int vertices)
+t_graph	*create_graph(size_t vertices)
 {
 	t_graph	*graph;
-	int		i;
+	size_t	i;
 
 	graph = (t_graph *)malloc(sizeof(t_graph));
 	if (graph == NULL)
 		ft_error_exit("Error: malloc.");
+	graph->ants = 0;
 	graph->total_rooms = 0;
+	graph->start = 0;
+	graph->end = 0;
 	graph->adjlists = (t_room **)malloc(sizeof(t_room *) * vertices);
 	if (graph->adjlists == NULL)
 		ft_error_exit("Error: malloc.");

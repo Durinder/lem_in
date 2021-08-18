@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 15:14:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/18 15:46:00 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/18 18:52:11 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	free_graph(t_graph *graph)
 	t_room	*tmp;
 
 	i = 0;
-	while (i < HASH_SIZE)
+	while (i < GRAPH_VERTICES)
 	{
 		while (graph->adjlists[i] != NULL)
 		{
