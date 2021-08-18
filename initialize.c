@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/18 17:35:11 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/18 17:49:52 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	assign_links(t_graph *graph, t_init *init, int i, int j)
 	if (init->line[0] != '#')
 	{
 		j = 0;
-		while (ft_isalnum(init->line[j]))
+		while (ft_isprint(init->line[j]))
 			j++;
 		if (init->line[j] != '-')
 			ft_error_exit("Error: invalid input.");
@@ -40,17 +40,19 @@ static void	assign_links(t_graph *graph, t_init *init, int i, int j)
 
 static void	validate_coordinates(const char *line, int i)
 {
+	if (ft_isprint(line[0]) == 0)
+		ft_error_exit("Error: empty or non-printable line.");
 	if (line[i] != ' ')
 		ft_error_exit("Error: invalid room coordinates.");
 	i++;
-	if (!ft_isdigit(line[i]))
+	if (ft_isdigit(line[i]) == 0)
 		ft_error_exit("Error: invalid room coordinates.");
 	while (ft_isdigit(line[i]))
 		i++;
 	if (line[i] != ' ')
 		ft_error_exit("Error: invalid room coordinates.");
 	i++;
-	if (!ft_isdigit(line[i]))
+	if (ft_isdigit(line[i]) == 0)
 		ft_error_exit("Error: invalid room coordinates.");
 	while (ft_isdigit(line[i]))
 		i++;
@@ -62,7 +64,7 @@ static void	assign_rooms(t_graph *graph, t_init *init, int i)
 {
 	init->ret = get_next_line(0, &init->line);
 	if (init->ret < 1)
-		ft_error_exit("Error: no rooms in input.");
+		ft_error_exit("Error: reading or invalid input.");
 	while (init->ret > 0)
 	{
 		if (ft_strequ(init->line, "##start"))
@@ -72,7 +74,7 @@ static void	assign_rooms(t_graph *graph, t_init *init, int i)
 		else
 		{
 			i = 0;
-			while (ft_isalnum(init->line[i]))
+			while (ft_isprint(init->line[i]))
 				i++;
 			if (init->line[i] == '-')
 				break ;
@@ -89,11 +91,19 @@ static void	assign_rooms(t_graph *graph, t_init *init, int i)
 
 static void	assign_ants(t_graph *graph, t_init *init)
 {
+	int	i;
+
 	init->ret = get_next_line(0, &init->line);
 	if (init->ret == -1)
 		ft_error_exit("Error: reading.");
 	else if (init->ret == 0)
 		exit (0);
+	while (init->line[i] != '\0')
+	{
+		if (ft_isdigit(init->line[i] == 0))
+			ft_error_exit("Error: number_of_ants invalid.");
+		i++;
+	}
 	graph->ants = ft_atoi(init->line);
 	if (graph->ants < 1)
 		ft_error_exit("Error: no ants.");
