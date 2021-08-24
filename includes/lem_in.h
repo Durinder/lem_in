@@ -6,16 +6,16 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/18 19:20:34 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/24 15:15:02 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
-# include "libft/libft.h"
-# include "libft/get_next_line.h"
-# include "libft/ft_printf/ft_printf.h"
-# define GRAPH_VERTICES 5000
+# include "../libft/libft.h"
+# include "../libft/get_next_line.h"
+# include "../libft/ft_printf/ft_printf.h"
+# define GRAPH_START_SIZE 10
 
 //type == 0 is start, type == 1 is regular room, type == 2 is end
 
@@ -42,6 +42,7 @@ typedef struct s_init {
 }	t_init;
 
 t_graph	*create_graph(size_t vertices);
+void	realloc_graph(t_graph *graph);
 t_room	*create_node(char *name);
 void	initialize(t_graph *maze);
 void	assign_ants(t_graph *graph, t_init *init);

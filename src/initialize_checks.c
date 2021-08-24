@@ -6,11 +6,11 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/18 19:22:54 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/24 15:14:29 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "../includes/lem_in.h"
 
 void	assign_links(t_graph *graph, t_init *init, size_t i, size_t j)
 {
@@ -67,12 +67,12 @@ static void	assign_comments(t_graph *graph, t_init *init)
 {
 	if (ft_strequ(init->line, "##start"))
 	{
-		graph->start = graph->total_rooms + 1;
+		graph->start = graph->total_rooms;
 		init->start_check++;
 	}
 	else if (ft_strequ(init->line, "##end"))
 	{
-		graph->end = graph->total_rooms + 1;
+		graph->end = graph->total_rooms;
 		init->end_check++;
 	}
 }
@@ -101,6 +101,8 @@ void	assign_rooms(t_graph *graph, t_init *init, size_t i)
 		init->ret = get_next_line(0, &init->line);
 		if (init->ret == -1)
 			ft_error_exit("Error: reading.");
+		if (graph->total_rooms % GRAPH_START_SIZE == 0)
+			realloc_graph(graph);
 	}
 }
 

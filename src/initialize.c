@@ -6,11 +6,11 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/18 19:21:22 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/24 15:14:29 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "../includes/lem_in.h"
 
 void	initialize(t_graph *graph)
 {

@@ -6,11 +6,11 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:47 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/17 14:30:23 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/24 15:14:29 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "../includes/lem_in.h"
 
 static int	hash_function(const char *s)
 {
@@ -41,7 +41,7 @@ int	connect_to(t_room **adjlists, t_room *new, const char *dest)
 				break ;
 			}
 			else
-				index = (index + 1) % HASH_SIZE;
+				index = (index + 1) % GRAPH_VERTICES;
 		}
 		else
 		{
@@ -58,7 +58,7 @@ void	insert(t_room **adjlists, t_room *new, const char *name)
 
 	index = hash_function(name);
 	while (adjlists[index] != NULL)
-		index = (index + 1) % HASH_SIZE;
+		index = (index + 1) % GRAPH_VERTICES;
 	adjlists[index] = new;
 }
 

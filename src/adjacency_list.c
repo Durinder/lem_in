@@ -6,11 +6,11 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/18 18:51:23 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/24 15:14:29 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#include "../includes/lem_in.h"
 
 /* void	add_edge(t_graph *graph, char *src, char *dst)
 {
@@ -33,6 +33,28 @@ t_room	*create_node(char *name)
 	new->weight = 0;
 	new->next = NULL;
 	return (new);
+}
+
+void	realloc_graph(t_graph *graph)
+{
+	t_room	**new_list;
+	size_t	new_size;
+	size_t	i;
+
+	new_size = graph->total_rooms + GRAPH_START_SIZE;
+	new_list = (t_room **)malloc(sizeof(t_room *) * new_size);
+	if (new_list == NULL)
+		ft_error_exit("Error: malloc.");
+	i = 0;
+	while (i < graph->total_rooms)
+	{
+		new_list[i] = graph->adjlists[i];
+		i++;
+	}
+	while (i < new_size)
+		new_list[i++] = NULL;
+	free(graph->adjlists);
+	graph->adjlists = new_list;
 }
 
 t_graph	*create_graph(size_t vertices)
