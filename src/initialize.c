@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/24 15:14:29 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/24 17:12:37 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ void	initialize(t_graph *graph)
 	while (init.ret > 0)
 	{
 		assign_links(graph, &init, 0, 0);
+		ft_putendl(init.line);
 		free(init.line);
 		init.ret = get_next_line(0, &init.line);
 		if (init.ret == -1)
 			ft_error_exit("Error: reading.");
-	}		
+	}
+	ft_putchar('\n');
 }

@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/24 15:14:29 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/24 17:14:57 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static void	validate_coordinates(const char *line, size_t i)
 		i++;
 	if (line[i] != '\0')
 		ft_error_exit("Error: invalid room coordinates.");
+	ft_putendl(line);
 }
 
 static void	assign_comments(t_graph *graph, t_init *init)
@@ -75,6 +76,7 @@ static void	assign_comments(t_graph *graph, t_init *init)
 		graph->end = graph->total_rooms;
 		init->end_check++;
 	}
+	ft_putendl(init->line);
 }
 
 void	assign_rooms(t_graph *graph, t_init *init, size_t i)
@@ -127,5 +129,6 @@ void	assign_ants(t_graph *graph, t_init *init)
 	graph->ants = ft_atoi(init->line);
 	if (graph->ants < 1)
 		ft_error_exit("Error: no ants.");
+	ft_putendl(init->line);
 	free(init->line);
 }
