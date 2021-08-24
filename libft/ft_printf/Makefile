@@ -6,7 +6,7 @@
 #    By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/29 12:52:05 by vhallama          #+#    #+#              #
-#    Updated: 2021/06/29 12:36:26 by vhallama         ###   ########.fr        #
+#    Updated: 2021/08/24 16:42:04 by vhallama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,8 @@ $(NAME):
 
 clean:
 	@/bin/rm -f $(LIBFT_OBJ) $(PRINTF_OBJ) $(PRECOMPHEAD)
-	@echo "Cleaned .o and .gch files"
-
+	
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@echo "Cleaned libraries and binary files"
-
+	
 re: fclean all
