@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/30 15:39:14 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/31 16:08:06 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 	cur->next = create_node(ft_strdup(name));
 }
  */
-t_room	*create_node(char *name)
+static t_room	*create_node(char *name)
 {
 	t_room	*new;
 
@@ -29,9 +29,10 @@ t_room	*create_node(char *name)
 	if (new == NULL)
 		ft_error_exit("Error: malloc.");
 	new->name = name;
-//	new->occupants = 0;
-//	new->weight = 0;
+	new->occupants = 0;
+	new->nexts = 0;
 	new->next = NULL;
+	new->prev = NULL;
 	return (new);
 }
 
@@ -57,24 +58,37 @@ void	realloc_graph(t_graph *graph)
 	graph->adjlists = new_list;
 }
 
-t_graph	*create_graph(size_t vertices)
+static void	create_rooms_and_free_roomlist(t_graph *graph, t_roomlist *head)
+{
+	t_roomlist	*tmp;
+	size_t		i;
+
+	i = 0;
+	while (head != NULL)
+	{
+		graph->adjlists[i] = create_node(head->name);
+		tmp = head;
+		head = head->next;
+		free(tmp);
+		i++;
+	}
+}
+
+t_graph	*create_graph(t_init init, t_roomlist *head)
 {
 	t_graph	*graph;
-	size_t	i;
 
 	graph = (t_graph *)malloc(sizeof(t_graph));
 	if (graph == NULL)
 		ft_error_exit("Error: malloc.");
-	graph->ants = 0;
-	graph->total_rooms = 0;
-	graph->start = 0;
-	graph->end = 0;
-	graph->adjlists = (t_room **)malloc(sizeof(t_room *) * vertices);
+	graph->ants = init.ants;
+	graph->total_rooms = init.total_rooms;
+	graph->start = init.start;
+	graph->end = init.end;
+	graph->adjlists = (t_room **)malloc(sizeof(t_room *) * init.total_rooms);
 	if (graph->adjlists == NULL)
 		ft_error_exit("Error: malloc.");
-	i = 0;
-	while (i < vertices)
-		graph->adjlists[i++] = NULL;
+	create_rooms_and_free_roomlist(graph, head);
 	return (graph);
 }
 
