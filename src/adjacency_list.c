@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/24 15:14:29 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/08/30 15:39:14 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ t_room	*create_node(char *name)
 	if (new == NULL)
 		ft_error_exit("Error: malloc.");
 	new->name = name;
-	new->occupants = 0;
-	new->weight = 0;
+//	new->occupants = 0;
+//	new->weight = 0;
 	new->next = NULL;
 	return (new);
 }

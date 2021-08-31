@@ -18,6 +18,7 @@ int	main(void)
 
 	graph = create_graph(GRAPH_START_SIZE);
 	initialize(graph);
+//	solver(graph);
 	free_graph(graph);
 	return (0);
 }

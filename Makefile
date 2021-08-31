@@ -6,14 +6,14 @@
 #    By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/12 15:23:07 by vhallama          #+#    #+#              #
-#    Updated: 2021/08/24 15:15:42 by vhallama         ###   ########.fr        #
+#    Updated: 2021/08/30 15:36:22 by vhallama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = $(LEM_IN)
 
 LEM_IN = lem_in
-LEM_IN_SRC = lem_in.c initialize.c initialize_checks.c free_graph.c adjacency_list.c
+LEM_IN_SRC = lem_in.c initialize.c initialize_utils.c free_graph.c adjacency_list.c
 LEM_IN_HEADERS = -I includes/lem_in.h
 LEM_IN_OBJ = $(LEM_IN_SRC:.c=.o)
 
