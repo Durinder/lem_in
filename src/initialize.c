@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/08 14:17:21 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/08 14:20:01 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_graph	*initialize(void)
 		ft_error_exit("Error: invalid start and/or end room(s).");
 	while (head != NULL)
 	{
-		ft_printf("juuh %s\n", head->name);
+		ft_printf("%s\n", head->name);
 		head = head->next;
 	}
 	graph = create_graph(init, head);
