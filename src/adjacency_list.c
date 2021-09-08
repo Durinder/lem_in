@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/31 16:08:06 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/08 14:04:23 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,11 @@
 	cur->next = create_node(ft_strdup(name));
 }
  */
-static t_room	*create_node(char *name)
+static t_room	*create_room_node(char *name)
 {
 	t_room	*new;
 
-	new = (t_room *)malloc(sizeof(t_room));
-	if (new == NULL)
-		ft_error_exit("Error: malloc.");
+	new = ft_malloc_safe(sizeof(t_room));
 	new->name = name;
 	new->occupants = 0;
 	new->nexts = 0;
@@ -43,9 +41,7 @@ void	realloc_graph(t_graph *graph)
 	size_t	i;
 
 	new_size = graph->total_rooms + GRAPH_START_SIZE;
-	new_list = (t_room **)malloc(sizeof(t_room *) * new_size);
-	if (new_list == NULL)
-		ft_error_exit("Error: malloc.");
+	new_list = ft_malloc_safe(sizeof(t_room *) * new_size);
 	i = 0;
 	while (i < graph->total_rooms)
 	{
@@ -66,7 +62,7 @@ static void	create_rooms_and_free_roomlist(t_graph *graph, t_roomlist *head)
 	i = 0;
 	while (head != NULL)
 	{
-		graph->adjlists[i] = create_node(head->name);
+		graph->adjlists[i] = create_room_node(head->name);
 		tmp = head;
 		head = head->next;
 		free(tmp);
@@ -78,16 +74,12 @@ t_graph	*create_graph(t_init init, t_roomlist *head)
 {
 	t_graph	*graph;
 
-	graph = (t_graph *)malloc(sizeof(t_graph));
-	if (graph == NULL)
-		ft_error_exit("Error: malloc.");
+	graph = ft_malloc_safe(sizeof(t_graph));
 	graph->ants = init.ants;
 	graph->total_rooms = init.total_rooms;
 	graph->start = init.start;
 	graph->end = init.end;
-	graph->adjlists = (t_room **)malloc(sizeof(t_room *) * init.total_rooms);
-	if (graph->adjlists == NULL)
-		ft_error_exit("Error: malloc.");
+	graph->adjlists = ft_malloc_safe(sizeof(t_room *) * init.total_rooms);
 	create_rooms_and_free_roomlist(graph, head);
 	return (graph);
 }

@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/31 17:36:40 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/08 14:17:21 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ t_init	get_t_init(void)
 	init.ret = 0;
 	init.start_check = 0;
 	init.end_check = 0;
+	init.start = 0;
+	init.end = 0;
+	init.total_rooms = 0;
 	return (init);
 }
 
@@ -28,23 +31,21 @@ t_graph	*initialize(void)
 {
 	t_graph		*graph;
 	t_roomlist	*head;
-	t_roomlist	roomlist; //NEED TO MALLOC
 	t_init		init;
 
 	init = get_t_init();
 	assign_ants(&init);
-/* 	head = (t_roomlist *)malloc(sizeof(t_roomlist));
-	if (head == NULL)
-		ft_error_exit("Error: malloc.");
-	head->name = NULL;
-	head->next = NULL; */
-	head = &roomlist;
-	assign_rooms(&init, &roomlist, 0);
+	head = create_roomlist_node(NULL);
+	assign_rooms(&init, head, 0);
 	if (init.start_check != 1 || init.end_check != 1 || \
 			init.start == init.end || init.start == init.total_rooms || \
 			init.end == init.total_rooms)
 		ft_error_exit("Error: invalid start and/or end room(s).");
-	ft_putendl("mo");
+	while (head != NULL)
+	{
+		ft_printf("juuh %s\n", head->name);
+		head = head->next;
+	}
 	graph = create_graph(init, head);
 /* 	while (init.ret > 0)
 	{

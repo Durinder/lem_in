@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/31 15:52:29 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/08 14:16:56 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,12 @@ typedef struct s_init {
 	short	end_check;
 }	t_init;
 
-t_init	get_t_init(void);
-t_graph	*initialize(void);
-void	assign_ants(t_init *init);
-void	assign_rooms(t_init *init, t_roomlist *roomlist, size_t i);
+t_init		get_t_init(void);
+t_graph		*initialize(void);
+void		assign_ants(t_init *init);
+void		assign_rooms(t_init *init, t_roomlist *head, size_t i);
+t_roomlist	*create_roomlist_node(char *name);
+void		push_back(t_roomlist *head, char *name);
 t_graph	*create_graph(t_init init, t_roomlist *head);
 //void	realloc_graph(t_graph *graph);
 //t_room	*create_node(char *name);

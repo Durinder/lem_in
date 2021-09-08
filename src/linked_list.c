@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   linked_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/12 15:22:55 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/01 12:55:57 by vhallama         ###   ########.fr       */
+/*   Created: 2021/09/08 13:07:12 by vhallama          #+#    #+#             */
+/*   Updated: 2021/09/08 14:16:17 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int	main(int argc, char **argv)
+t_roomlist	*create_roomlist_node(char *name)
 {
-	t_graph	*graph;
+	t_roomlist	*new;
 
-	if (argc > 1)
+	new = ft_malloc_safe(sizeof(t_roomlist));
+	new->name = name;
+	new->next = NULL;
+	return (new);
+}
+
+void	push_back(t_roomlist *head, char *name)
+{
+	t_roomlist	*cur;
+
+	if (head->name == NULL)
+		head->name = name;
+	else
 	{
-		ft_printf("Usage: './lem < %s'", argv[1]);
-		if (argc > 2)
-			ft_printf(" Only 1 map at a time.");
-		ft_error_exit("");
+		cur = head;
+		while (cur->next != NULL)
+			cur = cur->next;
+		cur->next = create_roomlist_node(name);
 	}
-	graph = initialize();
-//	solver(graph);
-	free_graph(graph);
-	return (0);
 }

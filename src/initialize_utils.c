@@ -6,11 +6,12 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/08/31 16:11:24 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/08 14:16:33 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+#include <limits.h>
 
 /* void	assign_links(t_graph *graph, t_init *init, size_t i, size_t j)
 {
@@ -41,7 +42,7 @@
 	cur->next = create_node(ft_strdup(init->line + j + 1));
 }
  */
-static void	validate_coordinates(const char *line, size_t i)
+static void	validate_coordinates(const char *line, size_t i) // EI HUOMIOI PAALLEKKAISIA HUONEITA!
 {
 	if (ft_isalnum(line[0]) == 0)
 		ft_error_exit("Error: empty line.");
@@ -79,7 +80,7 @@ static void	assign_comments(t_init *init)
 	ft_putendl(init->line);
 }
 
-void	assign_rooms(t_init *init, t_roomlist *roomlist, size_t i)
+void	assign_rooms(t_init *init, t_roomlist *head, size_t i)
 {
 	init->ret = get_next_line(0, &init->line);
 	if (init->ret < 1)
@@ -96,8 +97,7 @@ void	assign_rooms(t_init *init, t_roomlist *roomlist, size_t i)
 			if (init->line[i] == '-')
 				break ;
 			validate_coordinates(init->line, i);
-			roomlist->name = ft_strsub(init->line, 0, i);
-			roomlist = roomlist->next;
+			push_back(head, ft_strsub(init->line, 0, i));
 			init->total_rooms++;
 		}
 		free(init->line);
@@ -125,9 +125,11 @@ void	assign_ants(t_init *init)
 			ft_error_exit("Error: number_of_ants invalid.");
 		i++;
 	}
-	init->ants = (size_t)ft_atoi(init->line);
+	init->ants = (size_t)ft_atoi_l(init->line);
 	if (init->ants < 1)
 		ft_error_exit("Error: no ants.");
+	else if (init->ants > INT_MAX)
+		ft_error_exit("Error: over INT_MAX ants.");
 	ft_putendl(init->line);
 	free(init->line);
 }
