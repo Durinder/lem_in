@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:55 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/01 12:55:57 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/08 14:31:08 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	main(int argc, char **argv)
 		ft_error_exit("");
 	}
 	graph = initialize();
+	ft_printf("%d", graph->ants);
 //	solver(graph);
-	free_graph(graph);
+//	free_graph(graph);
 	return (0);
 }
