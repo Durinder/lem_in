@@ -6,42 +6,43 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/08 14:31:12 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/10 13:24:27 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-t_init	get_t_init(void)
+static t_init	*get_t_init(void)
 {
-	t_init	init;
+	t_init	*init;
 
-	init.line = NULL;
-	init.ants = 0;
-	init.ret = 0;
-	init.start_check = 0;
-	init.end_check = 0;
-	init.start = 0;
-	init.end = 0;
-	init.total_rooms = 0;
+	init = ft_malloc_safe(sizeof(t_init));
+	init->head = ft_malloc_safe(sizeof(t_roomlist));
+	init->line = NULL;
+	init->ants = 0;
+	init->ret = 0;
+	init->start_check = 0;
+	init->end_check = 0;
+	init->start = 0;
+	init->end = 0;
+	init->total_rooms = 0;
 	return (init);
 }
 
 t_graph	*initialize(void)
 {
 	t_graph		*graph;
-	t_roomlist	*head;
-	t_init		init;
+	t_init		*init;
 
 	init = get_t_init();
-	assign_ants(&init);
-	head = create_roomlist_node(NULL);
-	assign_rooms(&init, head, 0);
-	if (init.start_check != 1 || init.end_check != 1 || \
-			init.start == init.end || init.start == init.total_rooms || \
-			init.end == init.total_rooms)
+	assign_ants(init);
+	assign_rooms(init, 0);
+	if (init->start_check != 1 || init->end_check != 1 || \
+			init->start == init->end || init->start == init->total_rooms || \
+			init->end == init->total_rooms)
 		ft_error_exit("Error: invalid start and/or end room(s).");
-	graph = create_graph(init, head);
+	graph = create_graph(init);
+	exit(0);
 /* 	while (init.ret > 0)
 	{
 		assign_links(graph, &init, 0, 0);

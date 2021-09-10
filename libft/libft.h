@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 16:21:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/01 16:34:43 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/10 13:03:32 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct s_list
 {

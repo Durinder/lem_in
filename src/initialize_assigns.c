@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_utils.c                                 :+:      :+:    :+:   */
+/*   initialize_assigns.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/08 14:29:24 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/10 13:06:31 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-#include <limits.h>
 
 /* void	assign_links(t_graph *graph, t_init *init, size_t i, size_t j)
 {
@@ -42,28 +41,6 @@
 	cur->next = create_node(ft_strdup(init->line + j + 1));
 }
  */
-static void	validate_coordinates(const char *line, size_t i) // EI HUOMIOI PAALLEKKAISIA HUONEITA!
-{
-	if (ft_isalnum(line[0]) == 0)
-		ft_error_exit("Error: empty line.");
-	if (line[i] != ' ')
-		ft_error_exit("Error: invalid room coordinates.");
-	i++;
-	if (ft_isdigit(line[i]) == 0)
-		ft_error_exit("Error: invalid room coordinates.");
-	while (ft_isdigit(line[i]))
-		i++;
-	if (line[i] != ' ')
-		ft_error_exit("Error: invalid room coordinates.");
-	i++;
-	if (ft_isdigit(line[i]) == 0)
-		ft_error_exit("Error: invalid room coordinates.");
-	while (ft_isdigit(line[i]))
-		i++;
-	if (line[i] != '\0')
-		ft_error_exit("Error: invalid room coordinates.");
-	ft_putendl(line);
-}
 
 static void	assign_comments(t_init *init)
 {
@@ -80,8 +57,10 @@ static void	assign_comments(t_init *init)
 	ft_putendl(init->line);
 }
 
-void	assign_rooms(t_init *init, t_roomlist *head, size_t i)
+void	assign_rooms(t_init *init, size_t i)
 {
+	int	*xy;
+
 	init->ret = get_next_line(0, &init->line);
 	if (init->ret < 1)
 		ft_error_exit("Error: reading or invalid input.");
@@ -96,8 +75,8 @@ void	assign_rooms(t_init *init, t_roomlist *head, size_t i)
 				i++;
 			if (init->line[i] == '-')
 				break ;
-			validate_coordinates(init->line, i);
-			push_back(head, ft_strsub(init->line, 0, i));
+			xy = validate_coordinates(init, i);
+			push_back_roomlist(init->head, ft_strsub(init->line, 0, i), xy);
 			init->total_rooms++;
 		}
 		free(init->line);
