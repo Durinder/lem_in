@@ -6,21 +6,57 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/10 13:32:30 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/10 15:34:59 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-/* void	add_edge(t_graph *graph, char *src, char *dst)
+//which == 0 is room->child realloc, which == 1 is room->parent realloc
+static void	realloc_room(t_room *room, short which, size_t i)
 {
-	t_room	*cur;
+	t_room	**new;
 
-	while (cur->next != NULL)
-		cur = cur->next;
-	cur->next = create_node(ft_strdup(name));
+	if (which == 0)
+	{
+		new = ft_malloc_safe(sizeof(t_room **) * room->child_amount);
+		while (i < room->child_amount - 1)
+		{
+			new[i] = room->child[i];
+			i++;
+		}
+		free(room->child);
+		room->child = new;
+	}
+	else
+	{
+		new = ft_malloc_safe(sizeof(t_room **) * room->parent_amount);
+		while (i < room->parent_amount - 1)
+		{
+			new[i] = room->parent[i];
+			i++;
+		}
+		free(room->parent);
+		room->parent = new;
+	}
 }
- */
+
+void	add_edge(t_room *src, t_room *dst)
+{
+	src->child_amount++;
+	if (src->child == NULL)
+		src->child = ft_malloc_safe(sizeof(t_room **));
+	else
+		realloc_room(src, 0, 0);
+	dst->parent_amount++;
+	if (dst->parent == NULL)
+		dst->parent = ft_malloc_safe(sizeof(t_room **));
+	else
+		realloc_room(dst, 1, 0);
+	src->child[src->child_amount - 1] = dst;
+	dst->parent[dst->parent_amount - 1] = src;
+}
+
 static t_room	*create_room_node(char *name, size_t i, t_init *init)
 {
 	t_room	*new;
@@ -31,14 +67,14 @@ static t_room	*create_room_node(char *name, size_t i, t_init *init)
 		new->occupants = init->ants;
 	else
 		new->occupants = 0;
-	new->nexts = 0;
-	new->prevs = 0;
-	new->next = NULL;
-	new->prev = NULL;
+	new->child_amount = 0;
+	new->parent_amount = 0;
+	new->child = NULL;
+	new->parent = NULL;
 	return (new);
 }
 
-void	realloc_graph(t_graph *graph)
+/* void	realloc_graph(t_graph *graph)
 {
 	t_room	**new_list;
 	size_t	new_size;
@@ -57,19 +93,19 @@ void	realloc_graph(t_graph *graph)
 	free(graph->adjlists);
 	graph->adjlists = new_list;
 }
-
+ */
 static void	create_rooms_and_free_roomlist(t_graph *graph, t_init *init)
 {
-	t_roomlist	*tmp;
+	t_roomlist	*cur;
 	size_t		i;
 
 	i = 0;
-	while (init->head != NULL)
+	cur = init->head;
+	while (cur != NULL)
 	{
-		tmp = init->head;
-		graph->adjlists[i] = create_room_node(tmp->name, i, init);
-		init->head = init->head->next;
-		free(tmp);
+		graph->adjlists[i] = create_room_node(cur->name, i, init);
+		cur = cur->next;
+//		free(tmp);
 		i++;
 	}
 }

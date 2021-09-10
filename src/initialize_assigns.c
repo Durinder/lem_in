@@ -6,55 +6,64 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/10 13:06:31 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/10 15:21:02 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-/* void	assign_links(t_graph *graph, t_init *init, size_t i, size_t j)
-{
-	t_room	*cur;
-
-	if (init->line[0] == '#')
-	{
-		if (ft_strequ(init->line, "##start") || ft_strequ(init->line, "##end"))
-			ft_error_exit("Error: invalid ##start or ##end input.");
-		return ;
-	}
-	j = 0;
-	while (ft_isalnum(init->line[j]))
-		j++;
-	if (init->line[j] != '-')
-		ft_error_exit("Error: invalid input.");
-	i = 0;
-	while (!(ft_strnequ(init->line, graph->adjlists[i++]->name, j)))
-		if (graph->adjlists[i] == NULL)
-			ft_error_exit("Error: room1 of link not found.");
-	cur = graph->adjlists[--i];
-	i = 0;
-	while (!(ft_strequ(init->line + j + 1, graph->adjlists[i++]->name)))
-		if (graph->adjlists[i] == NULL)
-			ft_error_exit("Error: room2 of link not found.");
-	while (cur->next != NULL)
-		cur = cur->next;
-	cur->next = create_node(ft_strdup(init->line + j + 1));
-}
- */
-
-static void	assign_comments(t_init *init)
+//which == 0 is redirection from assign_rooms() and which == 1 is redirection
+//from assign_links()
+static void	assign_comments(t_init *init, short which)
 {
 	if (ft_strequ(init->line, "##start"))
 	{
+		if (which == 1)
+			ft_error_exit("Error: invalid start room.");
 		init->start = init->total_rooms;
 		init->start_check++;
 	}
 	else if (ft_strequ(init->line, "##end"))
 	{
+		if (which == 1)
+			ft_error_exit("Error: invalid end room.");
 		init->end = init->total_rooms;
 		init->end_check++;
 	}
 	ft_putendl(init->line);
+}
+
+void	assign_links(t_graph *graph, t_init *init, size_t i, size_t j)
+{
+	t_room	*src;
+
+	while (init->ret > 0)
+	{
+		if (init->line[0] == '#')
+			assign_comments(init, 1);
+		else
+		{
+			j = 0;
+			while (ft_isalnum(init->line[j]))
+				j++;
+			if (init->line[j] != '-')
+				ft_error_exit("Error: invalid input.");
+			i = 0;
+			while (!(ft_strnequ(init->line, graph->adjlists[i++]->name, j)))
+				if (i == graph->total_rooms)
+					ft_error_exit("Error: room1 of link not found.");
+			src = graph->adjlists[--i];
+			i = 0;
+			while (!(ft_strequ(init->line + j + 1, graph->adjlists[i++]->name)))
+				if (i == graph->total_rooms)
+					ft_error_exit("Error: room2 of link not found.");
+			add_edge(src, graph->adjlists[--i]);
+			ft_putendl(init->line);
+		}
+		init->ret = get_next_line(0, &init->line);
+		if (init->ret == -1)
+			ft_error_exit("Error: reading.");
+	}
 }
 
 void	assign_rooms(t_init *init, size_t i)
@@ -67,7 +76,7 @@ void	assign_rooms(t_init *init, size_t i)
 	while (init->ret > 0)
 	{
 		if (init->line[0] == '#')
-			assign_comments(init);
+			assign_comments(init, 0);
 		else
 		{
 			i = 0;

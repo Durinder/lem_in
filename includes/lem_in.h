@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/10 13:30:14 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/10 15:30:36 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 typedef struct s_room {
 	char			*name;
 	size_t			occupants;
-	short			nexts;
-	short			prevs;
-	struct s_room	**next;
-	struct s_room	**prev;
+	size_t			child_amount;
+	size_t			parent_amount;
+	struct s_room	**child;
+	struct s_room	**parent;
 }	t_room;
 
 typedef struct s_graph {
@@ -60,11 +60,8 @@ void	assign_rooms(t_init *init, size_t i);
 int		*validate_coordinates(t_init *init, size_t i);
 void	push_back_roomlist(t_roomlist *head, char *name, int *xy);
 t_graph	*create_graph(t_init *init);
-//void	realloc_graph(t_graph *graph);
-//t_room	*create_node(char *name);
 void	assign_links(t_graph *graph, t_init *init, size_t i, size_t j);
+void	add_edge(t_room *src, t_room *dst);
 void	free_graph(t_graph *graph);
-void	add_edge(t_graph *graph, char **rooms);
-int		connect_to(t_room **adjlists, t_room *new, const char *dest);
-//void	insert(t_room **adjlists, t_room *new, const char *name);
+void	free_init(t_init *init);
 #endif
