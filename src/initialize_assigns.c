@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/15 13:44:49 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/16 17:52:09 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	assign_links(t_graph *graph, t_init *init, size_t i, size_t j)
 			add_edge(src, graph->adjlists[--i]);
 			ft_putendl(init->line);
 		}
+		free(init->line);
 		init->ret = get_next_line(0, &init->line);
 		if (init->ret == -1)
 			ft_error_exit("Error: reading.");

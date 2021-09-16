@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/15 14:59:57 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/16 18:47:51 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ static void	realloc_connections(t_room *room)
 		i = 0;
 		while (i < room->connections - 1)
 		{
-			ft_printf("%s on reallocissa:%d:%s\n", room->name, i, room->connection[i]->name);
 			new[i] = room->connection[i];
 			i++;
 		}
@@ -83,11 +82,9 @@ void	add_edge(t_room *room1, t_room *room2)
 {
 	room1->connections++;
 	realloc_connections(room1);
-	ft_printf("%s->connection[%d]= %s\n", room1->name, room1->connections - 1, room2->name);
 	room1->connection[room1->connections - 1] = room2;
 	room2->connections++;
 	realloc_connections(room2);
-	ft_printf("%s->connection[%d]= %s\n", room2->name, room2->connections - 1, room1->name);
 	room2->connection[room2->connections - 1] = room1;
 }
 
@@ -102,11 +99,11 @@ static t_room	*create_room_node(char *name, size_t i, t_init *init)
 	else
 		new->occupants = 0;
 	new->connections = 0;
-	new->child_amount = 0;
-	new->parent_amount = 0;
+/* 	new->child_amount = 0;
+	new->parent_amount = 0; */
 	new->connection = NULL;
-	new->child = NULL;
-	new->parent = NULL;
+/* 	new->child = NULL;
+	new->parent = NULL; */
 	return (new);
 }
 
