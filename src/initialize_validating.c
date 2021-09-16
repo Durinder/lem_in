@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 13:00:57 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/16 19:30:02 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:45:03 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ short which)
 				ft_error_exit("Error: room2 of link not found.");
 	}
 	return (graph->adjlists[--i]);
+}
+
+void	validate_start_and_end(t_init *init)
+{
+	if (init->start_check != 1 || init->end_check != 1 || \
+			init->start == init->end || init->start == init->total_rooms || \
+			init->end == init->total_rooms)
+		ft_error_exit("Error: invalid start and/or end room(s).");
 }
 
 static void	check_for_duplicate_coordinates(t_roomlist *head, int *xy)
