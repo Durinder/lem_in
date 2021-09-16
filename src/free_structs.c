@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 15:14:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/10 15:35:31 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/10 15:43:16 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	free_init(t_init *init)
 	{
 		cur = init->head;
 		init->head = init->head->next;
-//		free(cur->name);
 		free(cur);
 	}
 	free(init);
