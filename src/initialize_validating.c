@@ -6,11 +6,33 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 13:00:57 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/10 13:24:10 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:30:02 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+//which == 1 is room1, 2 is room2
+t_room	*find_and_validate_room(t_graph *graph, t_init *init, size_t j,
+short which)
+{
+	size_t	i;
+
+	i = 0;
+	if (which == 1)
+	{
+		while (!(ft_strnequ(init->line, graph->adjlists[i++]->name, j)))
+			if (i == graph->total_rooms)
+				ft_error_exit("Error: room1 of link not found.");
+	}
+	else
+	{
+		while (!(ft_strequ(init->line + j + 1, graph->adjlists[i++]->name)))
+			if (i == graph->total_rooms)
+				ft_error_exit("Error: room2 of link not found.");
+	}
+	return (graph->adjlists[--i]);
+}
 
 static void	check_for_duplicate_coordinates(t_roomlist *head, int *xy)
 {

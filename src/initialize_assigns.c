@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/16 17:52:09 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:33:02 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ static void	assign_comments(t_init *init, short which)
 	ft_putendl(init->line);
 }
 
-void	assign_links(t_graph *graph, t_init *init, size_t i, size_t j)
+void	assign_links(t_graph *graph, t_init *init)
 {
-	t_room	*src;
+	t_room	*room1;
+	t_room	*room2;
+	size_t	i;
 
 	while (init->ret > 0)
 	{
@@ -43,21 +45,14 @@ void	assign_links(t_graph *graph, t_init *init, size_t i, size_t j)
 			assign_comments(init, 1);
 		else
 		{
-			j = 0;
-			while (ft_isalnum(init->line[j]))
-				j++;
-			if (init->line[j] != '-')
+			i = 0;
+			while (ft_isalnum(init->line[i]))
+				i++;
+			if (init->line[i] != '-')
 				ft_error_exit("Error: invalid input.");
-			i = 0;
-			while (!(ft_strnequ(init->line, graph->adjlists[i++]->name, j)))
-				if (i == graph->total_rooms)
-					ft_error_exit("Error: room1 of link not found.");
-			src = graph->adjlists[--i];
-			i = 0;
-			while (!(ft_strequ(init->line + j + 1, graph->adjlists[i++]->name)))
-				if (i == graph->total_rooms)
-					ft_error_exit("Error: room2 of link not found.");
-			add_edge(src, graph->adjlists[--i]);
+			room1 = find_and_validate_room(graph, init, i, 1);
+			room2 = find_and_validate_room(graph, init, i, 2);
+			add_edge(room1, room2);
 			ft_putendl(init->line);
 		}
 		free(init->line);

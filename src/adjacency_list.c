@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/16 18:47:51 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:36:23 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ static t_room	*create_room_node(char *name, size_t i, t_init *init)
 	return (new);
 }
 
-static void	create_rooms_and_free_roomlist(t_graph *graph, t_init *init)
+static void	create_rooms(t_graph *graph, t_init *init)
 {
 	t_roomlist	*cur;
 	size_t		i;
@@ -118,7 +118,6 @@ static void	create_rooms_and_free_roomlist(t_graph *graph, t_init *init)
 	{
 		graph->adjlists[i] = create_room_node(cur->name, i, init);
 		cur = cur->next;
-//		free(tmp);
 		i++;
 	}
 }
@@ -133,7 +132,7 @@ t_graph	*create_graph(t_init *init)
 	graph->start = init->start;
 	graph->end = init->end;
 	graph->adjlists = ft_malloc_safe(sizeof(t_room *) * init->total_rooms);
-	create_rooms_and_free_roomlist(graph, init);
+	create_rooms(graph, init);
 	return (graph);
 }
 
