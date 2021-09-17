@@ -6,13 +6,13 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/17 13:14:13 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/17 15:29:17 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-/* static void	print(t_graph *graph)
+static void	print(t_graph *graph)
 {
   	size_t	i = 0;
 	size_t	j;
@@ -28,7 +28,7 @@
 		i++;
 	}
 }
- */
+
 static t_init	*get_t_init(void)
 {
 	t_init	*init;
@@ -58,8 +58,8 @@ t_graph	*initialize(void)
 	graph = create_graph(init);
 	assign_links(graph, init);
 	free_init(init);
-//	split_connections_to_childs_and_parents(graph);
-//	print(graph);
+	print(graph);
 	ft_putchar('\n');
+	split_connections_to_childs_and_parents(graph);
 	return (graph);
 }

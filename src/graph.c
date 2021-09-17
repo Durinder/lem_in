@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/17 13:15:53 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/17 13:29:09 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ t_graph	*create_graph(t_init *init)
 	graph->start = init->start;
 	graph->end = init->end;
 	graph->adjlists = ft_malloc_safe(sizeof(t_room *) * init->total_rooms);
+//	graph->visited = ft_malloc_safe(sizeof(int) * init->total_rooms);
 	create_rooms(graph, init);
 	return (graph);
 }

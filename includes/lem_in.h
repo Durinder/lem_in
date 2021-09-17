@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/17 13:13:30 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/17 14:40:23 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@
 # define GRAPH_START_SIZE 10
 
 //type == 0 is start, type == 1 is regular room, type == 2 is end
+
+typedef struct s_queue_node {
+	struct s_room		*room;
+	struct s_queue_node	*next;
+}	t_queue_node;
+
+typedef struct s_queue {
+	struct s_queue_node	*front;
+	struct s_queue_node	*rear;
+}	t_queue;
 
 typedef struct s_room {
 	char			*name;
@@ -36,6 +46,7 @@ typedef struct s_graph {
 	size_t			start;
 	size_t			end;
 	struct s_room	**adjlists;
+//	int				*visited;
 }	t_graph;
 
 typedef struct s_init {
@@ -70,4 +81,9 @@ t_room		*find_and_validate_room(t_graph *graph, t_init *init, size_t j,
 void		add_edge(t_room *room1, t_room *room2);
 void		free_graph(t_graph *graph);
 void		free_init(t_init *init);
+void		split_connections_to_childs_and_parents(t_graph *graph);
+t_queue		*create_queue(void);
+void		enqueue(t_queue *queue, t_room *room);
+t_room		*dequeue(t_queue *queue);
+//int			is_empty(t_queue *queue);
 #endif

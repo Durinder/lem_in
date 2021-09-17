@@ -6,19 +6,19 @@
 #    By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/12 15:23:07 by vhallama          #+#    #+#              #
-#    Updated: 2021/09/17 13:16:08 by vhallama         ###   ########.fr        #
+#    Updated: 2021/09/17 15:19:23 by vhallama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = $(LEM_IN)
 
 LEM_IN = lem_in
-LEM_IN_SRC = lem_in.c initialize.c initialize_assigns.c initialize_validating.c free_structs.c graph.c linked_list.c
+LEM_IN_SRC = lem_in.c initialize.c initialize_assigns.c initialize_validating.c free_structs.c graph.c graph_split_connections.c linked_list.c queue.c
 LEM_IN_OBJ = $(LEM_IN_SRC:.c=.o)
 
 LIBRARY = libft/ft_printf/libftprintf.a
 
-FLAGS = -Wall -Wextra -Werror# -fsanitize=address -g
+FLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 .PHONY: all clean fclean re 
 
