@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/17 14:40:23 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/20 15:51:58 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,15 @@ typedef struct s_queue {
 	struct s_queue_node	*rear;
 }	t_queue;
 
-typedef struct s_room {
+typedef struct s_room { //add start end? or room_type
 	char			*name;
 	size_t			occupants;
 	size_t			connections;
 	size_t			child_amount;
 	size_t			parent_amount;
+	size_t			depth;
+	size_t			*depth_options;
+//	size_t			visited;
 	struct s_room	**connection;
 	struct s_room	**child;
 	struct s_room	**parent;
@@ -85,5 +88,5 @@ void		split_connections_to_childs_and_parents(t_graph *graph);
 t_queue		*create_queue(void);
 void		enqueue(t_queue *queue, t_room *room);
 t_room		*dequeue(t_queue *queue);
-//int			is_empty(t_queue *queue);
+int			is_empty(t_queue *queue);
 #endif

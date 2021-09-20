@@ -6,7 +6,7 @@
 #    By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/12 15:23:07 by vhallama          #+#    #+#              #
-#    Updated: 2021/09/17 15:19:23 by vhallama         ###   ########.fr        #
+#    Updated: 2021/09/20 12:29:18 by vhallama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LEM_IN_OBJ = $(LEM_IN_SRC:.c=.o)
 
 LIBRARY = libft/ft_printf/libftprintf.a
 
-FLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+FLAGS = -Wall -Wextra -Werror# -fsanitize=address -g
 
 .PHONY: all clean fclean re 
 

@@ -6,19 +6,19 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:34:26 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/17 14:41:54 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/20 13:50:41 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-/* 
+
 int	is_empty(t_queue *queue)
 {
 	if (queue->front == NULL)
 		return (1);
 	return (0);
 }
- */
+
 static t_queue_node	*create_queue_node(t_room *room)
 {
 	t_queue_node	*new;
