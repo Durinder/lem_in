@@ -6,13 +6,13 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/20 11:42:28 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/21 13:18:23 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-static void	print2(t_graph *graph)
+/* static void	print2(t_graph *graph)
 {
   	size_t	i = 0;
 	size_t	j;
@@ -33,7 +33,7 @@ static void	print2(t_graph *graph)
 		}		
 		i++;
 	}
-}
+} */
 
 static void	print(t_graph *graph)
 {
@@ -84,6 +84,6 @@ t_graph	*initialize(void)
 	print(graph);
 	ft_putchar('\n');
 	split_connections_to_childs_and_parents(graph);
-	print2(graph);
+//	print2(graph);
 	return (graph);
 }

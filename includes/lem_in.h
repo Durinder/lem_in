@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/21 13:06:54 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/21 13:18:12 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ typedef struct s_room { //add start end? or room_type
 	char			*name;
 	size_t			occupants;
 	size_t			connections;
-	size_t			child_amount;
-	size_t			parent_amount;
+/* 	size_t			child_amount;
+	size_t			parent_amount; */
 	size_t			depth;
 	size_t			visited;
 	struct s_room	**connection;
-	struct s_room	**child;
-	struct s_room	**parent;
+/* 	struct s_room	**child;
+	struct s_room	**parent; */
 }	t_room;
 
 typedef struct s_graph {
