@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:34:26 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/21 13:08:06 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/21 13:46:40 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ t_room	*dequeue(t_queue *queue, size_t *depth)
 	ptr = queue->front->room;
 	tmp = queue->front;
 	queue->front = queue->front->next;
-	*depth = tmp->depth;
+	if (depth)
+		*depth = tmp->depth;
 	free(tmp);
 	return (ptr);
 }
