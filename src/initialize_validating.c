@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 13:00:57 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/16 19:45:03 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/21 12:44:48 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,14 @@ int	*validate_coordinates(t_init *init, size_t i)
 	xy[0] = ft_atoi_l(init->line + i);
 	while (ft_isdigit(init->line[i]))
 		i++;
-	if (init->line[i++] != ' ' || xy[0] > INT_MAX)
+	if (init->line[i++] != ' ' || xy[0] > LONG_MAX)
 		ft_error_exit("Error: invalid room coordinates.");
 	if (ft_isdigit(init->line[i]) == 0)
 		ft_error_exit("Error: invalid room coordinates.");
 	xy[1] = ft_atoi_l(init->line + i);
 	while (ft_isdigit(init->line[i]))
 		i++;
-	if (init->line[i] != '\0' || xy[1] > INT_MAX)
+	if (init->line[i] != '\0' || xy[1] > LONG_MAX)
 		ft_error_exit("Error: invalid room coordinates.");
 	ret[0] = xy[0];
 	ret[1] = xy[1];

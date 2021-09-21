@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:18:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/20 16:35:55 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/21 13:11:37 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,14 +149,14 @@ static void	print_depth(t_graph *graph)
 		i++;
 	}
 }
-
+/* 
 static void	set_room_depth(t_room *room)
 {
 	size_t	i;
 	size_t	min;
 
 	i = 0;
-	min = UINT_MAX;
+	min = ULONG_MAX;
 	while (i < room->connections)
 	{
 		if (min > room->depth_options[i])
@@ -222,8 +222,8 @@ static void	check_room_depth(t_room *room, t_room *prev, size_t depth)
 static void	set_graph_depth(t_room *room, t_room *prev, t_queue *q,
 size_t depth)
 {
-/* 	t_room	*next;
- */	size_t	i;
+ 	t_room	*next;
+ 	size_t	i;
 
 	check_room_depth(room, prev, depth);
 	i = 0;
@@ -235,12 +235,11 @@ size_t depth)
 		}
 		i++;
 	}
-/* 	next = dequeue(q);
+ 	next = dequeue(q);
 	if (next)
-		set_graph_depth(next, room, q, depth); */
+		set_graph_depth(next, room, q, depth);
 }
 
-/* 
 static void	set_room_depth(t_room *start)
 {
 	t_queue	*q;
@@ -271,6 +270,30 @@ static void	set_room_depth(t_room *start)
 	}
 }
  */
+
+static void	set_depth(t_room *room, t_queue *q, size_t depth)
+{
+	t_room	*next;
+	size_t	i;
+
+	ft_printf("%s, %ld\n", room->name, depth);
+	if (room->depth > depth)
+		room->depth = depth;
+	i = 0;
+	while (i < room->connections)
+	{
+		if (room->connection[i]->visited < room->connection[i]->connections)
+		{
+			enqueue(q, room->connection[i], depth + 1);
+			room->connection[i]->visited++;
+		}
+		i++;
+	}
+	next = dequeue(q, &depth);
+	if (next)
+		set_depth(next, q, depth);
+}
+
 void	split_connections_to_childs_and_parents(t_graph *graph)
 {
 	t_queue	*q;
@@ -278,11 +301,12 @@ void	split_connections_to_childs_and_parents(t_graph *graph)
 	q = create_queue();
 
 //		LOOPPAA AINA VIEREISIA PAITSI, JOS NIIDEN VISITED == CONNECTIONS
-//		JOKA KERTA KATSO JOS ROOM->DEPTH(JOKA ALUKSI UINT_MAX) > DEPTH,
+//		JOKA KERTA KATSO JOS ROOM->DEPTH(JOKA ALUKSI ULONG_MAX) > DEPTH,
 //			JOS ON NIIN ROOM->DEPTH = DEPTH;
 
 
-	set_graph_depth(graph->adjlists[graph->start], NULL, q, 1);
+	set_depth(graph->adjlists[graph->start], q, 0);
 	print_depth(graph);
+	exit(0);
 //	bfs(graph, q, graph->adjlists[graph->start]);
 }
