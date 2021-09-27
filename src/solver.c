@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 13:24:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/27 14:44:37 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/27 16:16:06 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ static void	pull_ant(t_graph *graph, t_room *dst, t_room *src, t_buffer *buffer)
 	move[1 + i] = '-';
 	ft_strncpy(move + 2 + i, dst->name, ft_strlen(dst->name) + 1);
 //	ft_putendl(move);
-	dst->ant = src->ant;
+	if (dst == graph->adjlists[graph->end])
+		dst->ant = 0;
+	else
+		dst->ant = src->ant;
 	if (src == graph->adjlists[graph->start] && src->ant + 1 <= graph->ants)
 		src->ant++;
 	else
@@ -59,8 +62,7 @@ static void	loop(t_graph *graph, t_queue *q, t_buffer *buffer)
 	{
 		cur = dequeue(q, NULL);
 		done_check = 0;
-		cur->in_queue = 0;
-		ft_putendl(cur->name);
+//		cur->in_queue = 0;
 		i = 0;
 		while (i < cur->connections)
 		{
@@ -75,17 +77,18 @@ static void	loop(t_graph *graph, t_queue *q, t_buffer *buffer)
 			!cur->connection[i]->in_queue)// && (cur->depth >= cur->connection[i]->depth && !cur->connection[i]->in_queue)
 			{
 				enqueue(q, cur->connection[i], 0);
-				cur->connection[i]->in_queue = 1;
+			//	cur->connection[i]->in_queue = 1;
 			}
 /* 			else if (cur->ant == 0 || \
 			(cur == graph->adjlists[graph->end] && cur->ant == graph->ants))
 				cur->done = 1; */
 			i++;
 		}
-		if (done_check && (cur->ant == 0 || cur == graph->adjlists[graph->end]))
+		ft_printf("%s has %ld\n", cur->name, cur->ant);
+		if (done_check && cur->ant == 0 && cur)// || cur == graph->adjlists[graph->end]))
 			cur->done = 1;
-/* 		else if (cur == graph->adjlists[graph->end])
-			enqueue(q, cur, 0); */
+ 		else /* if (cur == graph->adjlists[graph->end]) */
+			enqueue(q, cur, 0);
 	}
 	ft_printf("moves done!\n");
 }
