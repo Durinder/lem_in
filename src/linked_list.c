@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 13:07:12 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/21 14:20:07 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/27 12:27:37 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	push_back_buffer(t_buffer *head, char *move)
 	new = ft_malloc_safe(sizeof(t_buffer));
 	new->move = move;
 	new->next = NULL;
-	if (head == NULL)
-		new = head;
+	if (head->move == NULL)
+		head->move = move;
 	else
 	{
 		cur = head;

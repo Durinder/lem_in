@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/21 14:18:35 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/27 14:20:13 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_queue {
 
 typedef struct s_room { //add start end? or room_type
 	char			*name;
-	size_t			occupants;
+//	size_t			occupants;
 	size_t			ant;
 	size_t			connections;
 /* 	size_t			child_amount;
@@ -45,6 +45,7 @@ typedef struct s_room { //add start end? or room_type
 	size_t			depth;
 	size_t			visited;
 	short			done;
+	short			in_queue;
 	struct s_room	**connection;
 /* 	struct s_room	**child;
 	struct s_room	**parent; */
