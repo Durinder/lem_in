@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 13:24:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/28 15:53:51 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/28 15:55:59 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,21 +89,15 @@ static void	loop(t_graph *graph, t_queue *q, t_buffer *buffer)
 			graph->adjlists[graph->start]) && cur->connection[i]->ant == 0)
 				done_check++;
 			if (cur->connection[i] != graph->adjlists[graph->start] && \
-				!cur->connection[i]->in_queue && !cur->connection[i]->done)
-			{
+				!cur->connection[i]->done)
 				enqueue(q, cur->connection[i], 0);
-				cur->connection[i]->in_queue = 1;
-			}
 			i++;
 		}
 		if ((done_check && cur->ant == 0) || \
 		(cur == graph->adjlists[graph->end] && cur->ant == graph->ants))
 			cur->done = 1;
 		if (!cur->done)
-		{
 			enqueue(q, cur, 0);
-			cur->in_queue = 1;
-		}
 	}
 	ft_printf("loop over\n");
 }
