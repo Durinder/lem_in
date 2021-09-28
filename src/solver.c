@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 13:24:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/28 15:55:59 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/28 16:56:35 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,25 @@ static void	pull_ant(t_graph *graph, t_room *dst, t_room *src, t_buffer *buffer)
 	push_back_buffer(buffer, move);
 }
 
+static void	reset_visited(t_graph *graph)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < graph->total_rooms)
+	{
+		graph->adjlists[i]->visited = 0;
+		i++;
+	}
+}
+
 static void	loop(t_graph *graph, t_queue *q, t_buffer *buffer)
 {
 	size_t	i;
 	t_room	*cur;
 	size_t	done_check;
 
+	reset_visited(graph);
 	while (!is_empty(q))
 	{
 		print_queue(q);
@@ -88,11 +101,12 @@ static void	loop(t_graph *graph, t_queue *q, t_buffer *buffer)
 			else if ((cur->connection[i]->done || cur->connection[i] == \
 			graph->adjlists[graph->start]) && cur->connection[i]->ant == 0)
 				done_check++;
-			if (cur->connection[i] != graph->adjlists[graph->start] && \
+			if (cur->visited == 0 && cur->connection[i] != graph->adjlists[graph->start] && \
 				!cur->connection[i]->done)
 				enqueue(q, cur->connection[i], 0);
 			i++;
 		}
+		cur->visited++;
 		if ((done_check && cur->ant == 0) || \
 		(cur == graph->adjlists[graph->end] && cur->ant == graph->ants))
 			cur->done = 1;
