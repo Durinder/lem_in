@@ -6,58 +6,11 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/28 15:04:50 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/29 09:57:05 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-/* //which == 0 is room->child realloc, which == 1 is room->parent realloc
-static void	realloc_room(t_room *room, short which, size_t i)
-{
-	t_room	**new;
-	t_room	*p;
-
-	p = ft_malloc_safe(sizeof(t_roomlist));
-	if (which == 0)
-	{
-		new = ft_malloc_safe(sizeof(t_room **) * room->child_amount);
-		while (i < room->child_amount - 1)
-		{
-			new[i] = room->child[i];
-			i++;
-		}
-		free(room->child);
-		room->child = new;
-	}
-	else
-	{
-		new = ft_malloc_safe(sizeof(t_room **) * room->parent_amount);
-		while (i < room->parent_amount - 1)
-		{
-			new[i] = room->parent[i];
-			i++;
-		}
-		free(room->parent);
-		room->parent = new;
-	}
-}
- */
-/* void	add_edge(t_room *src, t_room *dst)
-{
-	src->child_amount++;
-	if (src->child_amount == 1)
-		src->child = ft_malloc_safe(sizeof(t_room **));
-	else
-		realloc_room(src, 0, 0);
-	dst->parent_amount++;
-	if (dst->parent_amount == 1)
-		dst->parent = ft_malloc_safe(sizeof(t_room **));
-	else
-		realloc_room(dst, 1, 0);
-	src->child[src->child_amount - 1] = dst;
-	dst->parent[dst->parent_amount - 1] = src;
-} */
 
 static void	realloc_connections(t_room *room)
 {
@@ -132,24 +85,6 @@ t_graph	*create_graph(t_init *init)
 	graph->start = init->start;
 	graph->end = init->end;
 	graph->adjlists = ft_malloc_safe(sizeof(t_room *) * init->total_rooms);
-//	graph->visited = ft_malloc_safe(sizeof(int) * init->total_rooms);
 	create_rooms(graph, init);
 	return (graph);
 }
-
-/* void	add_edge(t_graph *graph, char **rooms)
-{
-	t_room	*new;
-	int		index;
-
-	if (rooms[0] == NULL || rooms[1] == NULL)
-		ft_error_exit("Error: malloc.");
-	new = create_node(rooms[1]);
-	index = connect_to(graph->adjlists, new, rooms[0]);
-	graph->adjlists[index] = new;
-	new = create_node(rooms[0]);
-	index = connect_to(graph->adjlists, new, rooms[1]);
-	graph->adjlists[index] = new;
-	free(rooms[2]);
-	free(rooms);
-} */

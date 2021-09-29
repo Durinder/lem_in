@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/27 16:01:14 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/29 09:58:16 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ t_graph	*initialize(void)
 	free_init(init);
 	print(graph);
 	ft_putchar('\n');
-	split_connections_to_childs_and_parents(graph); //NIMI
-//	print2(graph);
+	assign_depth(graph);
 	return (graph);
 }

@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/28 15:04:46 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/29 12:08:54 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 typedef struct s_buffer {
 	char			*move;
+	size_t			ant;
 	struct s_buffer	*next;
 }	t_buffer;
 
@@ -87,11 +88,14 @@ t_room		*find_and_validate_room(t_graph *graph, t_init *init, size_t j,
 void		add_edge(t_room *room1, t_room *room2);
 void		free_graph(t_graph *graph);
 void		free_init(t_init *init);
-void		split_connections_to_childs_and_parents(t_graph *graph);
+void		assign_depth(t_graph *graph);
 t_queue		*create_queue(void);
 void		enqueue(t_queue *queue, t_room *room, size_t depth);
 t_room		*dequeue(t_queue *queue, size_t *depth);
 int			is_empty(t_queue *queue);
 void		solver(t_graph *graph);
-void		push_back_buffer(t_buffer *head, char *move);
+t_buffer	*create_buffer(void);
+void		push_back_buffer(t_buffer *head, char *move, size_t ant);
+void		free_queue(t_queue *queue);
+void		free_buffer(t_buffer *buffer);
 #endif
