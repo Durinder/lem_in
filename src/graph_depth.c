@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:18:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/29 09:58:33 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/01 16:25:05 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	assign_depth(t_graph *graph)
 
 	q = create_queue();
 	set_depth(graph->adjlists[graph->end], q, 0);
+	if (graph->adjlists[graph->start]->depth == ULONG_MAX)
+		ft_error_exit("Error: map cannot be solved.");
 	free_queue(q);
 	sort_depth(graph);
 	print_depth(graph);

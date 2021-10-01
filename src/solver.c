@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 13:24:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/29 16:54:00 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/01 16:17:48 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,27 @@
 	ft_printf("\n");
 }
  */
-static void	assign_whitespace(t_room *src, t_room *dst, t_room *end)
+static void	assign_whitespace(t_room *src)
 {
-	static size_t	line_break;
-	static short	pass_through;
+	static size_t	prev_ant;
 
-	if (line_break == 0)
-		line_break = 1;
-	if (src->ant == line_break && pass_through == 0)
+	if (prev_ant == 0)
+		prev_ant = 1;
+	if (src->ant <= prev_ant)
 	{
 		write(1, "\n", 1);
-		if (dst == end)
-		{
-			pass_through = 1;
-			line_break++;
-		}
+		prev_ant = src->ant;
 	}
 	else
 	{
 		write(1, " ", 1);
-		pass_through = 0;
+		prev_ant++;
 	}
 }
 
 static void	move_ant(t_graph *graph, t_room *src, t_room *dst)
 {
-	assign_whitespace(src, dst, graph->adjlists[graph->end]);
+	assign_whitespace(src);
 	write(1, "L", 1);
 	ft_putnbr(src->ant);
 	write(1, "-", 1);

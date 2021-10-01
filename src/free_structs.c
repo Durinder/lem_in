@@ -6,24 +6,11 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 15:14:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/29 11:05:31 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/29 17:01:48 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-void	free_buffer(t_buffer *buffer)
-{
-	t_buffer	*tmp;
-
-	while (buffer != NULL)
-	{
-		tmp = buffer;
-		buffer = buffer->next;
-		free(tmp->move);
-		free(tmp);
-	}
-}
 
 void	free_queue(t_queue *queue)
 {

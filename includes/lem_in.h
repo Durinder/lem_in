@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/29 12:08:54 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/29 17:01:33 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@
 
 //type == 0 is start, type == 1 is regular room, type == 2 is end
 
-typedef struct s_buffer {
-	char			*move;
-	size_t			ant;
-	struct s_buffer	*next;
-}	t_buffer;
-
 typedef struct s_queue_node {
 	struct s_room		*room;
 	size_t				depth;
@@ -36,9 +30,8 @@ typedef struct s_queue {
 	struct s_queue_node	*rear;
 }	t_queue;
 
-typedef struct s_room { //add start end? or room_type
+typedef struct s_room {
 	char			*name;
-//	size_t			occupants;
 	size_t			ant;
 	size_t			connections;
 	size_t			depth;
@@ -94,8 +87,5 @@ void		enqueue(t_queue *queue, t_room *room, size_t depth);
 t_room		*dequeue(t_queue *queue, size_t *depth);
 int			is_empty(t_queue *queue);
 void		solver(t_graph *graph);
-t_buffer	*create_buffer(void);
-void		push_back_buffer(t_buffer *head, char *move, size_t ant);
 void		free_queue(t_queue *queue);
-void		free_buffer(t_buffer *buffer);
 #endif

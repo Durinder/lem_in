@@ -6,45 +6,11 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 13:07:12 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/29 12:08:06 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/09/29 17:01:39 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-void	push_back_buffer(t_buffer *head, char *move, size_t ant)
-{
-	t_buffer	*new;
-	t_buffer	*cur;
-
-	if (head->move == NULL)
-	{
-		head->move = move;
-		head->ant = ant;
-	}
-	else
-	{
-		new = ft_malloc_safe(sizeof(t_buffer));
-		new->move = move;
-		new->ant = ant;
-		new->next = NULL;
-		cur = head;
-		while (cur->next != NULL)
-			cur = cur->next;
-		cur->next = new;
-	}
-}
-
-t_buffer	*create_buffer(void)
-{
-	t_buffer	*head;
-
-	head = ft_malloc_safe(sizeof(t_buffer));
-	head->ant = 0;
-	head->move = NULL;
-	head->next = NULL;
-	return (head);
-}
 
 t_roomlist	*create_roomlist_node(char *name, int *xy)
 {
