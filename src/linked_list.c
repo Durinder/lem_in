@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 13:07:12 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/29 17:01:39 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/01 18:04:13 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	push_back_roomlist(t_roomlist *head, char *name, int *xy)
 {
 	t_roomlist	*cur;
 
+	if (name[0] == 'L')
+		ft_error_exit("Error: room name starts with L.");
 	if (head->name == NULL)
 	{
 		head->name = name;
@@ -41,7 +43,11 @@ void	push_back_roomlist(t_roomlist *head, char *name, int *xy)
 	{
 		cur = head;
 		while (cur->next != NULL)
+		{
+			if (ft_strequ(cur->name, name))
+				ft_error_exit("Error: duplicate room name.");
 			cur = cur->next;
+		}
 		cur->next = create_roomlist_node(name, xy);
 	}
 	free(xy);

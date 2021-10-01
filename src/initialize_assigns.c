@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/21 12:44:33 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/01 18:25:43 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,8 @@ void	assign_ants(t_init *init)
 	init->ants = (size_t)ft_atoi_l(init->line);
 	if (init->ants < 1)
 		ft_error_exit("Error: no ants.");
-	else if (init->ants > LONG_MAX)
-		ft_error_exit("Error: over LONG_MAX ants.");
+	else if (init->ants > UINT_MAX)
+		ft_error_exit("Error: over UINT_MAX ants.");
 	ft_putendl(init->line);
 	free(init->line);
 }
