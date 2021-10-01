@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/29 09:58:16 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/01 16:38:34 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 		i++;
 	}
 } */
-
+/* 
 static void	print(t_graph *graph)
 {
   	size_t	i = 0;
@@ -51,7 +51,7 @@ static void	print(t_graph *graph)
 		i++;
 	}
 }
-
+ */
 static t_init	*get_t_init(void)
 {
 	t_init	*init;
@@ -81,8 +81,8 @@ t_graph	*initialize(void)
 	graph = create_graph(init);
 	assign_links(graph, init);
 	free_init(init);
-	print(graph);
-	ft_putchar('\n');
+//	print(graph);
+//	ft_putchar('\n');
 	assign_depth(graph);
 	return (graph);
 }

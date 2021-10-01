@@ -6,13 +6,13 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:18:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/01 16:25:05 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/01 16:37:48 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-static void	print_depth(t_graph *graph)
+/* static void	print_depth(t_graph *graph)
 {
 	size_t	i;
 
@@ -23,7 +23,7 @@ static void	print_depth(t_graph *graph)
 		i++;
 	}
 }
-
+ */
 static void	sort_connection_array(t_room *room)
 {
 	t_room	*tmp;
@@ -92,5 +92,5 @@ void	assign_depth(t_graph *graph)
 		ft_error_exit("Error: map cannot be solved.");
 	free_queue(q);
 	sort_depth(graph);
-	print_depth(graph);
+//	print_depth(graph);
 }
