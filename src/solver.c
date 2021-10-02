@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 13:24:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/01 16:17:48 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/02 12:03:15 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	move_ant(t_graph *graph, t_room *src, t_room *dst)
 		src->ant = 0;
 }
 
-static t_room	*choose_room(t_room *room)
+static t_room	*choose_room(t_graph *graph, t_room *room)
 {
 	size_t	i;
 
@@ -68,11 +68,19 @@ static t_room	*choose_room(t_room *room)
 	while (i < room->connections)
 	{
 		if (room->connection[i]->depth > room->depth)
+		{
+			if (room->connection[i]->ant == 0 && \
+			room == graph->adjlists[graph->start] && \
+			graph->ants - graph->adjlists[graph->start]->ant + 1 > \
+			room->connection[i]->depth - room->depth) //BETA!
+				return (room->connection[i]);
 			break ;
+		}
 		if (room->connection[i]->ant == 0)
 			return (room->connection[i]);
 		i++;
 	}
+	graph->ants += 0;
 	return (NULL);
 }
 
@@ -87,7 +95,7 @@ static void	move_ants(t_graph *graph, t_queue *q)
 		cur = dequeue(q, NULL);
 		while (cur->ant)
 		{
-			dst = choose_room(cur);
+			dst = choose_room(graph, cur);
 			if (dst)
 			{
 				move_ant(graph, cur, dst);

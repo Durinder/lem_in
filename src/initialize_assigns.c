@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/02 11:38:02 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/02 12:09:15 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	assign_rooms(t_init *init, size_t i)
 
 	while (1)
 	{
+		free(init->line);
 		init->ret = get_next_line(0, &init->line);
 		if (init->ret < 1)
 			ft_error_exit("Error: invalid input or reading.");
@@ -91,7 +92,6 @@ void	assign_rooms(t_init *init, size_t i)
 			push_back_roomlist(init->head, ft_strsub(init->line, 0, i), xy);
 			init->total_rooms++;
 		}
-		free(init->line);
 	}
 }
 
