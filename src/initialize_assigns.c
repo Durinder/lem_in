@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/01 18:25:43 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/01 18:26:46 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //which == 0 is redirection from assign_rooms() and which == 1 is redirection
 //from assign_links()
-static void	assign_comments(t_init *init, short which)
+static void	assign_comments(t_init *init, short which) //EI HUOMIOI JOS SEURAAVA RIVI EI OLE HUONE
 {
 	if (ft_strequ(init->line, "##start"))
 	{
