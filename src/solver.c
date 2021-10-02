@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 13:24:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/02 12:03:15 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/02 14:58:05 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,10 @@ static void	assign_whitespace(t_room *src)
 	if (prev_ant == 0)
 		prev_ant = 1;
 	if (src->ant <= prev_ant)
-	{
 		write(1, "\n", 1);
-		prev_ant = src->ant;
-	}
 	else
-	{
 		write(1, " ", 1);
-		prev_ant++;
-	}
+	prev_ant = src->ant;
 }
 
 static void	move_ant(t_graph *graph, t_room *src, t_room *dst)

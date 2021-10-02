@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/02 14:37:38 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/02 14:46:30 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	assign_ants(t_init *init)
 	if (init->ret == -1)
 		ft_error_exit("Error: reading.");
 	else if (init->ret == 0)
-		exit (0);
+		ft_error_exit("Error: empty input.");
 	i = 0;
 	if (init->line[i] == '+')
 		i++;
