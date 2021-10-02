@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/02 14:46:30 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/02 15:12:20 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	assign_rooms(t_init *init, size_t i)
 				i++;
 			if (init->line[i] == '-')
 				break ;
-			xy = validate_coordinates(init, i);
+			xy = validate_coordinates(init, i); // FLAG -c for disregarding this
 			push_back_roomlist(&init->head, ft_strsub(init->line, 0, i), xy);
 			init->total_rooms++;
 		}
