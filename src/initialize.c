@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/01 18:22:51 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/02 11:31:29 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static t_init	*get_t_init(void)
 	init->start = 0;
 	init->end = 0;
 	init->total_rooms = 0;
+	init->comment_check = 0;
 	return (init);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/29 17:01:33 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/02 11:31:08 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_init {
 	int					ret;
 	short				start_check;
 	short				end_check;
+	short				comment_check;
 }	t_init;
 
 typedef struct s_roomlist {

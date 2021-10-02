@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/01 18:26:46 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/02 11:38:02 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 //which == 0 is redirection from assign_rooms() and which == 1 is redirection
 //from assign_links()
-static void	assign_comments(t_init *init, short which) //EI HUOMIOI JOS SEURAAVA RIVI EI OLE HUONE
+static void	assign_comments(t_init *init, short which)
 {
+	if (init->comment_check == 1)
+		ft_error_exit("Error: comment after ##start or ##end.");
 	if (ft_strequ(init->line, "##start"))
 	{
 		if (which == 1)
 			ft_error_exit("Error: invalid start room.");
 		init->start = init->total_rooms;
 		init->start_check++;
+		init->comment_check = 1;
 	}
 	else if (ft_strequ(init->line, "##end"))
 	{
@@ -29,6 +32,7 @@ static void	assign_comments(t_init *init, short which) //EI HUOMIOI JOS SEURAAVA
 			ft_error_exit("Error: invalid end room.");
 		init->end = init->total_rooms;
 		init->end_check++;
+		init->comment_check = 1;
 	}
 	ft_putendl(init->line);
 }
@@ -66,15 +70,18 @@ void	assign_rooms(t_init *init, size_t i)
 {
 	int	*xy;
 
-	init->ret = get_next_line(0, &init->line);
-	if (init->ret < 1)
-		ft_error_exit("Error: reading or invalid input.");
-	while (init->ret > 0)
+	while (1)
 	{
+		init->ret = get_next_line(0, &init->line);
+		if (init->ret < 1)
+			ft_error_exit("Error: invalid input or reading.");
 		if (init->line[0] == '#')
 			assign_comments(init, 0);
 		else
 		{
+			if (init->line[0] == 'L')
+				ft_error_exit("Error: room name starts with L.");
+			init->comment_check = 0;
 			i = 0;
 			while (ft_isalnum(init->line[i]))
 				i++;
@@ -85,9 +92,6 @@ void	assign_rooms(t_init *init, size_t i)
 			init->total_rooms++;
 		}
 		free(init->line);
-		init->ret = get_next_line(0, &init->line);
-		if (init->ret == -1)
-			ft_error_exit("Error: reading.");
 	}
 }
 
@@ -115,5 +119,4 @@ void	assign_ants(t_init *init)
 	else if (init->ants > UINT_MAX)
 		ft_error_exit("Error: over UINT_MAX ants.");
 	ft_putendl(init->line);
-	free(init->line);
 }
