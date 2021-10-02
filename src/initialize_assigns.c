@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/02 12:09:15 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/02 14:37:38 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	assign_links(t_graph *graph, t_init *init)
 		else
 		{
 			i = 0;
-			while (ft_isalnum(init->line[i]))
+			while (ft_isalnum(init->line[i]) || init->line[i] == '_')
 				i++;
 			if (init->line[i] != '-')
 				ft_error_exit("Error: invalid input.");
@@ -84,12 +84,12 @@ void	assign_rooms(t_init *init, size_t i)
 				ft_error_exit("Error: room name starts with L.");
 			init->comment_check = 0;
 			i = 0;
-			while (ft_isalnum(init->line[i]))
+			while (ft_isalnum(init->line[i]) || init->line[i] == '_')
 				i++;
 			if (init->line[i] == '-')
 				break ;
 			xy = validate_coordinates(init, i);
-			push_back_roomlist(init->head, ft_strsub(init->line, 0, i), xy);
+			push_back_roomlist(&init->head, ft_strsub(init->line, 0, i), xy);
 			init->total_rooms++;
 		}
 	}

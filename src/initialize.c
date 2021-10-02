@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/02 11:31:29 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/02 14:38:53 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static t_init	*get_t_init(void)
 	t_init	*init;
 
 	init = ft_malloc_safe(sizeof(t_init));
-	init->head = create_roomlist_node(NULL, NULL);
+	init->head = NULL;
 	init->line = NULL;
 	init->ants = 0;
 	init->ret = 0;

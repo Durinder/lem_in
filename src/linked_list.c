@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 13:07:12 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/02 11:37:26 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/02 14:38:30 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,21 @@ t_roomlist	*create_roomlist_node(char *name, int *xy)
 
 	new = ft_malloc_safe(sizeof(t_roomlist));
 	new->name = name;
-	if (xy)
-	{
-		new->xy[0] = xy[0];
-		new->xy[1] = xy[1];
-	}
+	new->xy[0] = xy[0];
+	new->xy[1] = xy[1];
 	new->next = NULL;
 	return (new);
 }
 
-void	push_back_roomlist(t_roomlist *head, char *name, int *xy)
+void	push_back_roomlist(t_roomlist **head, char *name, int *xy)
 {
 	t_roomlist	*cur;
 
-	if (head->name == NULL)
-	{
-		head->name = name;
-		head->xy[0] = xy[0];
-		head->xy[1] = xy[1];
-	}
+	if (*head == NULL)
+		*head = create_roomlist_node(name, xy);
 	else
 	{
-		cur = head;
+		cur = *head;
 		while (cur->next != NULL)
 		{
 			if (ft_strequ(cur->name, name))

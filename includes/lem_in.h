@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/02 11:31:08 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/02 14:36:21 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_roomlist	*create_roomlist_node(char *name, int *xy);
 void		assign_ants(t_init *init);
 void		assign_rooms(t_init *init, size_t i);
 int			*validate_coordinates(t_init *init, size_t i);
-void		push_back_roomlist(t_roomlist *head, char *name, int *xy);
+void		push_back_roomlist(t_roomlist **head, char *name, int *xy);
 void		validate_start_and_end(t_init *init);
 t_graph		*create_graph(t_init *init);
 void		assign_links(t_graph *graph, t_init *init);

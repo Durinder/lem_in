@@ -6,12 +6,12 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:18:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/02 11:59:49 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/02 12:10:55 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
+/* 
 static void	print_depth(t_graph *graph)
 {
 	size_t	i;
@@ -22,7 +22,7 @@ static void	print_depth(t_graph *graph)
 		ft_printf("%s->depth(%ld)\n", graph->adjlists[i]->name, graph->adjlists[i]->depth);
 		i++;
 	}
-}
+} */
 
 static void	sort_connection_array(t_room *room)
 {
@@ -92,5 +92,5 @@ void	assign_depth(t_graph *graph)
 		ft_error_exit("Error: map cannot be solved.");
 	free_queue(q);
 	sort_depth(graph);
-	print_depth(graph);
-}
+/* 	print_depth(graph);
+ */}
