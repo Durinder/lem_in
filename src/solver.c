@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 13:24:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/02 14:58:05 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/04 11:23:51 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	move_ant(t_graph *graph, t_room *src, t_room *dst)
 	write(1, "-", 1);
 	ft_putstr(dst->name);
 	if (dst == graph->adjlists[graph->end])
-		dst->ant = 0;
+		dst->ant++;
 	else
 		dst->ant = src->ant;
 	if (src == graph->adjlists[graph->start] && src->ant + 1 <= graph->ants)
@@ -71,15 +71,15 @@ static t_room	*choose_room(t_graph *graph, t_room *room)
 				return (room->connection[i]);
 			break ;
 		}
-		if (room->connection[i]->ant == 0)
+		if (room->connection[i]->ant == 0 || room->connection[i] == \
+		graph->adjlists[graph->end])
 			return (room->connection[i]);
 		i++;
 	}
-	graph->ants += 0;
 	return (NULL);
 }
 
-static void	move_ants(t_graph *graph, t_queue *q)
+static void	move_ants(t_graph *graph, t_queue *q) //MAP25!!!
 {
 	t_room	*cur;
 	t_room	*dst;
