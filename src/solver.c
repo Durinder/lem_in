@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 13:24:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/04 11:23:51 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/04 14:29:19 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ static t_room	*choose_room(t_graph *graph, t_room *room)
 	i = 0;
 	while (i < room->connections)
 	{
+		if (room->connection[i] == graph->adjlists[graph->start])
+		{
+			i++;
+			continue ;
+		}
 		if (room->connection[i]->depth > room->depth)
 		{
 			if (room->connection[i]->ant == 0 && \
@@ -83,6 +88,7 @@ static void	move_ants(t_graph *graph, t_queue *q) //MAP25!!!
 {
 	t_room	*cur;
 	t_room	*dst;
+	size_t	WTF = 0;
 
 	enqueue(q, graph->adjlists[graph->start], 0);
 	while (!is_empty(q))
@@ -96,6 +102,8 @@ static void	move_ants(t_graph *graph, t_queue *q) //MAP25!!!
 				move_ant(graph, cur, dst);
 				if (dst != graph->adjlists[graph->end])
 					enqueue(q, dst, 0);
+				else
+					WTF++;
 			}
 			else
 			{
@@ -106,6 +114,7 @@ static void	move_ants(t_graph *graph, t_queue *q) //MAP25!!!
 		}
 	}
 	write(1, "\n", 1);
+	ft_putnbr(WTF);
 }
 
 void	solver(t_graph *graph)

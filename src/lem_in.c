@@ -6,13 +6,13 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:55 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/02 15:33:14 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/04 12:18:55 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-#include <stdio.h>
-#include <time.h>
+#include <stdio.h> // HUOM
+#include <time.h> // HUOM
 
 int	main(int argc, char **argv)
 {
