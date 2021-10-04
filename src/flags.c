@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 17:04:55 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/04 17:22:27 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/04 17:27:24 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_flags	*assign_flags(int argc, char **argv)
 			flags->depth = 1;
 		else
 		{
-			ft_printf("Usage: './lem [flags] < map\noptional flags:\n");
+			ft_printf("Usage: ./lem [flags] < map\noptional flags:\n");
 			ft_printf("	-d	show depth of rooms\n");
 			exit(0);
 		}
