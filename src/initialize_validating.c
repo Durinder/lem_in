@@ -6,28 +6,35 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 13:00:57 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/21 12:44:48 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/04 16:31:43 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
 //which == 1 is room1, 2 is room2
-t_room	*find_and_validate_room(t_graph *graph, t_init *init, size_t j,
+t_room	*find_and_validate_room(t_graph *graph, t_init *init, size_t dash,
 short which)
 {
 	size_t	i;
+	char	*substr;
 
 	i = 0;
 	if (which == 1)
 	{
-		while (!(ft_strnequ(init->line, graph->adjlists[i++]->name, j)))
+		substr = ft_strsub(init->line, 0, dash);
+		while (!ft_strequ(substr, graph->adjlists[i++]->name))
+		{
 			if (i == graph->total_rooms)
 				ft_error_exit("Error: room1 of link not found.");
+			free(substr);
+			substr = ft_strsub(init->line, 0, dash);
+		}
+		free(substr);
 	}
 	else
 	{
-		while (!(ft_strequ(init->line + j + 1, graph->adjlists[i++]->name)))
+		while (!(ft_strequ(init->line + dash + 1, graph->adjlists[i++]->name)))
 			if (i == graph->total_rooms)
 				ft_error_exit("Error: room2 of link not found.");
 	}

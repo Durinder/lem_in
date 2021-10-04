@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 13:24:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/04 14:29:19 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/04 15:52:12 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ static void	assign_whitespace(t_room *src)
 
 static void	move_ant(t_graph *graph, t_room *src, t_room *dst)
 {
+/* 	static char	*buffer;
+	char		*cur; */
+
 	assign_whitespace(src);
 	write(1, "L", 1);
 	ft_putnbr(src->ant);
@@ -62,7 +65,7 @@ static t_room	*choose_room(t_graph *graph, t_room *room)
 	i = 0;
 	while (i < room->connections)
 	{
-		if (room->connection[i] == graph->adjlists[graph->start])
+		if (room->connection[i] == graph->adjlists[graph->start]) // IS THIS NEEDED?
 		{
 			i++;
 			continue ;

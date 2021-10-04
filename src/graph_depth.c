@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:18:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/04 12:18:34 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/04 16:03:35 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	sort_depth(t_graph *graph)
 		i++;
 	}
 }
-
+/* 
 static void	set_depth(t_graph *graph, t_room *room, t_queue *q, size_t depth)
 {
 	t_room	*next;
@@ -68,7 +68,7 @@ static void	set_depth(t_graph *graph, t_room *room, t_queue *q, size_t depth)
 	if (room->depth > depth)
 		room->depth = depth;
 	i = 0;
-	if (room != graph->adjlists[graph->start])
+ 	if (room != graph->adjlists[graph->start])
 	{
 		while (i < room->connections)
 		{
@@ -84,15 +84,46 @@ static void	set_depth(t_graph *graph, t_room *room, t_queue *q, size_t depth)
 	if (next)
 		set_depth(graph, next, q, depth);
 }
+ */
+
+static void	set_depth(t_graph *graph, t_queue *q)
+{
+	t_room	*cur;
+	size_t	depth;
+	size_t	i;
+
+	enqueue(q, graph->adjlists[graph->end], 0);
+	ft_printf("WTF\n");
+	while (!is_empty(q))
+	{
+		cur = dequeue(q, &depth);
+		ft_printf("%s has %ld and %ld\n", cur->name, cur->depth, depth);
+		if (cur->depth > depth)
+			cur->depth = depth;
+		i = 0;
+		if (cur != graph->adjlists[graph->start])
+		{
+			while (i < cur->connections)
+			{
+				if (cur->connection[i]->visited == 0)
+				{
+					enqueue(q, cur->connection[i], depth + 1);
+					cur->connection[i]->visited = 1;
+				}
+				i++;
+			}
+		}
+	}
+}
 
 void	assign_depth(t_graph *graph)
 {
 	t_queue	*q;
 
 	q = create_queue();
-	set_depth(graph, graph->adjlists[graph->end], q, 0);
-	if (graph->adjlists[graph->start]->depth == ULONG_MAX)
-		ft_error_exit("Error: map cannot be solved.");
+	set_depth(graph, q);
+/* 	if (graph->adjlists[graph->start]->depth == ULONG_MAX)
+		ft_error_exit("Error: map cannot be solved."); */
 	free_queue(q);
 	sort_depth(graph);
 	print_depth(graph);
