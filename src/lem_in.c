@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:55 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/04 12:18:55 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/04 17:20:35 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,23 @@ int	main(int argc, char **argv)
 {
 	clock_t	start, init, end;
 	double	init_time, execution_time;
-	start = clock();
 	t_graph	*graph;
+	t_flags	*flags;
 
+	start = clock();
 	if (argc > 1)
-	{
-		ft_printf("Usage: './lem < %s'", argv[1]);
-		if (argc > 2) // FLAGS?
-			ft_printf(" Only 1 map at a time.");
-		ft_error_exit("");
-	}
-	graph = initialize();
+		flags = assign_flags(argc, argv);
+	else
+		flags = NULL;
+	graph = initialize(flags);
 	init = clock();
 //	ft_printf("exec time:%d\n", execution_time);
 	solver(graph);
+	free_graph(graph);
+	free(flags);
 	end = clock();
 	init_time = ((double)(init - start))/CLOCKS_PER_SEC;
 	execution_time = ((double)(end - init))/CLOCKS_PER_SEC;
 	ft_printf("init time:%f\nsolver time:%f\n", init_time, execution_time);
-	free_graph(graph);
 	return (0);
 }

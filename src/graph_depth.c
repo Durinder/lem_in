@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:18:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/04 16:03:35 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/04 17:21:04 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ static void	print_depth(t_graph *graph)
 {
 	size_t	i;
 
+	write(1, "\n", 1);
 	i = 0;
 	while (i < graph->total_rooms)
 	{
-		ft_printf("%s->depth(%ld)\n", graph->adjlists[i]->name, graph->adjlists[i]->depth);
+		ft_printf("%s->depth(%ld)\n", graph->adjlists[i]->name, \
+		graph->adjlists[i]->depth);
 		i++;
 	}
 }
@@ -59,32 +61,6 @@ static void	sort_depth(t_graph *graph)
 		i++;
 	}
 }
-/* 
-static void	set_depth(t_graph *graph, t_room *room, t_queue *q, size_t depth)
-{
-	t_room	*next;
-	size_t	i;
-
-	if (room->depth > depth)
-		room->depth = depth;
-	i = 0;
- 	if (room != graph->adjlists[graph->start])
-	{
-		while (i < room->connections)
-		{
-			if (room->connection[i]->visited < room->connection[i]->connections)
-			{
-				enqueue(q, room->connection[i], depth + 1);
-				room->connection[i]->visited++;
-			}
-			i++;
-		}
-	}
-	next = dequeue(q, &depth);
-	if (next)
-		set_depth(graph, next, q, depth);
-}
- */
 
 static void	set_depth(t_graph *graph, t_queue *q)
 {
@@ -93,11 +69,9 @@ static void	set_depth(t_graph *graph, t_queue *q)
 	size_t	i;
 
 	enqueue(q, graph->adjlists[graph->end], 0);
-	ft_printf("WTF\n");
 	while (!is_empty(q))
 	{
 		cur = dequeue(q, &depth);
-		ft_printf("%s has %ld and %ld\n", cur->name, cur->depth, depth);
 		if (cur->depth > depth)
 			cur->depth = depth;
 		i = 0;
@@ -116,15 +90,18 @@ static void	set_depth(t_graph *graph, t_queue *q)
 	}
 }
 
-void	assign_depth(t_graph *graph)
+void	assign_depth(t_graph *graph, t_flags *flags)
 {
 	t_queue	*q;
 
-	q = create_queue();
-	set_depth(graph, q);
-/* 	if (graph->adjlists[graph->start]->depth == ULONG_MAX)
-		ft_error_exit("Error: map cannot be solved."); */
+	set_depth(graph, q = create_queue());
+	if (graph->adjlists[graph->start]->depth == ULONG_MAX)
+		ft_error_exit("Error: map cannot be solved.");
 	free_queue(q);
 	sort_depth(graph);
-	print_depth(graph);
+	if (flags)
+	{
+		if (flags->depth)
+			print_depth(graph);
+	}
 }

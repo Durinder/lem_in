@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/02 14:36:21 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/04 17:19:18 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # define GRAPH_START_SIZE 10
 
 //type == 0 is start, type == 1 is regular room, type == 2 is end
+
+typedef struct s_flags {
+	short	depth;
+}	t_flags;
 
 typedef struct s_queue_node {
 	struct s_room		*room;
@@ -68,7 +72,7 @@ typedef struct s_roomlist {
 	struct s_roomlist	*next;
 }	t_roomlist;
 
-t_graph		*initialize(void);
+t_graph		*initialize(t_flags *flags);
 t_roomlist	*create_roomlist_node(char *name, int *xy);
 void		assign_ants(t_init *init);
 void		assign_rooms(t_init *init, size_t i);
@@ -82,11 +86,12 @@ t_room		*find_and_validate_room(t_graph *graph, t_init *init, size_t j,
 void		add_edge(t_room *room1, t_room *room2);
 void		free_graph(t_graph *graph);
 void		free_init(t_init *init);
-void		assign_depth(t_graph *graph);
+void		assign_depth(t_graph *graph, t_flags *flags);
 t_queue		*create_queue(void);
 void		enqueue(t_queue *queue, t_room *room, size_t depth);
 t_room		*dequeue(t_queue *queue, size_t *depth);
 int			is_empty(t_queue *queue);
 void		solver(t_graph *graph);
 void		free_queue(t_queue *queue);
+t_flags		*assign_flags(int argc, char **argv);
 #endif
