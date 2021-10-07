@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:18:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/04 17:21:04 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/07 12:55:43 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	print_depth(t_graph *graph)
 	i = 0;
 	while (i < graph->total_rooms)
 	{
-		ft_printf("%s->depth(%ld)\n", graph->adjlists[i]->name, \
-		graph->adjlists[i]->depth);
+		ft_printf("%s->depth(%ld), %ld\n", graph->adjlists[i]->name, \
+		graph->adjlists[i]->depth, graph->adjlists[i]->visited);
 		i++;
 	}
 }
@@ -69,6 +69,7 @@ static void	set_depth(t_graph *graph, t_queue *q)
 	size_t	i;
 
 	enqueue(q, graph->adjlists[graph->end], 0);
+	graph->adjlists[graph->end]->visited = 1;
 	while (!is_empty(q))
 	{
 		cur = dequeue(q, &depth);
