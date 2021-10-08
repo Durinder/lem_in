@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 16:21:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/10 13:03:32 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 09:38:50 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ char	*ft_itoa_base_ull(unsigned long long n, short base);
 char	*ft_itoa_float(long double n);
 char	*ft_float_round(const char *src, int precision);
 void	ft_error_exit(char *reason);
-long	ft_atoi_l(const char *str);
+long	ft_atoi_ll(const char *str);
 void	*ft_malloc_safe(size_t size);
 #endif

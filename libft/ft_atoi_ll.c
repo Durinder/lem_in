@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_l.c                                        :+:      :+:    :+:   */
+/*   ft_atoi_ll.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 15:38:53 by vhallama          #+#    #+#             */
-/*   Updated: 2021/06/28 15:11:48 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 09:36:57 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long	ft_atoi_l(const char *str)
+long long	ft_atoi_ll(const char *str)
 {
-	long	result;
-	char	sign;
-	size_t	i;
+	long long	result;
+	long long	sign;
+	size_t		i;
 
 	result = 0;
 	sign = 1;
