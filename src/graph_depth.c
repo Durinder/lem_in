@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:18:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 08:56:25 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 09:23:34 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	print_depth(t_graph *graph)
 {
-	size_t	i;
+	int	i;
 
 	write(1, "\n", 1);
 	i = 0;
@@ -29,8 +29,8 @@ static void	print_depth(t_graph *graph)
 static void	sort_connection_array(t_room *room)
 {
 	t_room	*tmp;
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < room->connections)
@@ -52,7 +52,7 @@ static void	sort_connection_array(t_room *room)
 
 static void	sort_depth(t_graph *graph)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < graph->total_rooms)
@@ -65,8 +65,8 @@ static void	sort_depth(t_graph *graph)
 static void	set_room_depth(t_graph *graph, t_queue *q)
 {
 	t_room	*cur;
-	size_t	depth;
-	size_t	i;
+	int	depth;
+	int	i;
 
 	enqueue(q, graph->adjlists[graph->end], 0);
 	graph->adjlists[graph->end]->visited = 1;
