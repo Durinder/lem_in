@@ -6,20 +6,20 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:34:26 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/21 13:46:40 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 09:23:34 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int	is_empty(t_queue *queue)
+char	is_empty(t_queue *queue)
 {
 	if (queue->front == NULL)
 		return (1);
 	return (0);
 }
 
-static t_queue_node	*create_queue_node(t_room *room, size_t depth)
+static t_queue_node	*create_queue_node(t_room *room, int depth)
 {
 	t_queue_node	*new;
 
@@ -30,7 +30,7 @@ static t_queue_node	*create_queue_node(t_room *room, size_t depth)
 	return (new);
 }
 
-t_room	*dequeue(t_queue *queue, size_t *depth)
+t_room	*dequeue(t_queue *queue, int *depth)
 {
 	t_queue_node	*tmp;
 	t_room			*ptr;
@@ -46,7 +46,7 @@ t_room	*dequeue(t_queue *queue, size_t *depth)
 	return (ptr);
 }
 
-void	enqueue(t_queue *queue, t_room *room, size_t depth)
+void	enqueue(t_queue *queue, t_room *room, int depth)
 {
 	t_queue_node	*new;
 

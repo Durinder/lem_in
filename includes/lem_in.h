@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 08:54:45 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 09:23:34 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_flags {
 
 typedef struct s_queue_node {
 	struct s_room		*room;
-	size_t				depth;
+	int				depth;
 	struct s_queue_node	*next;
 }	t_queue_node;
 
@@ -36,32 +36,32 @@ typedef struct s_queue {
 
 typedef struct s_room {
 	char			*name;
-	size_t			ant;
-	size_t			connections;
-	size_t			depth;
-	size_t			visited; // POISTA?
+	int				ant;
+	int				connections;
+//	int			depth;
+//	int			visited; // POISTA?
 	struct s_room	**connection;
 }	t_room;
 
 typedef struct s_graph {
-	size_t			ants;
-	size_t			total_rooms;
-	size_t			start;
-	size_t			end;
+	int				ants;
+	int				total_rooms;
+	int				start;
+	int				end;
 	struct s_room	**adjlists;
 }	t_graph;
 
 typedef struct s_init {
 	struct s_roomlist	*head;
 	char				*line;
-	size_t				ants;
-	size_t				total_rooms;
-	size_t				start;
-	size_t				end;
+	int					ants;
+	int					total_rooms;
+	int					start;
+	int					end;
 	int					ret;
-	short				start_check;
-	short				end_check;
-	short				comment_check;
+	char				start_check;
+	char				end_check;
+	char				comment_check;
 }	t_init;
 
 typedef struct s_roomlist {
@@ -73,22 +73,22 @@ typedef struct s_roomlist {
 t_graph		*initialize(t_flags *flags);
 t_roomlist	*create_roomlist_node(char *name, int *xy);
 void		assign_ants(t_init *init);
-void		assign_rooms(t_init *init, size_t i);
-int			*validate_coordinates(t_init *init, size_t i);
+void		assign_rooms(t_init *init, int i);
+int			*validate_coordinates(t_init *init, int i);
 void		push_back_roomlist(t_roomlist **head, char *name, int *xy);
 void		validate_start_and_end(t_init *init);
 t_graph		*create_graph(t_init *init);
 void		assign_links(t_graph *graph, t_init *init);
-t_room		*find_and_validate_room(t_graph *graph, t_init *init, size_t j,
+t_room		*find_and_validate_room(t_graph *graph, t_init *init, int j,
 				short which);
 void		add_edge(t_room *room1, t_room *room2);
 void		free_graph(t_graph *graph);
 void		free_init(t_init *init);
-void		assign_depth(t_graph *graph, t_flags *flags);
+//void		assign_depth(t_graph *graph, t_flags *flags); // HALOO
 t_queue		*create_queue(void);
-void		enqueue(t_queue *queue, t_room *room, size_t depth);
-t_room		*dequeue(t_queue *queue, size_t *depth);
-int			is_empty(t_queue *queue);
+void		enqueue(t_queue *queue, t_room *room, int depth);
+t_room		*dequeue(t_queue *queue, int *depth);
+char		is_empty(t_queue *queue);
 void		solver(t_graph *graph);
 void		free_queue(t_queue *queue);
 t_flags		*assign_flags(int argc, char **argv);

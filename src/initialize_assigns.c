@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/04 16:10:07 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 09:56:21 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	assign_links(t_graph *graph, t_init *init)
 {
 	t_room	*room1;
 	t_room	*room2;
-	size_t	i;
+	int	i;
 
 	while (init->ret > 0)
 	{
@@ -66,7 +66,7 @@ void	assign_links(t_graph *graph, t_init *init)
 	}
 }
 
-void	assign_rooms(t_init *init, size_t i)
+void	assign_rooms(t_init *init, int i)
 {
 	int	*xy;
 
@@ -97,7 +97,7 @@ void	assign_rooms(t_init *init, size_t i)
 
 void	assign_ants(t_init *init)
 {
-	size_t	i;
+	int	i;
 
 	init->ret = get_next_line(0, &init->line);
 	if (init->ret == -1)
@@ -105,18 +105,16 @@ void	assign_ants(t_init *init)
 	else if (init->ret == 0)
 		ft_error_exit("Error: empty input.");
 	i = 0;
-	if (init->line[i] == '+')
-		i++;
 	while (init->line[i] != '\0')
 	{
 		if (ft_isdigit(init->line[i]) == 0)
 			ft_error_exit("Error: number_of_ants invalid.");
 		i++;
 	}
-	init->ants = (size_t)ft_atoi_l(init->line);
+	if (ft_atoi_ll(init->line) > INT_MAX)
+		ft_error_exit("Error: over INT_MAX ants.");
+	init->ants = ft_atoi(init->line);
 	if (init->ants < 1)
 		ft_error_exit("Error: no ants.");
-	else if (init->ants > UINT_MAX)
-		ft_error_exit("Error: over UINT_MAX ants.");
 	ft_putendl(init->line);
 }

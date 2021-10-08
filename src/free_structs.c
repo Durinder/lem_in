@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 15:14:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/29 17:01:48 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 09:23:34 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	free_init(t_init *init)
 
 void	free_graph(t_graph *graph)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < graph->total_rooms)

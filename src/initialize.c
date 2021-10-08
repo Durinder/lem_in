@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 08:44:26 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 10:00:04 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 /* static void	print2(t_graph *graph)
 {
-  	size_t	i = 0;
-	size_t	j;
+  	int	i = 0;
+	int	j;
 	ft_printf("\n");
 	while (i < graph->total_rooms)
 	{
@@ -37,8 +37,8 @@
 /* 
 static void	print(t_graph *graph)
 {
-  	size_t	i = 0;
-	size_t	j;
+  	int	i = 0;
+	int	j;
 	ft_printf("\n");
 	while (i < graph->total_rooms)
 	{
@@ -84,6 +84,8 @@ t_graph	*initialize(t_flags *flags)
 	free_init(init);
 //	print(graph);
 //	ft_putchar('\n');
-	assign_depth(graph, flags);
+//	assign_depth(graph, flags);
+	if (flags)
+		ft_putstr(""); // POISTA
 	return (graph);
 }
