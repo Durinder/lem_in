@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/09/29 09:57:05 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 08:55:14 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ static t_room	*create_room_node(char *name, size_t i, t_init *init)
 	new->connections = 0;
 	new->visited = 0;
 	new->depth = ULONG_MAX;
-	new->done = 0;
-	new->in_queue = 0;
 	new->connection = NULL;
 	return (new);
 }

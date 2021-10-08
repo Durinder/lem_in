@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:18:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/07 12:55:43 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 08:56:25 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	print_depth(t_graph *graph)
 	while (i < graph->total_rooms)
 	{
 		ft_printf("%s->depth(%ld), %ld\n", graph->adjlists[i]->name, \
-		graph->adjlists[i]->depth, graph->adjlists[i]->visited);
+		graph->adjlists[i]->depth);
 		i++;
 	}
 }
@@ -62,7 +62,7 @@ static void	sort_depth(t_graph *graph)
 	}
 }
 
-static void	set_depth(t_graph *graph, t_queue *q)
+static void	set_room_depth(t_graph *graph, t_queue *q)
 {
 	t_room	*cur;
 	size_t	depth;
@@ -95,14 +95,15 @@ void	assign_depth(t_graph *graph, t_flags *flags)
 {
 	t_queue	*q;
 
-	set_depth(graph, q = create_queue());
+	set_room_depth(graph, q = create_queue());
+	free_queue(q);
 	if (graph->adjlists[graph->start]->depth == ULONG_MAX)
 		ft_error_exit("Error: map cannot be solved.");
-	free_queue(q);
 	sort_depth(graph);
 	if (flags)
 	{
 		if (flags->depth)
 			print_depth(graph);
 	}
+//	create_edges(graph);
 }

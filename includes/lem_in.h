@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/04 17:19:18 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 08:54:45 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ typedef struct s_room {
 	size_t			ant;
 	size_t			connections;
 	size_t			depth;
-	size_t			visited;
-	short			done;
-	short			in_queue;
+	size_t			visited; // POISTA?
 	struct s_room	**connection;
 }	t_room;
 

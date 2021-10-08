@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 13:24:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/04 15:52:12 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 08:46:14 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,9 @@ void	solver(t_graph *graph)
 {
 	t_queue		*q;
 
+/* 	ft_printf("flow: %d\n", edmonds_karp(graph, graph->adjlists[graph->start], 
+	graph->adjlists[graph->end], q = create_queue())); */
+//	exit(0);
 	move_ants(graph, q = create_queue());
 	free_queue(q);
 }
