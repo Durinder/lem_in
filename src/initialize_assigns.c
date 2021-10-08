@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 09:56:21 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 10:05:08 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	assign_links(t_graph *graph, t_init *init)
 {
 	t_room	*room1;
 	t_room	*room2;
-	int	i;
+	int		i;
 
 	while (init->ret > 0)
 	{

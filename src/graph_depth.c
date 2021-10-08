@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:18:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 09:23:34 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 10:06:45 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static void	print_depth(t_graph *graph)
 static void	sort_connection_array(t_room *room)
 {
 	t_room	*tmp;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (i < room->connections)
@@ -65,8 +65,8 @@ static void	sort_depth(t_graph *graph)
 static void	set_room_depth(t_graph *graph, t_queue *q)
 {
 	t_room	*cur;
-	int	depth;
-	int	i;
+	int		depth;
+	int		i;
 
 	enqueue(q, graph->adjlists[graph->end], 0);
 	graph->adjlists[graph->end]->visited = 1;
@@ -97,7 +97,7 @@ void	assign_depth(t_graph *graph, t_flags *flags)
 
 	set_room_depth(graph, q = create_queue());
 	free_queue(q);
-	if (graph->adjlists[graph->start]->depth == ULONG_MAX)
+	if (graph->adjlists[graph->start]->depth == INT_MAX)
 		ft_error_exit("Error: map cannot be solved.");
 	sort_depth(graph);
 	if (flags)

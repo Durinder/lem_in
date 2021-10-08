@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 09:23:34 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 10:07:47 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	realloc_connections(t_room *room)
 {
 	t_room	**new;
-	int	i;
+	int		i;
 
 	new = ft_malloc_safe(sizeof(t_room *) * room->connections);
 	if (room->connections > 1)
@@ -52,8 +52,8 @@ static t_room	*create_room_node(char *name, int i, t_init *init)
 	else
 		new->ant = 0;
 	new->connections = 0;
-/* 	new->visited = 0;
-	new->depth = ULONG_MAX; */
+	new->visited = 0;
+	new->depth = INT_MAX;
 	new->connection = NULL;
 	return (new);
 }
@@ -61,7 +61,7 @@ static t_room	*create_room_node(char *name, int i, t_init *init)
 static void	create_rooms(t_graph *graph, t_init *init)
 {
 	t_roomlist	*cur;
-	int		i;
+	int			i;
 
 	i = 0;
 	cur = init->head;
