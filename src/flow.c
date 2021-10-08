@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 09:57:35 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 15:28:43 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	edmonds_karp(t_graph *graph, t_room *s, t_room *t, t_queue *q)
 	{
 		cur = dequeue(q, NULL);
 		i = 0;
-		while (i < cur->connections)
+		while (i < cur->links)
 		{
-			if (pred[i].t == NULL && cur->connection[i] != s && \
+			if (pred[i].t == NULL && cur->link[i] != s && \
 			!cur->edge_flow[i])
 			{
-				pred[i].t = cur->connection[i];
-				enqueue(q, cur->connection[i], 0);
+				pred[i].t = cur->link[i];
+				enqueue(q, cur->link[i], 0);
 			}
 			if (pred[i].t == t)
 			{
@@ -58,8 +58,58 @@ int	edmonds_karp(t_graph *graph, t_room *s, t_room *t, t_queue *q)
 }
  */
 
-/* int	max_flow(t_graph *graph, t_flags *flags)
+int	bfs(t_graph *g, t_flow **flow_arr, int **parent)
 {
+	int		*visited;
+	t_queue	*q;
+	t_room	*cur;
+	int		i;
 
+	visited = ft_malloc_safe(sizeof(int) * g->total_rooms);
+	q = create_queue();
+	enqueue(q, g->list[g->start]);
+	visited[(g->list[g->start] - g->list[0]) / sizeof(t_room *)] = 1;
+	*parent[(g->list[g->start] - g->list[0]) / sizeof(t_room *)] = -1;
+	while (!is_empty(q))
+	{
+		cur = dequeue(q);
+		i = 0;
+		while (i++ < cur->links)
+		{
+			if (!visited[(cur->*link[i] - g->list[0]) / sizeof(t_room *)] && \
+			flow_arr[(cur->link[i] - g->list[0]) / sizeof(t_room *)]->from == 0)
+			{
+				*parent[(cur->link[i] - g->list[0]) / sizeof(t_room *)] = \
+				(g->list[0] - cur) / sizeof(t_room *);
+				if (cur->link[i] == g->list[g->end])
+				{
+					free(visited);
+					return (1);
+				}
+				enqueue(q, cur->link[i]);
+				visited[(cur->link[i] - g->list[0]) / sizeof(t_room *)] = 1;
+			}
+		}
+	}
+	free(visited);
+	return (0);
 }
- */
+
+int	max_flow(t_graph *graph, t_flags *flags)
+{
+	t_flow	*flow_arr;
+	int		*parent;
+	int		flow;
+
+	flow_arr = ft_malloc_safe(sizeof(t_flow) * graph->total_rooms);
+	parent = ft_malloc_safe(sizeof(t_room) * graph->total_rooms);
+	flow = 0;
+	while (bfs(graph, &flow_arr, &parent))
+	{
+		ft_putendl("loop");
+	}
+	if (flags)
+		ft_printf("redundant.\n");
+	free(flow_arr);
+	return (flow);
+}

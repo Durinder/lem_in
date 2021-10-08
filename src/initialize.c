@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 10:09:48 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 12:59:08 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,44 +20,48 @@
 	while (i < graph->total_rooms)
 	{
 		j = 0;
-		while (j < graph->adjlists[i]->child_amount)
+		while (j < graph->list[i]->child_amount)
 		{
-			ft_printf("%s(%ld)-child>%s\n", graph->adjlists[i]->name, j, graph->adjlists[i]->child[j]->name);
+			ft_printf("%s(%ld)-child>%s\n", graph->list[i]->name, j, graph->list[i]->child[j]->name);
 			j++;
 		}
 		j = 0;
-		while (j < graph->adjlists[i]->parent_amount)
+		while (j < graph->list[i]->parent_amount)
 		{
-			ft_printf("%s(%ld)-parent>%s\n", graph->adjlists[i]->name, j, graph->adjlists[i]->parent[j]->name);
+			ft_printf("%s(%ld)-parent>%s\n", graph->list[i]->name, j, graph->list[i]->parent[j]->name);
 			j++;
 		}		
 		i++;
 	}
 } */
-/* 
+
 static void	print(t_graph *graph)
 {
-  	int	i = 0;
+	int	i;
 	int	j;
-	ft_printf("\n");
+
+	i = 0;
+	ft_putendl("graph:");
 	while (i < graph->total_rooms)
 	{
 		j = 0;
-		while (j < graph->adjlists[i]->connections)
+		while (j < graph->list[i]->links)
 		{
-			ft_printf("%s(%ld)->%s\n", graph->adjlists[i]->name, j, graph->adjlists[i]->connection[j]->name);
+			ft_printf("%s(%ld)->%s\n", graph->list[i]->name, \
+			j, graph->list[i]->link[j]->name);
 			j++;
 		}
 		i++;
 	}
+	write(1, "\n", 1);
 }
- */
+
 static t_init	*get_t_init(void)
 {
 	t_init	*init;
 
 	init = ft_malloc_safe(sizeof(t_init));
-	init->head = NULL;
+/* 	init->head = NULL;
 	init->line = NULL;
 	init->ants = 0;
 	init->ret = 0;
@@ -66,7 +70,7 @@ static t_init	*get_t_init(void)
 	init->start = 0;
 	init->end = 0;
 	init->total_rooms = 0;
-	init->comment_check = 0;
+	init->comment_check = 0; */
 	return (init);
 }
 
@@ -82,7 +86,9 @@ t_graph	*initialize(t_flags *flags)
 	graph = create_graph(init);
 	assign_links(graph, init);
 	free_init(init);
-//	print(graph);
+	write(1, "\n", 1);
+	if (flags->graph)
+		print(graph);
 //	ft_putchar('\n');
 //	assign_depth(graph, flags);
 	if (flags)

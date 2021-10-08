@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 15:14:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 09:23:34 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 12:59:08 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void	free_graph(t_graph *graph)
 	i = 0;
 	while (i < graph->total_rooms)
 	{
-		free(graph->adjlists[i]->name);
-		free(graph->adjlists[i]->connection);
-		free(graph->adjlists[i]);
+		free(graph->list[i]->name);
+		free(graph->list[i]->link);
+		free(graph->list[i]);
 		i++;
 	}
-	free(graph->adjlists);
+	free(graph->list);
 	free(graph);
 }

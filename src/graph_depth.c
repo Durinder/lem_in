@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:18:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 10:06:45 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 12:59:08 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,29 @@ static void	print_depth(t_graph *graph)
 	i = 0;
 	while (i < graph->total_rooms)
 	{
-		ft_printf("%s->depth(%ld), %ld\n", graph->adjlists[i]->name, \
-		graph->adjlists[i]->depth);
+		ft_printf("%s->depth(%ld), %ld\n", graph->list[i]->name, \
+		graph->list[i]->depth);
 		i++;
 	}
 }
 
-static void	sort_connection_array(t_room *room)
+static void	sort_link_array(t_room *room)
 {
 	t_room	*tmp;
 	int		i;
 	int		j;
 
 	i = 0;
-	while (i < room->connections)
+	while (i < room->links)
 	{
 		j = i + 1;
-		while (j < room->connections)
+		while (j < room->links)
 		{
-			if (room->connection[i]->depth > room->connection[j]->depth)
+			if (room->link[i]->depth > room->link[j]->depth)
 			{
-				tmp = room->connection[i];
-				room->connection[i] = room->connection[j];
-				room->connection[j] = tmp;
+				tmp = room->link[i];
+				room->link[i] = room->link[j];
+				room->link[j] = tmp;
 			}
 			j++;
 		}
@@ -57,7 +57,7 @@ static void	sort_depth(t_graph *graph)
 	i = 0;
 	while (i < graph->total_rooms)
 	{
-		sort_connection_array(graph->adjlists[i]);
+		sort_link_array(graph->list[i]);
 		i++;
 	}
 }
@@ -68,22 +68,22 @@ static void	set_room_depth(t_graph *graph, t_queue *q)
 	int		depth;
 	int		i;
 
-	enqueue(q, graph->adjlists[graph->end], 0);
-	graph->adjlists[graph->end]->visited = 1;
+	enqueue(q, graph->list[graph->end], 0);
+	graph->list[graph->end]->visited = 1;
 	while (!is_empty(q))
 	{
 		cur = dequeue(q, &depth);
 		if (cur->depth > depth)
 			cur->depth = depth;
 		i = 0;
-		if (cur != graph->adjlists[graph->start])
+		if (cur != graph->list[graph->start])
 		{
-			while (i < cur->connections)
+			while (i < cur->links)
 			{
-				if (cur->connection[i]->visited == 0)
+				if (cur->link[i]->visited == 0)
 				{
-					enqueue(q, cur->connection[i], depth + 1);
-					cur->connection[i]->visited = 1;
+					enqueue(q, cur->link[i], depth + 1);
+					cur->link[i]->visited = 1;
 				}
 				i++;
 			}
@@ -97,7 +97,7 @@ void	assign_depth(t_graph *graph, t_flags *flags)
 
 	set_room_depth(graph, q = create_queue());
 	free_queue(q);
-	if (graph->adjlists[graph->start]->depth == INT_MAX)
+	if (graph->list[graph->start]->depth == INT_MAX)
 		ft_error_exit("Error: map cannot be solved.");
 	sort_depth(graph);
 	if (flags)

@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 10:09:12 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 13:01:35 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,14 @@
 //type == 0 is start, type == 1 is regular room, type == 2 is end
 
 typedef struct s_flags {
-	short	depth;
+	char	graph;
+	char	depth;
 }	t_flags;
+
+typedef struct s_flow {
+	int	from;
+	int	to;
+}	t_flow;
 
 typedef struct s_queue_node {
 	struct s_room		*room;
@@ -37,10 +43,10 @@ typedef struct s_queue {
 typedef struct s_room {
 	char			*name;
 	int				ant;
-	int				connections;
-/* 	int				depth;
-	int				visited; // POISTA? */
-	struct s_room	**connection;
+	int				links;
+// 	int				depth;
+//	int				visited;
+	struct s_room	**link;
 }	t_room;
 
 typedef struct s_graph {
@@ -48,7 +54,7 @@ typedef struct s_graph {
 	int				total_rooms;
 	int				start;
 	int				end;
-	struct s_room	**adjlists;
+	struct s_room	**list;
 }	t_graph;
 
 typedef struct s_init {
@@ -86,10 +92,11 @@ void		free_graph(t_graph *graph);
 void		free_init(t_init *init);
 void		assign_depth(t_graph *graph, t_flags *flags); // HALOO
 t_queue		*create_queue(void);
-void		enqueue(t_queue *queue, t_room *room, int depth);
-t_room		*dequeue(t_queue *queue, int *depth);
+void		enqueue(t_queue *queue, t_room *room);
+t_room		*dequeue(t_queue *queue);
 char		is_empty(t_queue *queue);
 void		solver(t_graph *graph);
 void		free_queue(t_queue *queue);
 t_flags		*assign_flags(int argc, char **argv);
+int			max_flow(t_graph *graph, t_flags *flags);
 #endif

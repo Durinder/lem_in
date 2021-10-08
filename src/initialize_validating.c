@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 13:00:57 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 09:51:06 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 12:58:04 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ short which)
 	if (which == 1)
 	{
 		substr = ft_strsub(init->line, 0, dash);
-		while (!ft_strequ(substr, graph->adjlists[i++]->name))
+		while (!ft_strequ(substr, graph->list[i++]->name))
 		{
 			if (i == graph->total_rooms)
 				ft_error_exit("Error: room1 of link not found.");
@@ -34,11 +34,11 @@ short which)
 	}
 	else
 	{
-		while (!(ft_strequ(init->line + dash + 1, graph->adjlists[i++]->name)))
+		while (!(ft_strequ(init->line + dash + 1, graph->list[i++]->name)))
 			if (i == graph->total_rooms)
 				ft_error_exit("Error: room2 of link not found.");
 	}
-	return (graph->adjlists[--i]);
+	return (graph->list[--i]);
 }
 
 void	validate_start_and_end(t_init *init)

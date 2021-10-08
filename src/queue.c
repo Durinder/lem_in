@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:34:26 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 09:23:34 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 11:00:36 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ char	is_empty(t_queue *queue)
 	return (0);
 }
 
-static t_queue_node	*create_queue_node(t_room *room, int depth)
+static t_queue_node	*create_queue_node(t_room *room)
 {
 	t_queue_node	*new;
 
 	new = ft_malloc_safe(sizeof(t_queue_node));
 	new->room = room;
-	new->depth = depth;
+//	new->depth = depth;
 	new->next = NULL;
 	return (new);
 }
 
-t_room	*dequeue(t_queue *queue, int *depth)
+t_room	*dequeue(t_queue *queue)
 {
 	t_queue_node	*tmp;
 	t_room			*ptr;
@@ -40,17 +40,17 @@ t_room	*dequeue(t_queue *queue, int *depth)
 	ptr = queue->front->room;
 	tmp = queue->front;
 	queue->front = queue->front->next;
-	if (depth)
-		*depth = tmp->depth;
+//	if (depth)
+//		*depth = tmp->depth;
 	free(tmp);
 	return (ptr);
 }
 
-void	enqueue(t_queue *queue, t_room *room, int depth)
+void	enqueue(t_queue *queue, t_room *room)
 {
 	t_queue_node	*new;
 
-	new = create_queue_node(room, depth);
+	new = create_queue_node(room);//, depth);
 	if (queue->front == NULL)
 	{
 		queue->front = new;

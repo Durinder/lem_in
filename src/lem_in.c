@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:55 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 10:09:06 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 15:16:43 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 	init = clock();
 //	ft_printf("exec time:%d\n", execution_time);
 //	solver(graph);
+	max_flow(graph, flags);
 	free_graph(graph);
 	free(flags);
 	end = clock();
