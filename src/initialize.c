@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 10:06:04 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 10:09:48 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ t_graph	*initialize(t_flags *flags)
 	free_init(init);
 //	print(graph);
 //	ft_putchar('\n');
-	assign_depth(graph, flags);
-/* 	if (flags)
-		ft_putstr(""); // POISTA */
+//	assign_depth(graph, flags);
+	if (flags)
+		ft_putstr(""); // POISTA
 	return (graph);
 }

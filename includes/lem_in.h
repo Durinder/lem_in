@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 10:04:20 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 10:09:12 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ typedef struct s_room {
 	char			*name;
 	int				ant;
 	int				connections;
-	int				depth;
-	int				visited; // POISTA?
+/* 	int				depth;
+	int				visited; // POISTA? */
 	struct s_room	**connection;
 }	t_room;
 
