@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/11 15:16:01 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/11 15:36:50 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,14 @@ t_room		*find_and_validate_room(t_graph *graph, t_init *init, int j,
 void		add_edge(t_room *room1, t_room *room2);
 void		free_graph(t_graph *graph);
 void		free_init(t_init *init);
-void		assign_depth(t_graph *graph, t_flags *flags); // HALOO
+//void		assign_depth(t_graph *graph, t_flags *flags); // HALOO
 t_queue		*create_queue(void);
 void		enqueue(t_queue *queue, t_room *room);
 t_room		*dequeue(t_queue *queue);
 char		is_empty(t_queue *queue);
-void		solver(t_graph *graph);
+//void		solver(t_graph *graph);
 void		free_queue(t_queue *queue);
 t_flags		*assign_flags(int argc, char **argv);
 int			max_flow(t_graph *graph, t_flags *flags);
+t_graph		*copy_graph(t_graph *src);
 #endif

@@ -6,34 +6,11 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/11 15:18:44 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/11 15:23:57 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-static void	set_depth_for_paths(t_graph *graph)
-{
-	t_room	*cur;
-	int		depth;
-	int		i;
-
-	i = 0;
-	while (i < graph->list[graph->end]->links)
-	{
-		if (graph->list[graph->end]->link[i]->output)
-		{
-			cur = graph->list[graph->end]->link[i];
-			depth = 1;
-			while (cur != graph->list[graph->start])
-			{
-				cur->depth = depth++;
-				cur = cur->input;
-			}
-		}
-		i++;
-	}
-}
 
 static void	print_flow(t_room *start)
 {
@@ -54,6 +31,29 @@ static void	print_flow(t_room *start)
 					ft_printf("->");
 			}
 			write(1, "\n", 1);
+		}
+		i++;
+	}
+}
+
+static void	set_depth_for_paths(t_graph *graph)
+{
+	t_room	*cur;
+	int		depth;
+	int		i;
+
+	i = 0;
+	while (i < graph->list[graph->end]->links)
+	{
+		if (graph->list[graph->end]->link[i]->output)
+		{
+			cur = graph->list[graph->end]->link[i];
+			depth = 1;
+			while (cur != graph->list[graph->start])
+			{
+				cur->depth = depth++;
+				cur = cur->input;
+			}
 		}
 		i++;
 	}
