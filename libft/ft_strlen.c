@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 16:44:52 by vhallama          #+#    #+#             */
-/*   Updated: 2019/10/15 17:09:33 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/11 12:34:27 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (s)
+	{
+		while (s[i] != '\0')
+			i++;
+		return (i);
+	}
+	return (0);
 }

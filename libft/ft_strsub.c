@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:20:07 by vhallama          #+#    #+#             */
-/*   Updated: 2019/10/30 13:34:31 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/11 12:37:02 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,15 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	char	*substring;
 	size_t	i;
+	int		j;
 
 	if (s)
 	{
+		j = ft_strlen(s) - start;
+		if (j < (int)len && j < 0)
+			return (NULL);
+		else if (j < (int)len)
+			len = j;
 		substring = (char *)malloc(len + 1);
 		if (substring == NULL)
 			return (NULL);

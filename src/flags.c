@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 17:04:55 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 10:30:35 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/08 18:21:23 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_flags	*assign_flags(int argc, char **argv)
 			flags->depth = 1;
 		else if (ft_strequ(argv[i], "-g"))
 			flags->graph = 1;
+		else if (ft_strequ(argv[i], "-f"))
+			flags->flow = 1;
 		else
 		{
 			ft_printf("Usage: ./lem [flags] < map\noptional flags:\n");
