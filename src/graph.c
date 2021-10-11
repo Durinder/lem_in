@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/09 11:50:58 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/11 15:07:38 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,6 @@ static t_room	*create_room_node(char *name, int i, t_init *init)
 		new->ant = 1;
 	else
 		new->ant = 0;
-// 	new->links = 0;
-// 	new->visited = 0;
-//	new->depth = INT_MAX;
-//	new->link = NULL;
 	return (new);
 }
 

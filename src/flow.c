@@ -6,33 +6,55 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/11 14:07:38 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/11 15:18:44 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-static void	print_path(t_room *cur)
+static void	set_depth_for_paths(t_graph *graph)
 {
-	while (cur)
+	t_room	*cur;
+	int		depth;
+	int		i;
+
+	i = 0;
+	while (i < graph->list[graph->end]->links)
 	{
-		ft_printf("%s", cur->name);
-		cur = cur->output;
-		if (cur)
-			ft_printf("->");
+		if (graph->list[graph->end]->link[i]->output)
+		{
+			cur = graph->list[graph->end]->link[i];
+			depth = 1;
+			while (cur != graph->list[graph->start])
+			{
+				cur->depth = depth++;
+				cur = cur->input;
+			}
+		}
+		i++;
 	}
-	write(1, "\n", 1);
 }
 
 static void	print_flow(t_room *start)
 {
+	t_room	*cur;
 	int		i;
 
 	i = 0;
 	while (i < start->links)
 	{
 		if (start->link[i]->input)
-			print_path(start->link[i]);
+		{
+			cur = start->link[i];
+			while (cur)
+			{
+				ft_printf("%s(%d)", cur->name, cur->depth);
+				cur = cur->output;
+				if (cur)
+					ft_printf("->");
+			}
+			write(1, "\n", 1);
+		}
 		i++;
 	}
 }
@@ -93,14 +115,15 @@ int	max_flow(t_graph *graph, t_flags *flags)
 {
 	t_queue	*q;
 	int		i;
-	int		flow; // HUOM INT VAI SIZE_T
-	
+	int		flow;
+
 	q = create_queue();
 	flow = 0;
 	while (bfs(graph, q))
 	{
 		flow++;
 		send_flow(graph);
+		set_depth_for_paths(graph);
 		i = 0;
 		while (i < graph->total_rooms)
 			graph->list[i++]->visited = 0;

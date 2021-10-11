@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/11 12:51:45 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/11 15:16:01 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_flags {
 
 typedef struct s_queue_node {
 	struct s_room		*room;
+	int					depth;
 	struct s_queue_node	*next;
 }	t_queue_node;
 
@@ -39,6 +40,7 @@ typedef struct s_room {
 	char			*name;
 	int				ant;
 	int				links;
+	int				depth;
 	int				visited;
 	struct s_room	*parent;	
 	struct s_room	*input;
