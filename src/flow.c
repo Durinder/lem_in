@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/11 12:37:46 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/11 14:07:38 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,7 @@ int	max_flow(t_graph *graph, t_flags *flags)
 		send_flow(graph);
 		i = 0;
 		while (i < graph->total_rooms)
-		{
-			graph->list[i]->visited = 0;
-			i++;
-		}
+			graph->list[i++]->visited = 0;
 		free_queue(q);
 		q = create_queue();
 	}
