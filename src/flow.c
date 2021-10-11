@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/11 15:23:57 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/11 15:51:40 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,12 @@ static int	bfs(t_graph *graph, t_queue *q)
 int	max_flow(t_graph *graph, t_flags *flags)
 {
 	t_queue	*q;
+	t_graph	*cpy;
 	int		i;
-	int		flow;
 
 	q = create_queue();
-	flow = 0;
 	while (bfs(graph, q))
 	{
-		flow++;
 		send_flow(graph);
 		set_depth_for_paths(graph);
 		i = 0;
@@ -129,6 +127,7 @@ int	max_flow(t_graph *graph, t_flags *flags)
 			graph->list[i++]->visited = 0;
 		free_queue(q);
 		q = create_queue();
+		save_optimal_routing_to_cpy(graph, cpy);
 	}
 	free_queue(q);
 	if (flags)
