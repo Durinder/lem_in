@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/11 15:36:50 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/12 14:55:05 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,6 @@ typedef struct s_flags {
 	char	flow;
 }	t_flags;
 
-typedef struct s_queue_node {
-	struct s_room		*room;
-	int					depth;
-	struct s_queue_node	*next;
-}	t_queue_node;
-
-typedef struct s_queue {
-	struct s_queue_node	*front;
-	struct s_queue_node	*rear;
-}	t_queue;
-
 typedef struct s_room {
 	char			*name;
 	int				ant;
@@ -47,6 +36,17 @@ typedef struct s_room {
 	struct s_room	*output;
 	struct s_room	**link;
 }	t_room;
+
+typedef struct s_queue_node {
+	struct s_room		*room;
+	t_room				*only_dir;
+	struct s_queue_node	*next;
+}	t_queue_node;
+
+typedef struct s_queue {
+	struct s_queue_node	*front;
+	struct s_queue_node	*rear;
+}	t_queue;
 
 typedef struct s_graph {
 	int				ants;
@@ -91,12 +91,15 @@ void		free_graph(t_graph *graph);
 void		free_init(t_init *init);
 //void		assign_depth(t_graph *graph, t_flags *flags); // HALOO
 t_queue		*create_queue(void);
-void		enqueue(t_queue *queue, t_room *room);
-t_room		*dequeue(t_queue *queue);
+void		enqueue(t_queue *queue, t_room *room, t_room *only_dir);
+t_room		*dequeue(t_queue *queue, t_room **only_dir);
 char		is_empty(t_queue *queue);
 //void		solver(t_graph *graph);
 void		free_queue(t_queue *queue);
 t_flags		*assign_flags(int argc, char **argv);
 int			max_flow(t_graph *graph, t_flags *flags);
-t_graph		*copy_graph(t_graph *src);
+//t_graph		*copy_graph(t_graph *src);
+t_room		**copy_list(t_room **src, int rooms);
+void		overwrite_list(t_room **cpy, t_room **src, int rooms);
+void		save_optimal_routing_to_cpy(t_graph *graph, t_room **cpy);
 #endif

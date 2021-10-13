@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/11 15:51:40 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/13 14:56:05 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	set_depth_for_paths(t_graph *graph)
 			depth = 1;
 			while (cur != graph->list[graph->start])
 			{
+				ft_printf("%s,", cur->name);
 				cur->depth = depth++;
 				cur = cur->input;
 			}
@@ -62,48 +63,63 @@ static void	set_depth_for_paths(t_graph *graph)
 static void	send_flow(t_graph *graph)
 {
 	t_room	*cur;
+	t_room	*prev;
 
-	cur = graph->list[graph->end];
+	prev = graph->list[graph->end];
+	cur = prev->parent;
 	while (cur != graph->list[graph->start])
 	{
-		if (cur->input == NULL)
+		if (cur->input == prev && cur->output == cur->parent)
 		{
-			if (cur != graph->list[graph->end])
-				cur->input = cur->parent;
-			if (cur->parent != graph->list[graph->start])
-				cur->parent->output = cur;
+			cur->input = NULL;
+			cur->output = NULL;
 		}
-		else if (cur->input)
+		else if (cur->input == prev)
+			cur->input = cur->parent;
+		else if (cur->output == cur->parent)
+			cur->output = prev;
+		else
 		{
-			if (cur->parent->input == cur)
-				cur->parent->input = NULL;
+			cur->input = cur->parent;
+			cur->output = prev;
 		}
+		prev = cur;
 		cur = cur->parent;
 	}
 }
 
 //parents can be modified, flow is final!
-static int	bfs(t_graph *graph, t_queue *q)
+static int	bfs(t_graph *graph, t_queue *q) //VOINEE MENNA FLOW HUONEEN LAPI!
 {
 	t_room	*cur;
 	int		i;
+	t_room	*only_dir;
 
-	enqueue(q, graph->list[graph->start]);
+	enqueue(q, graph->list[graph->start], NULL);
 	graph->list[graph->start]->visited = 1;
+	only_dir = NULL;
 	while (!is_empty(q))
 	{
-		cur = dequeue(q);
+		cur = dequeue(q, &only_dir);
 		i = 0;
+/* 		if (only_dir)
+			ft_printf("cur:%s, only_dir%s\n", cur->name, only_dir->name);
+		else
+			ft_printf("cur:%s, NULL\n", cur->name); */
 		while (i < cur->links)
 		{
 			if (cur->link[i]->visited == 0 && cur->link[i]->input != cur && \
-			cur->output != cur->link[i])
+			cur->output != cur->link[i] && \
+			(!only_dir || only_dir == cur->link[i]))
 			{
 				cur->link[i]->parent = cur;
 				if (cur->link[i] == graph->list[graph->end])
 					return (1);
 				cur->link[i]->visited = 1;
-				enqueue(q, cur->link[i]);
+				if (cur->link[i]->output && cur->link[i]->output != cur)
+					enqueue(q, cur->link[i], cur->link[i]->input);
+				else
+					enqueue(q, cur->link[i], NULL);
 			}
 			i++;
 		}
@@ -114,21 +130,34 @@ static int	bfs(t_graph *graph, t_queue *q)
 int	max_flow(t_graph *graph, t_flags *flags)
 {
 	t_queue	*q;
-	t_graph	*cpy;
+//	t_room	**cpy;
 	int		i;
+	int		flow;
 
 	q = create_queue();
+	flow = 0;
+//	cpy = NULL;
 	while (bfs(graph, q))
 	{
+		flow++;
 		send_flow(graph);
+		ft_putendl("hep");
 		set_depth_for_paths(graph);
+		ft_putendl("hoi");
 		i = 0;
 		while (i < graph->total_rooms)
 			graph->list[i++]->visited = 0;
 		free_queue(q);
 		q = create_queue();
-		save_optimal_routing_to_cpy(graph, cpy);
+	//	save_optimal_routing_to_cpy(graph, cpy);
+		if (flow == graph->ants)
+			break ;
 	}
+/* 	if (cpy)
+	{
+		free(graph->list);
+		graph->list = cpy;
+	} */
 	free_queue(q);
 	if (flags)
 	{
