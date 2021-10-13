@@ -6,11 +6,35 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 17:04:55 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 18:21:23 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/13 16:04:57 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+void	print_flow(t_room *start)
+{
+	t_room	*cur;
+	int		i;
+
+	i = 0;
+	while (i < start->links)
+	{
+		if (start->link[i]->input)
+		{
+			cur = start->link[i];
+			while (cur)
+			{
+				ft_printf("%s(%d)", cur->name, cur->depth);
+				cur = cur->output;
+				if (cur)
+					ft_printf("->");
+			}
+			write(1, "\n", 1);
+		}
+		i++;
+	}
+}
 
 t_flags	*assign_flags(int argc, char **argv)
 {

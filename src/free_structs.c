@@ -6,11 +6,23 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 15:14:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/11 16:59:30 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/13 15:50:17 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+void	delete_queue(t_queue *queue)
+{
+	t_queue_node	*tmp;
+
+	while (queue->front != NULL)
+	{
+		tmp = queue->front;
+		queue->front = queue->front->next;
+		free(tmp);
+	}
+}
 
 void	free_queue(t_queue *queue)
 {

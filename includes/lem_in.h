@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/12 14:55:05 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/13 16:08:53 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,17 +89,14 @@ t_room		*find_and_validate_room(t_graph *graph, t_init *init, int j,
 void		add_edge(t_room *room1, t_room *room2);
 void		free_graph(t_graph *graph);
 void		free_init(t_init *init);
-//void		assign_depth(t_graph *graph, t_flags *flags); // HALOO
 t_queue		*create_queue(void);
 void		enqueue(t_queue *queue, t_room *room, t_room *only_dir);
 t_room		*dequeue(t_queue *queue, t_room **only_dir);
 char		is_empty(t_queue *queue);
-//void		solver(t_graph *graph);
 void		free_queue(t_queue *queue);
+void		delete_queue(t_queue *queue);
 t_flags		*assign_flags(int argc, char **argv);
-int			max_flow(t_graph *graph, t_flags *flags);
-//t_graph		*copy_graph(t_graph *src);
-t_room		**copy_list(t_room **src, int rooms);
-void		overwrite_list(t_room **cpy, t_room **src, int rooms);
-void		save_optimal_routing_to_cpy(t_graph *graph, t_room **cpy);
+void		print_flow(t_room *start);
+void		max_flow(t_graph *graph, t_flags *flags);
+void		save_optimal_routing_to_cpy(t_room ***cpy, t_graph *graph);
 #endif
