@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/16 13:25:31 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/16 13:48:05 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,16 +92,14 @@ static int	bfs(t_graph *graph, t_queue *q, t_room *cur, t_room *only)
 	return (0);
 }
 
-static void	get_optimal_routes(t_graph *graph)
+static void	get_optimal_routes(t_graph *graph, t_room **cpy)
 {
 	t_queue	*q;
-	t_room	**cpy;
 	int		i;
 	int		flow;
 
 	q = create_queue();
 	flow = 0;
-	cpy = NULL;
 	while (bfs(graph, q, NULL, NULL))
 	{
 		flow++;
@@ -112,7 +110,7 @@ static void	get_optimal_routes(t_graph *graph)
 			graph->list[i++]->visited = 0;
 		delete_queue(q);
 		calculate_optimal_routing_to_cpy(&cpy, graph);
- 		if (flow == 1 && graph->ants == 1)
+		if (flow == 1 && graph->ants == 1)
 			break ;
 	}
 	free_queue(q);
@@ -124,7 +122,7 @@ static void	get_optimal_routes(t_graph *graph)
 
 void	max_flow(t_graph *graph, t_flags *flags)
 {
-	get_optimal_routes(graph);
+	get_optimal_routes(graph, NULL);
 	if (flags)
 	{
 		if (flags->flow)
