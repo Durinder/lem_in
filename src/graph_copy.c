@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:07 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/13 16:11:55 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/16 12:52:36 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static int	calculate_printing_line_amount(t_graph *graph)
 		return (ants_to_highest + highest_depth);
 }
 
-void	save_optimal_routing_to_cpy(t_room ***cpy, t_graph *graph)
+void	copy_optimal_routing_to_cpy(t_room ***cpy, t_graph *graph)
 {
 	static int	record;
 	int			lines;
@@ -102,7 +102,7 @@ void	save_optimal_routing_to_cpy(t_room ***cpy, t_graph *graph)
 	if (lines < record || record == 0)
 	{
 		record = lines;
-		if (**cpy == NULL)
+		if (*cpy == NULL)
 			*cpy = copy_list(graph->list, graph->total_rooms);
 		else
 			overwrite_list(*cpy, graph->list, graph->total_rooms);

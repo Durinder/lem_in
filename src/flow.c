@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/13 16:12:54 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/16 12:52:04 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ static void	get_optimal_routes(t_graph *graph)
 
 	q = create_queue();
 	flow = 0;
+	cpy = NULL;
 	while (bfs(graph, q, NULL, NULL))
 	{
 		flow++;
@@ -110,14 +111,14 @@ static void	get_optimal_routes(t_graph *graph)
 		while (i < graph->total_rooms)
 			graph->list[i++]->visited = 0;
 		delete_queue(q);
-		save_optimal_routing_to_cpy(&cpy, graph);
-		if (flow == graph->ants)
-			break ;
+		copy_optimal_routing_to_cpy(&cpy, graph);
+/* 		if (flow == graph->ants)
+			break ; */
 	}
 	free_queue(q);
 	if (flow == 0)
 		ft_error_exit("Error: map cannot be solved.");
-	free(graph->list);
+	delete_list(graph->list, graph->total_rooms);
 	graph->list = cpy;
 }
 

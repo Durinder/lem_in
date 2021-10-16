@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 15:14:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/13 15:50:17 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/16 12:53:00 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,19 @@ void	free_init(t_init *init)
 	}
 	free(init);
 }
-/* 
-void	free_list(t_room **list, int rooms)
+
+void	delete_list(t_room **list, int rooms)
 {
 	int	i;
 
 	i = 0;
 	while (i < rooms)
 	{
-		free(list[i]->name);
-		free(list[i]->link);
-		free(list[i])
+		free(list[i]);
+		i++;
 	}
-} */
+	free(list);
+}
 
 void	free_graph(t_graph *graph)
 {
