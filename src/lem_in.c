@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:55 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/14 13:06:32 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/17 15:38:29 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ int	main(int argc, char **argv)
 		flags = assign_flags(argc, argv);
 	else
 		flags = NULL;
-	graph = initialize(flags);
+	graph = initialize();
 	init = clock();
 //	ft_printf("exec time:%d\n", execution_time);
 //	solver(graph);
-	max_flow(graph, flags);
+	if (graph->total_rooms > 2) // HUOM!
+		max_flow(graph, flags);
+	move_ants(graph);
 	free_graph(graph);
 	free(flags);
 	end = clock();

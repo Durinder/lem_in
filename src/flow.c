@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/16 13:48:05 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/17 15:27:27 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,21 @@ static int	bfs(t_graph *graph, t_queue *q, t_room *cur, t_room *only)
 	}
 	return (0);
 }
+/* 
+static void	test(t_room *start)
+{
+	int	i = 0;
+
+	while (i < start->links)
+	{
+		if (start->link[i]->input == NULL)
+			break ;
+		ft_putstr(start->link[i]->name);
+		ft_putchar(',');
+		i++;
+	}
+	ft_putchar('\n');
+} */
 
 static void	get_optimal_routes(t_graph *graph, t_room **cpy)
 {
@@ -100,6 +115,7 @@ static void	get_optimal_routes(t_graph *graph, t_room **cpy)
 
 	q = create_queue();
 	flow = 0;
+//	test(graph->list[graph->start]);
 	while (bfs(graph, q, NULL, NULL))
 	{
 		flow++;
@@ -116,8 +132,13 @@ static void	get_optimal_routes(t_graph *graph, t_room **cpy)
 	free_queue(q);
 	if (flow == 0)
 		ft_error_exit("Error: map cannot be solved.");
+/* 	ft_putstr("graph:");
+	test(graph->list[graph->start]);
+	ft_putstr("cpy:");
+	test(cpy[graph->start]); */
 	copy_list(graph->list, cpy, graph->total_rooms);
-	delete_list(cpy, graph->total_rooms);
+/* 	test(graph->list[graph->start]);
+ */	free_copy(cpy, graph->total_rooms);
 }
 
 void	max_flow(t_graph *graph, t_flags *flags)

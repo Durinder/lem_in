@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 17:04:55 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/13 16:04:57 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/16 15:38:16 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	print_flow(t_room *start)
 	t_room	*cur;
 	int		i;
 
+	write(1, "\n", 1);
 	i = 0;
 	while (i < start->links)
 	{

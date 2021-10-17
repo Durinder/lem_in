@@ -6,14 +6,14 @@
 #    By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/12 15:23:07 by vhallama          #+#    #+#              #
-#    Updated: 2021/10/16 13:21:22 by vhallama         ###   ########.fr        #
+#    Updated: 2021/10/16 15:26:01 by vhallama         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = $(LEM_IN)
 
 LEM_IN = lem_in
-LEM_IN_SRC = lem_in.c initialize.c initialize_assigns.c initialize_validating.c free_structs.c graph.c linked_list.c queue.c flags.c flow.c optimal_routing.c graph_copy.c
+LEM_IN_SRC = lem_in.c initialize.c initialize_assigns.c initialize_validating.c free_structs.c graph.c linked_list.c queue.c flags.c flow.c optimal_routing.c graph_copy.c move_ants.c
 LEM_IN_OBJ = $(LEM_IN_SRC:.c=.o)
 
 LIBRARY = libft/ft_printf/libftprintf.a

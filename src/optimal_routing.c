@@ -6,63 +6,87 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:07 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/16 13:23:07 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/17 15:53:59 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-static void	sort_start_links(t_room *start)
+/* 
+static void	test(t_graph *graph)
+{
+	t_room	*start = graph->list[graph->start];
+	int	i;
+
+	i = 0;
+	while (i < start->links)
+	{
+		if (start->link[i]->input == NULL)
+			break ;
+		ft_putstr(start->link[i]->name);
+		ft_putchar(',');
+		i++;
+	}
+	ft_putchar('\n');
+}
+ */
+static void	insert_sort(t_room *room)
 {
 	t_room	*tmp;
 	int		i;
-	int		j;
+	int		min_i;
+	int		sorted_i;
 
 	i = 0;
-	while (i + 1 < start->links)
+	min_i = 0;
+	sorted_i = 0;
+	while (sorted_i + 1 < room->links)
 	{
-		j = i + 1;
-		while (j < start->links)
-		{
-			if (start->link[i]->depth > start->link[j]->depth)
-			{
-				tmp = start->link[i];
-				start->link[i] = start->link[j];
-				start->link[j] = tmp;
-			}
-			j++;
-		}
+		if (room->link[i]->depth < room->link[min_i]->depth)
+			min_i = i;
 		i++;
+		if (i == room->links)
+		{
+			tmp = room->link[sorted_i];
+			room->link[sorted_i] = room->link[min_i];
+			room->link[min_i] = tmp;
+			sorted_i++;
+			i = sorted_i;
+			min_i = sorted_i;
+		}
 	}
 }
 
 static int	calculate_printing_line_amount(t_graph *graph)
+// KORJAA EDELLISET LOADIT
 {
-	int	paths;
-	int	highest_depth;
-	int	ants_to_highest;
-	int	i;
+	t_room	*start;
+	int		remaining;
+	int		i;
 
-	highest_depth = 0;
-	paths = 0;
+	insert_sort(graph->list[graph->start]);
+	start = graph->list[graph->start];
+	start->link[0]->load = 1;
+	remaining = graph->ants - 1;
 	i = 0;
-	sort_start_links(graph->list[graph->start]);
-	while (i < graph->list[graph->start]->links)
+	while (remaining > 0 && i + 1 < start->links)
 	{
-		if (graph->list[graph->start]->link[i]->input)
+		while (start->link[i]->load + start->link[i]->depth < \
+		start->link[i + 1]->depth)
 		{
-			if (graph->list[graph->start]->link[i]->depth > highest_depth)
-				highest_depth = graph->list[graph->start]->link[i]->depth;
-			paths++;
+			start->link[i]->load++;
+			remaining -= i + 1;
+			if (remaining <= 0)
+				return (start->link[i]->load + start->link[i]->depth + 1);
 		}
 		i++;
 	}
-	ants_to_highest = graph->ants / paths;
-	i = graph->ants % paths;
-	if (highest_depth > graph->list[graph->start]->link[i]->depth)
-		return (ants_to_highest + highest_depth - 1);
-	else
-		return (ants_to_highest + highest_depth);
+	while (remaining > 0)
+	{
+		start->link[i]->load++;
+		remaining -= i + 1;
+	}
+	return (start->link[i]->load + start->link[i]->depth + 1);
 }
 
 void	calculate_optimal_routing_to_cpy(t_room ***cpy, t_graph *graph)
@@ -79,4 +103,5 @@ void	calculate_optimal_routing_to_cpy(t_room ***cpy, t_graph *graph)
 		else
 			copy_list(*cpy, graph->list, graph->total_rooms);
 	}
+	ft_printf("record:%d\n", record);
 }

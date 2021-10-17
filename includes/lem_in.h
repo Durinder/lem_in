@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/16 13:25:41 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/17 15:43:44 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_room {
 	int				ant;
 	int				links;
 	int				depth;
+	int				load;
 	int				visited;
 	struct s_room	*parent;	
 	struct s_room	*input;
@@ -75,7 +76,7 @@ typedef struct s_roomlist {
 	struct s_roomlist	*next;
 }	t_roomlist;
 
-t_graph		*initialize(t_flags *flags);
+t_graph		*initialize(void);
 t_roomlist	*create_roomlist_node(char *name, int *xy);
 void		assign_ants(t_init *init);
 void		assign_rooms(t_init *init, int i);
@@ -99,7 +100,8 @@ t_flags		*assign_flags(int argc, char **argv);
 void		print_flow(t_room *start);
 void		max_flow(t_graph *graph, t_flags *flags);
 void		calculate_optimal_routing_to_cpy(t_room ***cpy, t_graph *graph);
-void		delete_list(t_room **list, int rooms);
+void		free_copy(t_room **list, int rooms);
 t_room		**duplicate_list(t_room **src, int rooms);
 void		copy_list(t_room **cpy, t_room **src, int rooms);
+void		move_ants(t_graph *graph);
 #endif
