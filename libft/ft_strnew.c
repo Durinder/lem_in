@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 15:44:48 by vhallama          #+#    #+#             */
-/*   Updated: 2019/10/24 15:53:22 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/19 18:06:37 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ char	*ft_strnew(size_t size)
 	s = (char *)malloc(size + 1);
 	if (s == NULL)
 		return (NULL);
-	while (size + 1 > 0)
+	while (size > 0)
 	{
 		s[size] = '\0';
 		size--;
 	}
+	s[size] = '\0';
 	return (s);
 }

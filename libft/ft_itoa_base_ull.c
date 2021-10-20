@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 12:22:28 by vhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 12:53:32 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/19 18:08:15 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,9 @@ char	*ft_itoa_base_ull(unsigned long long n, short base)
 		return (ft_itoa_ull(n));
 	if (n == 0)
 	{
-		s = ft_strnew(0);
+		s = ft_strdup("0");
 		if (s == NULL)
 			return (NULL);
-		s[0] = '0';
 		return (s);
 	}
 	counter = count_length(n, base);
