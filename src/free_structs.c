@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 15:14:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/17 15:27:11 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/20 10:33:00 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	free_init(t_init *init)
 	free(init);
 }
 
-void	free_copy(t_room **list, int rooms)
+void	free_list(t_room **list, int rooms)
 {
 	int	i;
 

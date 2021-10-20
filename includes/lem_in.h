@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/17 15:43:44 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/20 10:32:48 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ typedef struct s_flags {
 
 typedef struct s_room {
 	char			*name;
+	struct s_room	*parent;	
+	struct s_room	*input;
+	struct s_room	*output;
+	struct s_room	**link;
 	int				ant;
 	int				links;
 	int				depth;
 	int				load;
 	int				visited;
-	struct s_room	*parent;	
-	struct s_room	*input;
-	struct s_room	*output;
-	struct s_room	**link;
 }	t_room;
 
 typedef struct s_queue_node {
 	struct s_room		*room;
-	t_room				*only_dir;
+	struct s_room		*only_dir;
 	struct s_queue_node	*next;
 }	t_queue_node;
 
@@ -99,9 +99,9 @@ void		delete_queue(t_queue *queue);
 t_flags		*assign_flags(int argc, char **argv);
 void		print_flow(t_room *start);
 void		max_flow(t_graph *graph, t_flags *flags);
-void		calculate_optimal_routing_to_cpy(t_room ***cpy, t_graph *graph);
-void		free_copy(t_room **list, int rooms);
-t_room		**duplicate_list(t_room **src, int rooms);
-void		copy_list(t_room **cpy, t_room **src, int rooms);
+void		calculate_optimal_routing_to_cpy(t_room **cpy, t_graph *graph);
+void		free_list(t_room **list, int rooms);
+t_room		**duplicate_list(t_graph *graph);
+void		copy_list(t_room **cpy, t_room **src, int rooms, int start);
 void		move_ants(t_graph *graph);
 #endif

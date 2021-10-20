@@ -6,30 +6,24 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:07 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/17 15:53:59 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/20 10:29:04 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-/* 
-static void	test(t_graph *graph)
+/* static void test_sort(t_room *start)
 {
-	t_room	*start = graph->list[graph->start];
-	int	i;
+	int	i = 0;
 
-	i = 0;
 	while (i < start->links)
 	{
-		if (start->link[i]->input == NULL)
-			break ;
-		ft_putstr(start->link[i]->name);
-		ft_putchar(',');
+		ft_printf("%s[%d]->(%d), ", start->link[i]->name, i, start->link[i]->depth);
 		i++;
 	}
 	ft_putchar('\n');
-}
- */
+} */
+
 static void	insert_sort(t_room *room)
 {
 	t_room	*tmp;
@@ -57,51 +51,59 @@ static void	insert_sort(t_room *room)
 	}
 }
 
-static int	calculate_printing_line_amount(t_graph *graph)
-// KORJAA EDELLISET LOADIT
+static int	calculate_printing_line_amount(t_graph *graph, t_room *start)
 {
-	t_room	*start;
-	int		remaining;
-	int		i;
+	int	remaining;
+	int	i;
+	int	j;
 
 	insert_sort(graph->list[graph->start]);
-	start = graph->list[graph->start];
-	start->link[0]->load = 1;
-	remaining = graph->ants - 1;
+//	test_sort(graph->list[graph->start]);
+	remaining = graph->ants;
 	i = 0;
-	while (remaining > 0 && i + 1 < start->links)
+	while (1)
 	{
-		while (start->link[i]->load + start->link[i]->depth < \
-		start->link[i + 1]->depth)
+		j = i;
+		while (j >= 0)
 		{
-			start->link[i]->load++;
-			remaining -= i + 1;
-			if (remaining <= 0)
-				return (start->link[i]->load + start->link[i]->depth + 1);
+			start->link[j]->load++;
+			remaining--;
+			if (remaining == 0)
+				return (start->link[j]->load + start->link[j]->depth);
+			j--;
 		}
-		i++;
+		if (i + 1 < start->links)
+		{
+			if (start->link[i]->load + start->link[i]->depth >= \
+			start->link[i + 1]->depth)
+				i++;
+		}
 	}
-	while (remaining > 0)
-	{
-		start->link[i]->load++;
-		remaining -= i + 1;
-	}
-	return (start->link[i]->load + start->link[i]->depth + 1);
 }
 
-void	calculate_optimal_routing_to_cpy(t_room ***cpy, t_graph *graph)
+static void	reset_load(t_room *start)
+{
+	int	i;
+
+	i = 0;
+	while (i < start->links)
+	{
+		start->link[i]->load = 0;
+		i++;
+	}
+}
+
+void	calculate_optimal_routing_to_cpy(t_room **cpy, t_graph *graph)
 {
 	static int	record;
 	int			lines;
 
-	lines = calculate_printing_line_amount(graph);
+	reset_load(graph->list[graph->start]);
+	lines = calculate_printing_line_amount(graph, graph->list[graph->start]);
 	if (lines < record || record == 0)
 	{
 		record = lines;
-		if (*cpy == NULL)
-			*cpy = duplicate_list(graph->list, graph->total_rooms);
-		else
-			copy_list(*cpy, graph->list, graph->total_rooms);
+		copy_list(cpy, graph->list, graph->total_rooms, graph->start);
 	}
-	ft_printf("record:%d\n", record);
+//	ft_printf("lines:%d\n", lines);
 }
