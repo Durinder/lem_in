@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 15:14:00 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/20 10:33:00 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/20 14:53:30 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,15 @@ void	free_init(t_init *init)
 	free(init);
 }
 
-void	free_list(t_room **list, int rooms)
+void	free_list(t_room **list, int rooms, int start)
 {
 	int	i;
 
 	i = 0;
 	while (i < rooms)
 	{
-		free(list[i]->link);
+		if (i == start)
+			free(list[i]->link);
 		free(list[i]);
 		i++;
 	}

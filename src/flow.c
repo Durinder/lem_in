@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/20 10:32:42 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/20 14:54:01 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,8 +163,9 @@ static void	get_optimal_routes(t_graph *graph, t_room **cpy)
 //	free(graph->list);
 //	print(cpy, graph->total_rooms);
 	copy_list(graph->list, cpy, graph->total_rooms, graph->start);
-	free_list(cpy, graph->total_rooms);
 	print(graph->list, graph->total_rooms);
+	free_list(cpy, graph->total_rooms, graph->start);
+//	print(graph->list, graph->total_rooms);
 // 	test(graph->list[graph->start]);
 }
 

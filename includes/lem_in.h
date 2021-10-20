@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/20 10:32:48 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/20 14:53:51 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ t_flags		*assign_flags(int argc, char **argv);
 void		print_flow(t_room *start);
 void		max_flow(t_graph *graph, t_flags *flags);
 void		calculate_optimal_routing_to_cpy(t_room **cpy, t_graph *graph);
-void		free_list(t_room **list, int rooms);
+void		free_list(t_room **list, int rooms, int start);
 t_room		**duplicate_list(t_graph *graph);
 void		copy_list(t_room **cpy, t_room **src, int rooms, int start);
 void		move_ants(t_graph *graph);
