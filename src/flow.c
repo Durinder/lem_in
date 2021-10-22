@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/22 10:42:21 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/22 11:31:00 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ static void	test(t_room *start)
 	ft_putchar('\n');
 }*/
 
-static void	print(t_room **cpy, int rooms)
+/* static void	print(t_room **cpy, int rooms)
 {
 	int	i = 0;
 	int	j = 0;
@@ -126,8 +126,33 @@ static void	print(t_room **cpy, int rooms)
 		ft_putchar('\n');
 		i++;
 	}
-}
+} */
+static void	insert_sort(t_room *room)
+{
+	t_room	*tmp;
+	int		i;
+	int		min_i;
+	int		sorted_i;
 
+	i = 0;
+	min_i = 0;
+	sorted_i = 0;
+	while (sorted_i + 1 < room->links)
+	{
+		if (room->link[i]->depth < room->link[min_i]->depth)
+			min_i = i;
+		i++;
+		if (i == room->links)
+		{
+			tmp = room->link[sorted_i];
+			room->link[sorted_i] = room->link[min_i];
+			room->link[min_i] = tmp;
+			sorted_i++;
+			i = sorted_i;
+			min_i = sorted_i;
+		}
+	}
+}
 static void	get_optimal_routes(t_graph *graph, t_save **save)
 {
 	t_queue	*q;
@@ -146,6 +171,7 @@ static void	get_optimal_routes(t_graph *graph, t_save **save)
 			graph->list[i++]->visited = 0;
 		delete_queue(q);
 		save_optimal_routing(save, graph);
+//		print_flow(graph->list[graph->start]);
 		if (flow == 1 && graph->ants == 1)
 			break ;
 	}
@@ -154,7 +180,10 @@ static void	get_optimal_routes(t_graph *graph, t_save **save)
 		ft_error_exit("Error: map cannot be solved.");
 	fetch_save(graph->list, save, graph->total_rooms);
 	free_save(save, graph->total_rooms);
-	print(graph->list, graph->total_rooms);
+	set_depth_for_paths(graph);
+	insert_sort(graph->list[graph->start]);
+
+//	print(graph->list, graph->total_rooms);
 }
 
 void	max_flow(t_graph *graph, t_flags *flags)

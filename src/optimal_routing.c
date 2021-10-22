@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:07 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/22 10:40:11 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/22 17:08:59 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,30 +55,24 @@ static int	calculate_printing_line_amount(t_graph *graph, t_room *start)
 {
 	int	remaining;
 	int	i;
-	int	j;
 
 	insert_sort(graph->list[graph->start]);
-//	test_sort(graph->list[graph->start]);
 	remaining = graph->ants;
 	i = 0;
-	while (1)
+	while (remaining > 0)
 	{
-		j = i;
-		while (j >= 0)
-		{
-			start->link[j]->load++;
-			remaining--;
-			if (remaining == 0)
-				return (start->link[j]->load + start->link[j]->depth);
-			j--;
-		}
 		if (i + 1 < start->links)
 		{
-			if (start->link[i]->load + start->link[i]->depth >= \
-			start->link[i + 1]->depth)
+			if (start->link[i]->load + start->link[i]->depth > \
+			start->link[i + 1]->load + start->link[i + 1]->depth)
 				i++;
+			else
+				i = 0;
 		}
+		start->link[i]->load++;
+		remaining--;
 	}
+	return (start->link[i]->load + start->link[i]->depth);
 }
 
 static void	reset_load(t_room *start)
@@ -105,5 +99,5 @@ void	save_optimal_routing(t_save **save, t_graph *graph)
 		record = lines;
 		save_state(save, graph->list, graph->total_rooms);
 	}
-//	ft_printf("lines:%d\n", lines);
+	ft_printf("lines:%d\n", lines);
 }

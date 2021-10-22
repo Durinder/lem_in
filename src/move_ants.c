@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:51:27 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/19 18:39:24 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/22 10:47:31 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,13 @@ static void	loop(t_graph *graph, t_queue *q, t_room *cur) // PASKA ALGO
 		i = 0;
 		while (cur->ant && i < cur->links)
 		{ // LOAD TANNE!
-			if (cur->link[i]->load == 0)
-				break ;
-			move_ant(graph, cur->link[i], cur);
-			cur->link[i]->load--;
-			if (cur->link[i] != graph->list[graph->end])
-				enqueue(q, cur->link[i], NULL);
+			if (cur->link[i]->load)
+			{
+				move_ant(graph, cur->link[i], cur);
+				cur->link[i]->load--;
+				if (cur->link[i] != graph->list[graph->end])
+					enqueue(q, cur->link[i], NULL);
+			}
 			i++;
 		}
 		if (cur->ant)
