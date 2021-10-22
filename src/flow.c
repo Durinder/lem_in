@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/20 14:54:01 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/22 10:42:21 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ static void	test(t_room *start)
 		i++;
 	}
 	ft_putchar('\n');
-}
- */
+}*/
+
 static void	print(t_room **cpy, int rooms)
 {
 	int	i = 0;
@@ -128,7 +128,7 @@ static void	print(t_room **cpy, int rooms)
 	}
 }
 
-static void	get_optimal_routes(t_graph *graph, t_room **cpy)
+static void	get_optimal_routes(t_graph *graph, t_save **save)
 {
 	t_queue	*q;
 	int		i;
@@ -136,7 +136,6 @@ static void	get_optimal_routes(t_graph *graph, t_room **cpy)
 
 	q = create_queue();
 	flow = 0;
-//	test(graph->list[graph->start]);
 	while (bfs(graph, q, NULL, NULL))
 	{
 		flow++;
@@ -146,37 +145,31 @@ static void	get_optimal_routes(t_graph *graph, t_room **cpy)
 		while (i < graph->total_rooms)
 			graph->list[i++]->visited = 0;
 		delete_queue(q);
-		calculate_optimal_routing_to_cpy(cpy, graph);
-//		print_flow(cpy[graph->start]);
-	 	print(cpy, graph->total_rooms);
+		save_optimal_routing(save, graph);
 		if (flow == 1 && graph->ants == 1)
 			break ;
 	}
 	free_queue(q);
 	if (flow == 0)
 		ft_error_exit("Error: map cannot be solved.");
-/* 	print_flow(cpy[graph->start]);
-	ft_putstr("graph:");
-	test(graph->list[graph->start]);
-	ft_putstr("cpy:");
-	test(cpy[graph->start]); */
-//	free(graph->list);
-//	print(cpy, graph->total_rooms);
-	copy_list(graph->list, cpy, graph->total_rooms, graph->start);
+	fetch_save(graph->list, save, graph->total_rooms);
+	free_save(save, graph->total_rooms);
 	print(graph->list, graph->total_rooms);
-	free_list(cpy, graph->total_rooms, graph->start);
-//	print(graph->list, graph->total_rooms);
-// 	test(graph->list[graph->start]);
 }
 
 void	max_flow(t_graph *graph, t_flags *flags)
 {
-	t_room	**cpy;
+	t_save	**save;
+	int		i;
 
-//	cpy = ft_malloc_safe(sizeof(t_room *) * graph->total_rooms);
-	cpy = duplicate_list(graph);
-	print(cpy, graph->total_rooms);
-	get_optimal_routes(graph, cpy);
+	save = (t_save **)ft_malloc_safe(sizeof(t_save *) * graph->total_rooms);
+	i = 0;
+	while (i < graph->total_rooms)
+	{
+		save[i] = (t_save *)ft_malloc_safe(sizeof(t_save));
+		i++;
+	}
+	get_optimal_routes(graph, save);
 	if (flags)
 	{
 		if (flags->flow)

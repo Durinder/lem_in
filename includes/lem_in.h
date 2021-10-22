@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/20 14:53:51 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/22 10:40:13 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ typedef struct s_room {
 	int				load;
 	int				visited;
 }	t_room;
+
+typedef struct s_save {
+	struct s_room	*input;
+	struct s_room	*output;
+	int				load;
+}	t_save;
 
 typedef struct s_queue_node {
 	struct s_room		*room;
@@ -99,9 +105,9 @@ void		delete_queue(t_queue *queue);
 t_flags		*assign_flags(int argc, char **argv);
 void		print_flow(t_room *start);
 void		max_flow(t_graph *graph, t_flags *flags);
-void		calculate_optimal_routing_to_cpy(t_room **cpy, t_graph *graph);
-void		free_list(t_room **list, int rooms, int start);
-t_room		**duplicate_list(t_graph *graph);
-void		copy_list(t_room **cpy, t_room **src, int rooms, int start);
+void		save_optimal_routing(t_save **save, t_graph *graph);
+void		save_state(t_save **cpy, t_room **src, int rooms);
+void		fetch_save(t_room **dst, t_save **save, int rooms);
+void		free_save(t_save **save, int rooms);
 void		move_ants(t_graph *graph);
 #endif

@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:07 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/20 14:51:06 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/22 10:40:11 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static void	reset_load(t_room *start)
 	}
 }
 
-void	calculate_optimal_routing_to_cpy(t_room **cpy, t_graph *graph)
+void	save_optimal_routing(t_save **save, t_graph *graph)
 {
 	static int	record;
 	int			lines;
@@ -103,7 +103,7 @@ void	calculate_optimal_routing_to_cpy(t_room **cpy, t_graph *graph)
 	if (lines < record || record == 0)
 	{
 		record = lines;
-		copy_list(cpy, graph->list, graph->total_rooms, graph->start);
+		save_state(save, graph->list, graph->total_rooms);
 	}
 //	ft_printf("lines:%d\n", lines);
 }
