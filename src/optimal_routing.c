@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:07 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/22 17:08:59 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/22 17:31:41 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ static int	calculate_printing_line_amount(t_graph *graph, t_room *start)
 			else
 				i = 0;
 		}
+		else
+			i = 0;
 		start->link[i]->load++;
 		remaining--;
 	}
