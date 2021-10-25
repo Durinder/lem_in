@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:18:54 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/22 10:41:38 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/25 12:46:09 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,19 @@ void	save_state(t_save **save, t_room **src, int rooms)
 		save[i]->load = src[i]->load;
 		i++;
 	}
+}
+
+t_save	**create_save(int rooms)
+{
+	t_save	**save;
+	int		i;
+
+	save = (t_save **)ft_malloc_safe(sizeof(t_save *) * rooms);
+	i = 0;
+	while (i < rooms)
+	{
+		save[i] = (t_save *)ft_malloc_safe(sizeof(t_save));
+		i++;
+	}
+	return (save);
 }

@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/22 10:40:13 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/25 12:45:24 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
 # include "../libft/ft_printf/ft_printf.h"
-# define GRAPH_START_SIZE 10
-
-//type == 0 is start, type == 1 is regular room, type == 2 is end
 
 typedef struct s_flags {
 	char	graph;
@@ -106,6 +103,7 @@ t_flags		*assign_flags(int argc, char **argv);
 void		print_flow(t_room *start);
 void		max_flow(t_graph *graph, t_flags *flags);
 void		save_optimal_routing(t_save **save, t_graph *graph);
+t_save		**create_save(int rooms);
 void		save_state(t_save **cpy, t_room **src, int rooms);
 void		fetch_save(t_room **dst, t_save **save, int rooms);
 void		free_save(t_save **save, int rooms);
