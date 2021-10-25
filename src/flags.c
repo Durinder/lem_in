@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 17:04:55 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/25 14:41:52 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/25 14:56:33 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,30 +39,33 @@ void	print_flow(t_room *start)
 	}
 }
 
-t_flags	*assign_flags(int argc, char **argv)
+static void	print_usage(void)
+{
+	ft_printf("Usage: ./lem [flags] < map\noptional flags:\n");
+	ft_printf("	-d	show depth of rooms\n");
+	ft_printf("	-g	print graph\n");
+	exit(0);
+}
+
+t_flags	*assign_flags(int argc, char **argv) // ADD STUFF
 {
 	t_flags	*flags;
 	int		i;
 
+	if (argc > 2 || argv[1][0] != '-')
+		print_usage();
 	flags = ft_malloc_safe(sizeof(t_flags));
-	flags->depth = 0;
-	flags->graph = 0;
 	i = 1;
-	while (i < argc)
+	while (argv[1][i])
 	{
-		if (ft_strequ(argv[i], "-d"))
+		if (argv[1][i] == 'd')
 			flags->depth = 1;
-		else if (ft_strequ(argv[i], "-g"))
+		else if (argv[1][i] == 'g')
 			flags->graph = 1;
-		else if (ft_strequ(argv[i], "-f"))
+		else if (argv[1][i] == 'f')
 			flags->flow = 1;
 		else
-		{
-			ft_printf("Usage: ./lem [flags] < map\noptional flags:\n");
-			ft_printf("	-d	show depth of rooms\n");
-			ft_printf("	-g	print graph\n");
-			exit(0);
-		}
+			print_usage();
 		i++;
 	}
 	return (flags);
