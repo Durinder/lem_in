@@ -6,23 +6,11 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:07 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/22 17:31:41 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/25 14:29:40 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-/* static void test_sort(t_room *start)
-{
-	int	i = 0;
-
-	while (i < start->links)
-	{
-		ft_printf("%s[%d]->(%d), ", start->link[i]->name, i, start->link[i]->depth);
-		i++;
-	}
-	ft_putchar('\n');
-} */
 
 static void	insert_sort(t_room *room)
 {
@@ -89,11 +77,35 @@ static void	reset_load(t_room *start)
 	}
 }
 
+static void	set_depth_for_paths(t_graph *graph)
+{
+	t_room	*cur;
+	int		depth;
+	int		i;
+
+	i = 0;
+	while (i < graph->list[graph->end]->links)
+	{
+		if (graph->list[graph->end]->link[i]->output)
+		{
+			cur = graph->list[graph->end]->link[i];
+			depth = 1;
+			while (cur != graph->list[graph->start])
+			{
+				cur->depth = depth++;
+				cur = cur->input;
+			}
+		}
+		i++;
+	}
+}
+
 void	save_optimal_routing(t_save **save, t_graph *graph)
 {
 	static int	record;
 	int			lines;
 
+	set_depth_for_paths(graph);
 	reset_load(graph->list[graph->start]);
 	lines = calculate_printing_line_amount(graph, graph->list[graph->start]);
 	if (lines < record || record == 0)
@@ -101,5 +113,4 @@ void	save_optimal_routing(t_save **save, t_graph *graph)
 		record = lines;
 		save_state(save, graph->list, graph->total_rooms);
 	}
-	ft_printf("lines:%d\n", lines);
 }

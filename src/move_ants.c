@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:51:27 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/25 12:47:50 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/25 14:31:03 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,11 @@
 static void	assign_whitespace(t_room *src)
 {
 	static int	prev_ant;
-	static int	lines = 0;
 
 	if (prev_ant == 0)
 		prev_ant = 1;
 	if (src->ant <= prev_ant)
-	{
 		write(1, "\n", 1);
-		lines++;
-		ft_putnbr(lines);
-	}
 	else
 		write(1, " ", 1);
 	prev_ant = src->ant;
@@ -60,8 +55,8 @@ static void	loop(t_graph *graph, t_queue *q, t_room *cur)
 			if (cur->output != graph->list[graph->end])
 				enqueue(q, cur->output, NULL);
 		}
-		i = 0;
-		while (cur->ant && i < cur->links)
+		i = -1;
+		while (cur->ant && ++i < cur->links)
 		{
 			if (cur->link[i]->load)
 			{
@@ -70,7 +65,6 @@ static void	loop(t_graph *graph, t_queue *q, t_room *cur)
 				if (cur->link[i] != graph->list[graph->end])
 					enqueue(q, cur->link[i], NULL);
 			}
-			i++;
 		}
 		if (cur->ant)
 			enqueue(q, cur, NULL);

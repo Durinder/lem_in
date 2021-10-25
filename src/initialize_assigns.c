@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 10:17:59 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/25 14:05:34 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	assign_links(t_graph *graph, t_init *init)
 		else
 		{
 			i = 0;
-			while (ft_isalnum(init->line[i]) || init->line[i] == '_') // ?
+			while (ft_isalnum(init->line[i]) || init->line[i] == '_')
 				i++;
 			if (init->line[i] != '-')
 				ft_error_exit("Error: invalid input.");
@@ -84,11 +84,11 @@ void	assign_rooms(t_init *init, int i)
 				ft_error_exit("Error: room name starts with L.");
 			init->comment_check = 0;
 			i = 0;
-			while (ft_isalnum(init->line[i]) || init->line[i] == '_') // ?
+			while (ft_isalnum(init->line[i]) || init->line[i] == '_')
 				i++;
 			if (init->line[i] == '-')
 				break ;
-			xy = validate_coordinates(init, i); // FLAG -c for disregarding this
+			xy = validate_coordinates(init, i);
 			push_back_roomlist(&init->head, ft_strsub(init->line, 0, i), xy);
 			init->total_rooms++;
 		}
