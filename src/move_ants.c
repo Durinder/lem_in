@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:51:27 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/22 10:47:31 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/25 12:47:50 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ static void	move_ant(t_graph *graph, t_room *dst, t_room *src)
 		src->ant = 0;
 }
 
-static void	loop(t_graph *graph, t_queue *q, t_room *cur) // PASKA ALGO
-// KORJAA LOADILLA!
+static void	loop(t_graph *graph, t_queue *q, t_room *cur)
 {
 	int		i;
 
@@ -63,7 +62,7 @@ static void	loop(t_graph *graph, t_queue *q, t_room *cur) // PASKA ALGO
 		}
 		i = 0;
 		while (cur->ant && i < cur->links)
-		{ // LOAD TANNE!
+		{
 			if (cur->link[i]->load)
 			{
 				move_ant(graph, cur->link[i], cur);
