@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/25 14:35:18 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/25 14:46:21 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static void	send_flow(t_graph *graph)
 
 	prev = graph->list[graph->end];
 	cur = prev->parent;
-/* 	if (cur == graph->list[graph->start])
-		cur->output = prev; */
 	while (cur != graph->list[graph->start])
 	{
 		if (cur->input == prev && cur->output == cur->parent)
