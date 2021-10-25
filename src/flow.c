@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/25 14:27:30 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/25 14:35:18 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,32 @@ static void	get_optimal_routes(t_graph *graph, t_save **save)
 	free_save(save, graph->total_rooms);
 }
 
+static int	end_next_to_start(t_graph *graph)
+{
+	int	i;
+
+	i = 0;
+	while (i < graph->list[graph->start]->links)
+	{
+		if (graph->list[graph->start]->link[i] == \
+		graph->list[graph->end])
+		{
+			graph->list[graph->start]->output = \
+			graph->list[graph->end];
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
 void	max_flow(t_graph *graph, t_flags *flags)
 {
 	t_save	**save;
 
 	save = create_save(graph->total_rooms);
-	get_optimal_routes(graph, save);
+	if (end_next_to_start(graph) == 0)
+		get_optimal_routes(graph, save);
 	if (flags)
 	{
 		if (flags->flow)
