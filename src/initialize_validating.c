@@ -6,11 +6,24 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 13:00:57 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/08 12:58:04 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/26 15:56:19 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+void	check_if_link_exists(t_room *room1, t_room *room2)
+{
+	int	i;
+
+	i = 0;
+	while (i < room1->links)
+	{
+		if (room1->link[i] == room2)
+			ft_error_exit("Error: same link twice.");
+		i++;
+	}
+}
 
 //which == 1 is room1, 2 is room2
 t_room	*find_and_validate_room(t_graph *graph, t_init *init, int dash,

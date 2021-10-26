@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/25 14:46:21 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/26 14:36:56 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void	max_flow(t_graph *graph, t_flags *flags)
 		get_optimal_routes(graph, save);
 	if (flags)
 	{
-		if (flags->flow)
-			print_flow(graph->list[graph->start]);
+		if (flags->path)
+			print_pathing(graph->list[graph->start]);
 	}
 }

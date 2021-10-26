@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:23:02 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/25 12:49:47 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/26 15:56:42 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_graph	*initialize(void)
 	assign_rooms(init, 0);
 	validate_start_and_end(init);
 	graph = create_graph(init);
-	assign_links(graph, init);
+	assign_links(graph, init, NULL, NULL);
 	free_init(init);
 	return (graph);
 }

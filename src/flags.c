@@ -6,13 +6,13 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 17:04:55 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/25 14:56:33 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/26 14:56:40 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void	print_flow(t_room *start)
+void	print_pathing(t_room *start)
 {
 	t_room	*cur;
 	int		i;
@@ -42,8 +42,7 @@ void	print_flow(t_room *start)
 static void	print_usage(void)
 {
 	ft_printf("Usage: ./lem [flags] < map\noptional flags:\n");
-	ft_printf("	-d	show depth of rooms\n");
-	ft_printf("	-g	print graph\n");
+	ft_printf("	-p	show paths for current amount of ants\n");
 	exit(0);
 }
 
@@ -58,12 +57,12 @@ t_flags	*assign_flags(int argc, char **argv) // ADD STUFF
 	i = 1;
 	while (argv[1][i])
 	{
-		if (argv[1][i] == 'd')
-			flags->depth = 1;
-		else if (argv[1][i] == 'g')
-			flags->graph = 1;
-		else if (argv[1][i] == 'f')
-			flags->flow = 1;
+		if (argv[1][i] == 'p')
+			flags->path = 1;
+ 		else if (argv[1][i] == 'l')
+			flags->lines = 1;
+/*		else if (argv[1][i] == 'f')
+			flags->flow = 1; */
 		else
 			print_usage();
 		i++;

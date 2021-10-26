@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/25 12:45:24 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/26 15:56:38 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 # include "../libft/ft_printf/ft_printf.h"
 
 typedef struct s_flags {
-	char	graph;
-	char	depth;
-	char	flow;
+	char	path;
+	char	lines;
 }	t_flags;
 
 typedef struct s_room {
@@ -87,9 +86,11 @@ int			*validate_coordinates(t_init *init, int i);
 void		push_back_roomlist(t_roomlist **head, char *name, int *xy);
 void		validate_start_and_end(t_init *init);
 t_graph		*create_graph(t_init *init);
-void		assign_links(t_graph *graph, t_init *init);
+void		assign_links(t_graph *graph, t_init *init, t_room *room1,
+				t_room *room2);
 t_room		*find_and_validate_room(t_graph *graph, t_init *init, int j,
 				short which);
+void		check_if_link_exists(t_room *room1, t_room *room2);
 void		add_edge(t_room *room1, t_room *room2);
 void		free_graph(t_graph *graph);
 void		free_init(t_init *init);
@@ -100,7 +101,7 @@ char		is_empty(t_queue *queue);
 void		free_queue(t_queue *queue);
 void		delete_queue(t_queue *queue);
 t_flags		*assign_flags(int argc, char **argv);
-void		print_flow(t_room *start);
+void		print_pathing(t_room *start);
 void		max_flow(t_graph *graph, t_flags *flags);
 void		save_optimal_routing(t_save **save, t_graph *graph);
 t_save		**create_save(int rooms);

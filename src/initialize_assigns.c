@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 19:16:30 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/25 14:05:34 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/26 15:54:59 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,8 @@ static void	assign_comments(t_init *init, short which)
 	ft_putendl(init->line);
 }
 
-void	assign_links(t_graph *graph, t_init *init)
+void	assign_links(t_graph *graph, t_init *init, t_room *room1, t_room *room2)
 {
-	t_room	*room1;
-	t_room	*room2;
 	int		i;
 
 	while (init->ret > 0)
@@ -56,6 +54,7 @@ void	assign_links(t_graph *graph, t_init *init)
 				ft_error_exit("Error: invalid input.");
 			room1 = find_and_validate_room(graph, init, i, 1);
 			room2 = find_and_validate_room(graph, init, i, 2);
+			check_if_link_exists(room1, room2);
 			add_edge(room1, room2);
 			ft_putendl(init->line);
 		}
