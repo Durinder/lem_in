@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/26 15:56:38 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/28 16:14:46 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void		free_graph(t_graph *graph);
 void		free_init(t_init *init);
 t_queue		*create_queue(void);
 void		enqueue(t_queue *queue, t_room *room, t_room *only_dir);
+void		enqueue_front(t_queue *queue, t_room *room, t_room *only_dir);
 t_room		*dequeue(t_queue *queue, t_room **only_dir);
 char		is_empty(t_queue *queue);
 void		free_queue(t_queue *queue);
@@ -103,7 +104,7 @@ void		delete_queue(t_queue *queue);
 t_flags		*assign_flags(int argc, char **argv);
 void		print_pathing(t_room *start);
 void		max_flow(t_graph *graph, t_flags *flags);
-void		save_optimal_routing(t_save **save, t_graph *graph);
+void		save_best_routing(t_save **save, t_graph *graph);
 t_save		**create_save(int rooms);
 void		save_state(t_save **cpy, t_room **src, int rooms);
 void		fetch_save(t_room **dst, t_save **save, int rooms);

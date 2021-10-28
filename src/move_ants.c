@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:51:27 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/26 15:32:39 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/28 16:12:13 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	loop(t_graph *graph, t_queue *q, t_room *cur)
 {
 	int		i;
 
-	while (!is_empty(q))
+	while (q->front != NULL)
 	{
 		cur = dequeue(q, NULL);
 		if (cur->output)

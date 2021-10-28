@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/26 14:36:56 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/28 16:13:45 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	bfs(t_graph *graph, t_queue *q, t_room *cur, t_room *only)
 
 	enqueue(q, graph->list[graph->start], NULL);
 	graph->list[graph->start]->visited = 1;
-	while (!is_empty(q))
+	while (q->front != NULL)
 	{
 		cur = dequeue(q, &only);
 		i = -1;
@@ -60,7 +60,9 @@ static int	bfs(t_graph *graph, t_queue *q, t_room *cur, t_room *only)
 					return (1);
 				cur->link[i]->visited = 1;
 				if (cur->link[i]->output && cur->link[i]->output != cur)
-					enqueue(q, cur->link[i], cur->link[i]->input);
+					enqueue_front(q, cur->link[i], cur->link[i]->input);
+				else if (cur->link[i]->output)
+					enqueue_front(q, cur->link[i], NULL);
 				else
 					enqueue(q, cur->link[i], NULL);
 			}
@@ -69,7 +71,7 @@ static int	bfs(t_graph *graph, t_queue *q, t_room *cur, t_room *only)
 	return (0);
 }
 
-static void	get_optimal_routes(t_graph *graph, t_save **save)
+static void	get_routes(t_graph *graph, t_save **save)
 {
 	t_queue	*q;
 	int		i;
@@ -85,7 +87,7 @@ static void	get_optimal_routes(t_graph *graph, t_save **save)
 		while (i < graph->total_rooms)
 			graph->list[i++]->visited = 0;
 		delete_queue(q);
-		save_optimal_routing(save, graph);
+		save_best_routing(save, graph);
 		if (flow == 1 && graph->ants == 1)
 			break ;
 	}
@@ -121,7 +123,7 @@ void	max_flow(t_graph *graph, t_flags *flags)
 
 	save = create_save(graph->total_rooms);
 	if (end_next_to_start(graph) == 0)
-		get_optimal_routes(graph, save);
+		get_routes(graph, save);
 	if (flags)
 	{
 		if (flags->path)
