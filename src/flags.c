@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 17:04:55 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/26 14:56:40 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/02 10:53:50 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	print_usage(void)
 	exit(0);
 }
 
-t_flags	*assign_flags(int argc, char **argv) // ADD STUFF
+t_flags	*assign_flags(int argc, char **argv)
 {
 	t_flags	*flags;
 	int		i;
@@ -59,10 +59,6 @@ t_flags	*assign_flags(int argc, char **argv) // ADD STUFF
 	{
 		if (argv[1][i] == 'p')
 			flags->path = 1;
- 		else if (argv[1][i] == 'l')
-			flags->lines = 1;
-/*		else if (argv[1][i] == 'f')
-			flags->flow = 1; */
 		else
 			print_usage();
 		i++;
