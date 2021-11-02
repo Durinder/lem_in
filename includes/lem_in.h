@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/28 16:14:46 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/02 12:23:13 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ t_queue		*create_queue(void);
 void		enqueue(t_queue *queue, t_room *room, t_room *only_dir);
 void		enqueue_front(t_queue *queue, t_room *room, t_room *only_dir);
 t_room		*dequeue(t_queue *queue, t_room **only_dir);
-char		is_empty(t_queue *queue);
 void		free_queue(t_queue *queue);
 void		delete_queue(t_queue *queue);
 t_flags		*assign_flags(int argc, char **argv);

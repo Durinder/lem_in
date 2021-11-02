@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/11/02 11:53:38 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/02 12:22:38 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ static int	bfs(t_graph *graph, t_queue *q, t_room *cur, t_room *only)
 {
 	int		i;
 
-	enqueue(q, graph->list[graph->start], NULL);
-	graph->list[graph->start]->visited = 1;
 	while (q->front != NULL)
 	{
 		cur = dequeue(q, &only);
@@ -78,18 +76,20 @@ static void	get_routes(t_graph *graph, t_save **save)
 	int		flow;
 
 	q = create_queue();
+	enqueue(q, graph->list[graph->start], NULL);
+	graph->list[graph->start]->visited = 1;
 	flow = 0;
 	while (bfs(graph, q, NULL, NULL))
 	{
 		flow++;
 		send_flow(graph);
+		save_best_routing(save, graph);
+		delete_queue(q);
 		i = 0;
 		while (i < graph->total_rooms)
 			graph->list[i++]->visited = 0;
-		delete_queue(q);
-		save_best_routing(save, graph);
-		if (flow == 1 && graph->ants == 1)
-			break ;
+		enqueue(q, graph->list[graph->start], NULL);
+		graph->list[graph->start]->visited = 1;
 	}
 	free_queue(q);
 	if (flow == 0)
