@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   optimal_routing.c                                  :+:      :+:    :+:   */
+/*   best_routing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:07 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/25 14:29:40 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/10/28 16:13:56 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static void	set_depth_for_paths(t_graph *graph)
 	}
 }
 
-void	save_optimal_routing(t_save **save, t_graph *graph)
+void	save_best_routing(t_save **save, t_graph *graph)
 {
 	static int	record;
 	int			lines;
