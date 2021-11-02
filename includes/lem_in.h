@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/11/02 12:23:13 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/02 12:35:17 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,5 @@ void		save_state(t_save **cpy, t_room **src, int rooms);
 void		fetch_save(t_room **dst, t_save **save, int rooms);
 void		free_save(t_save **save, int rooms);
 void		move_ants(t_graph *graph);
+void		set_depth_for_paths(t_graph *graph);
 #endif

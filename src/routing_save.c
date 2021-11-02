@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   best_routing.c                                     :+:      :+:    :+:   */
+/*   routing_save.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:07 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/28 16:13:56 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/02 12:35:05 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	reset_load(t_room *start)
 	}
 }
 
-static void	set_depth_for_paths(t_graph *graph)
+void	set_depth_for_paths(t_graph *graph)
 {
 	t_room	*cur;
 	int		depth;

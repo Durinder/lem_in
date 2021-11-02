@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flow.c                                             :+:      :+:    :+:   */
+/*   routing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/11/02 12:22:38 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/02 12:36:05 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,9 @@ void	max_flow(t_graph *graph, t_flags *flags)
 	if (flags)
 	{
 		if (flags->path)
+		{
+			set_depth_for_paths(graph);
 			print_pathing(graph->list[graph->start]);
+		}
 	}
 }
