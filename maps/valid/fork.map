@@ -1,0 +1,50 @@
+10
+##start
+start 0 0
+forkA1 1 0
+forkA2 2 0
+forkA3 3 0
+forkA4 4 0
+forkA5 5 0
+forkB1 0 1
+forkB2 0 2
+forkB3 0 3
+forkB4 0 4
+forkB5 0 5
+fork 6 0
+straight1 1 1
+straight2 2 2
+straight3 3 3
+straight4 4 4
+straight5 5 5
+straight6 6 6
+herring1 10 10
+herring2 11 11
+herringA3 30 30
+herringB3 31 31
+##end
+end 7 7
+start-forkA1
+forkA1-forkA2
+forkA2-forkA3
+forkA3-forkA4
+forkA4-forkA5
+forkA5-fork
+start-forkB1
+forkB1-forkB2
+forkB2-forkB3
+forkB3-forkB4
+forkB4-forkB5
+forkB5-fork
+start-straight1
+straight1-straight2
+straight2-straight3
+straight3-straight4
+straight4-straight5
+straight5-straight6
+start-herring1
+herring1-herring2
+herring2-herringA3
+herring2-herringB3
+fork-end
+straight6-end
