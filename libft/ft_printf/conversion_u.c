@@ -6,14 +6,14 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 12:11:12 by vhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 16:07:06 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/09 11:18:32 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static void	precision_and_print(t_fields *fields, char *s, int s_len,
-		short sign)
+short sign)
 {
 	if (sign == 1)
 	{
@@ -36,7 +36,7 @@ static void	precision_and_print(t_fields *fields, char *s, int s_len,
 }
 
 static short	additional_sign_and_space_check(t_fields *fields, char *s,
-		int s_len, short sign)
+int s_len, short sign)
 {
 	short	inc;
 
@@ -66,7 +66,7 @@ static short	left_padding(t_fields *fields, char *s, int s_len, int sign)
 	if (fields->precision == -1)
 		inc = 1;
 	while (fields->minus == 0 && fields->min > fields->precision + inc && \
-			s_len < fields->min)
+	s_len < fields->min)
 	{
 		if (fields->zero == 1 && fields->precision == -1)
 		{
@@ -85,8 +85,8 @@ static short	left_padding(t_fields *fields, char *s, int s_len, int sign)
 static short	sign_check(t_fields *fields, char *s, int s_len, short sign)
 {
 	if (s[0] == '-' && (s_len >= fields->min || fields->minus == 1 || \
-				(fields->zero == 1 && (fields->precision >= fields->min || \
-									fields->precision == -1))))
+	(fields->zero == 1 && (fields->precision >= fields->min || \
+	fields->precision == -1))))
 	{
 		write(1, "-", 1);
 		sign = 1;

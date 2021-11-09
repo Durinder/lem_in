@@ -6,14 +6,14 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 15:59:08 by vhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 16:38:04 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/09 11:17:09 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static void	precision_and_print(t_fields *fields, char *s, int s_len,
-		short sign_check)
+short sign_check)
 {
 	if (sign_check == 1)
 	{
@@ -36,7 +36,7 @@ static void	precision_and_print(t_fields *fields, char *s, int s_len,
 }
 
 static short	additional_sign_and_space_check(t_fields *fields, char *s,
-		int s_len, short sign_check)
+int s_len, short sign_check)
 {
 	short	inc;
 
@@ -66,7 +66,7 @@ static short	additional_sign_and_space_check(t_fields *fields, char *s,
 }
 
 static short	left_padding(t_fields *fields, char *s, int s_len,
-		int sign_check)
+int sign_check)
 {
 	short	inc;
 
@@ -74,7 +74,7 @@ static short	left_padding(t_fields *fields, char *s, int s_len,
 	if (fields->precision == -1)
 		inc = 1;
 	while (fields->minus == 0 && fields->min > fields->precision + inc && \
-			s_len < fields->min)
+	s_len < fields->min)
 	{
 		if (fields->zero == 1 && fields->precision == -1)
 		{
@@ -92,20 +92,20 @@ static short	left_padding(t_fields *fields, char *s, int s_len,
 }
 
 static short	sign_and_space_check(t_fields *fields, char *s, int s_len,
-		short sign_check)
+short sign_check)
 {
 	if (fields->plus == 1 && s[0] != '-' && (s_len >= fields->min || \
-				fields->minus == 1 || fields->zero == 1 || \
-				fields->precision >= fields->min))
+	fields->minus == 1 || fields->zero == 1 || \
+	fields->precision >= fields->min))
 	{
 		write(1, "+", 1);
 		fields->min--;
 		fields->result++;
 	}
 	else if (s[0] == '-' && (s_len >= fields->min || fields->minus == 1 || \
-				fields->precision >= fields->min || (fields->zero == 1 && \
-					(fields->precision >= fields->min || \
-					fields->precision == -1))))
+	fields->precision >= fields->min || (fields->zero == 1 && \
+	(fields->precision >= fields->min || \
+	fields->precision == -1))))
 	{
 		write(1, "-", 1);
 		sign_check = 1;

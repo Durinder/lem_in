@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 11:57:13 by vhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 16:04:57 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/09 11:17:52 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	zeroes_and_spaces(t_fields *fields, char *s)
 		}
 	}
 	while (fields->minus == 0 && fields->min - 2 > (int)ft_strlen(s) && \
-			fields->min > 2)
+	fields->min > 2)
 	{
 		fields->min--;
 		write(1, " ", 1);
@@ -78,7 +78,7 @@ void	conversion_p(t_fields *fields)
 		}
 	}
 	while (fields->precision != -1 && \
-			fields->precision-- - (int)ft_strlen(s) > 0)
+	fields->precision-- - (int)ft_strlen(s) > 0)
 	{
 		write(1, "0", 1);
 		fields->result++;

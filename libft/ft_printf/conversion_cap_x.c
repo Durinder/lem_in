@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 15:45:53 by vhallama          #+#    #+#             */
-/*   Updated: 2021/06/29 15:49:46 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/09 11:17:34 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	precision_and_print(t_fields *fields, char *s, int s_len)
 static void	spaces_and_hash(t_fields *fields, char *s, int s_len)
 {
 	while (s_len + 2 < fields->min || \
-			(s_len < fields->min && ft_strcmp(s, "0") == 0))
+	(s_len < fields->min && ft_strcmp(s, "0") == 0))
 	{
 		write(1, " ", 1);
 		fields->min--;
@@ -54,7 +54,7 @@ static void	spaces_and_hash(t_fields *fields, char *s, int s_len)
 }
 
 static void	additional_sign_and_space_check(t_fields *fields, char *s,
-		int s_len)
+int s_len)
 {
 	if (s_len < fields->min)
 	{
@@ -76,7 +76,7 @@ static void	left_padding(t_fields *fields, char *s, int s_len, short inc)
 	if (fields->precision == -1)
 		inc = 1;
 	while (fields->minus == 0 && fields->min > fields->precision + inc && \
-			s_len < fields->min)
+	s_len < fields->min)
 	{
 		if (fields->zero == 1 && fields->precision == -1)
 		{
