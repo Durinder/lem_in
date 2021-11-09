@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 15:45:07 by vhallama          #+#    #+#             */
-/*   Updated: 2021/11/02 12:35:05 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/09 11:00:53 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	set_depth_for_paths(t_graph *graph)
 	}
 }
 
-void	save_best_routing(t_save **save, t_graph *graph)
+void	save_best_routing(t_save **save, t_graph *graph, t_flags *flags)
 {
 	static int	record;
 	int			lines;
@@ -112,5 +112,10 @@ void	save_best_routing(t_save **save, t_graph *graph)
 	{
 		record = lines;
 		save_state(save, graph->list, graph->total_rooms);
+	}
+	if (flags)
+	{
+		if (flags->lines)
+			flags->record = record;
 	}
 }

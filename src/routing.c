@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:57:10 by vhallama          #+#    #+#             */
-/*   Updated: 2021/11/02 12:36:05 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/09 10:52:42 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	bfs(t_graph *graph, t_queue *q, t_room *cur, t_room *only)
 	return (0);
 }
 
-static void	get_routes(t_graph *graph, t_save **save)
+static void	get_routes(t_graph *graph, t_save **save, t_flags *flags)
 {
 	t_queue	*q;
 	int		i;
@@ -83,7 +83,7 @@ static void	get_routes(t_graph *graph, t_save **save)
 	{
 		flow++;
 		send_flow(graph);
-		save_best_routing(save, graph);
+		save_best_routing(save, graph, flags);
 		delete_queue(q);
 		i = 0;
 		while (i < graph->total_rooms)
@@ -123,7 +123,7 @@ void	max_flow(t_graph *graph, t_flags *flags)
 
 	save = create_save(graph->total_rooms);
 	if (end_next_to_start(graph) == 0)
-		get_routes(graph, save);
+		get_routes(graph, save, flags);
 	if (flags)
 	{
 		if (flags->path)

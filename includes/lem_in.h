@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:58 by vhallama          #+#    #+#             */
-/*   Updated: 2021/11/02 12:35:17 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/09 11:03:20 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libft/ft_printf/ft_printf.h"
 
 typedef struct s_flags {
+	int		record;
 	char	path;
 	char	lines;
 }	t_flags;
@@ -103,11 +104,11 @@ void		delete_queue(t_queue *queue);
 t_flags		*assign_flags(int argc, char **argv);
 void		print_pathing(t_room *start);
 void		max_flow(t_graph *graph, t_flags *flags);
-void		save_best_routing(t_save **save, t_graph *graph);
+void		save_best_routing(t_save **save, t_graph *graph, t_flags *flags);
 t_save		**create_save(int rooms);
 void		save_state(t_save **cpy, t_room **src, int rooms);
 void		fetch_save(t_room **dst, t_save **save, int rooms);
 void		free_save(t_save **save, int rooms);
-void		move_ants(t_graph *graph);
+void		move_ants(t_graph *graph, t_flags *flags);
 void		set_depth_for_paths(t_graph *graph);
 #endif

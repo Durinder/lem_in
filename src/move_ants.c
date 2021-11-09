@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 13:51:27 by vhallama          #+#    #+#             */
-/*   Updated: 2021/10/28 16:12:13 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/09 11:03:03 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	loop(t_graph *graph, t_queue *q, t_room *cur)
 	}
 }
 
-void	move_ants(t_graph *graph)
+void	move_ants(t_graph *graph, t_flags *flags)
 {
 	t_queue	*q;
 
@@ -80,4 +80,9 @@ void	move_ants(t_graph *graph)
 	loop(graph, q, NULL);
 	write(1, "\n", 1);
 	free_queue(q);
+	if (flags)
+	{
+		if (flags->lines)
+			ft_printf("%d lines for given solution\n", flags->record);
+	}
 }

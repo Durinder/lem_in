@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 15:22:55 by vhallama          #+#    #+#             */
-/*   Updated: 2021/11/02 10:55:00 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/09 11:03:26 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 		flags = NULL;
 	graph = initialize();
 	max_flow(graph, flags);
-	move_ants(graph);
+	move_ants(graph, flags);
 	free_graph(graph);
 	free(flags);
 	return (0);
