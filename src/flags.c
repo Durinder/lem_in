@@ -6,7 +6,7 @@
 /*   By: vhallama <vhallama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 17:04:55 by vhallama          #+#    #+#             */
-/*   Updated: 2021/11/09 11:04:54 by vhallama         ###   ########.fr       */
+/*   Updated: 2021/11/11 14:25:56 by vhallama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_flags	*assign_flags(int argc, char **argv)
 	t_flags	*flags;
 	int		i;
 
-	if (argc > 2 || argv[1][0] != '-')
+	if (argc > 2 || argv[1][0] != '-' || argv[1][1] == '\0')
 		print_usage();
 	flags = ft_malloc_safe(sizeof(t_flags));
 	i = 1;
